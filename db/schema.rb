@@ -29,10 +29,12 @@ ActiveRecord::Schema.define(version: 2019_06_03_084830) do
 
   create_table "categories", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "studio_id"
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_categories_on_studio_id"
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_084830) do
 
   create_table "lessons", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "studio_id"
     t.string "name"
     t.string "location"
     t.text "content"
@@ -66,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_06_03_084830) do
     t.string "occurrence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_lessons_on_studio_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
@@ -164,10 +168,12 @@ ActiveRecord::Schema.define(version: 2019_06_03_084830) do
   add_foreign_key "bookings", "lessons"
   add_foreign_key "bookings", "user_plans"
   add_foreign_key "bookings", "users"
+  add_foreign_key "categories", "studios"
   add_foreign_key "categories", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "events", "studios"
+  add_foreign_key "lessons", "studios"
   add_foreign_key "lessons", "users"
   add_foreign_key "notes", "users"
   add_foreign_key "orders", "subscriptions"
