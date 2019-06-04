@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     @users = User.where(studio: current_user.studio)
     @teachers = @users.where(is_teacher?: true)
     @students = @users.where(is_teacher?: false).where(is_admin?: false)
-    # @subscriptions = Subscription.where(studio: current_user.studio)
     @lessons = Lesson.where(studio: current_user.studio)
+    # @subscriptions = Subscription.where(studio: current_user.studio)
   end
 end
