@@ -79,18 +79,19 @@ ActiveRecord::Schema.define(version: 2019_06_03_084830) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "payments", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.bigint "subscription_id"
     t.bigint "user_id"
     t.integer "total_amount_cents", default: 0, null: false
     t.string "total_amount_currency", default: "USD", null: false
     t.date "date"
     t.string "status"
-    t.jsonb "payment_method"
+    t.jsonb "payment"
+    t.string "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["subscription_id"], name: "index_payments_on_subscription_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
+    t.index ["subscription_id"], name: "index_orders_on_subscription_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -129,14 +130,14 @@ ActiveRecord::Schema.define(version: 2019_06_03_084830) do
   end
 
   create_table "user_plans", force: :cascade do |t|
-    t.bigint "payment_id"
+    t.bigint "order_id"
     t.integer "left_usage"
     t.date "start_date"
     t.date "end_date"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_id"], name: "index_user_plans_on_payment_id"
+    t.index ["order_id"], name: "index_user_plans_on_order_id"
     t.index ["user_id"], name: "index_user_plans_on_user_id"
   end
 
@@ -169,12 +170,12 @@ ActiveRecord::Schema.define(version: 2019_06_03_084830) do
   add_foreign_key "events", "studios"
   add_foreign_key "lessons", "users"
   add_foreign_key "notes", "users"
-  add_foreign_key "payments", "subscriptions"
-  add_foreign_key "payments", "users"
+  add_foreign_key "orders", "subscriptions"
+  add_foreign_key "orders", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
   add_foreign_key "subscriptions", "studios"
-  add_foreign_key "user_plans", "payments"
+  add_foreign_key "user_plans", "orders"
   add_foreign_key "user_plans", "users"
   add_foreign_key "users", "studios"
 end

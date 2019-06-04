@@ -10,7 +10,7 @@ puts 'Cleaning the database...'
 Booking.destroy_all
 Lesson.destroy_all
 UserPlan.destroy_all
-Payment.destroy_all
+Order.destroy_all
 Note.destroy_all
 Post.destroy_all
 Category.destroy_all
@@ -102,8 +102,8 @@ subs = Subscription.create!(
   amount_cents: 200000
   )
 
-puts 'Creating a payment...'
-p = Payment.create!(
+puts 'Creating a order...'
+p = Order.create!(
   subscription_id: subs.id,
   user_id: u.id,
   date: Date.today,
@@ -114,7 +114,7 @@ p = Payment.create!(
 
 puts 'Creating a user_plan...'
 up = UserPlan.create!(
-  payment_id: p.id,
+  order_id: p.id,
   left_usage: 11,
   start_date: Date.today,
   end_date: DateTime.parse("01/07/2019"),
@@ -168,9 +168,3 @@ Comment.create!(
   )
 
 puts 'All done, YAY 🐣'
-
-
-
-
-
-

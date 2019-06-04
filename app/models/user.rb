@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :studio
-  has_many :payments
+  has_many :orders
   has_many :user_plans
   has_many :bookings
   has_many :lessons
