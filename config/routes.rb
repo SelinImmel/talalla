@@ -1,35 +1,35 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home' # possibly change this later
+  get "personal_dashboard", to: "pages#personal_dashboard"
+  get "admin_dashboard", to: "pages#admin_dashboard"
+  get "studio/:id/community", to: "studios#community", as: "community"
 
   resources :studio, only: [:show] do
-    resources :lessons, only: [:index, :show, :delete, :edit, :update]
-    resources :events
-    resources :subscriptions, only: [:index]
+    resources :lessons, only: [:index ]
+    resources :events, only: [:new, :create]
+    resources :subscriptions, only: [:index, :new, :create]
   end
 
-  resource :user, only: [:show, :edit, :update, :delete] do
-    resources :notes
-    resources :bookings, except: [:edit, :update]
-    resources :orders,  only: [:show, :create]
-    resources :user_plan, only: [:index]
-  end
+  resources :notes, only: [:create, :destroy]
+  resources :orders, only: [:show, :create]
 
   resource :categories do
-    resources :posts
+    resources :posts, only: [:show, :destroy]
   end
 
   resources :posts, only: [] do
-    resources :comments
+    resources :comments, only: [:create]
   end
+
 
   resources :pages, only: [ :admin_dashboard ]
 
-  resources :subscriptions
   resources :studio, only: [:edit, :update]
-  resources :lessons
-  resources :bookings, only: [:index, :show]
-  resources :orders, only: [:index, :show]
-  resources :user_plans, only: [:index]
+
+  resources :lessons, except: [:index] do
+    resources :bookings, only: [:create]
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

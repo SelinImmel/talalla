@@ -2,6 +2,8 @@ class Studio < ApplicationRecord
   has_many :users
   has_many :events
   has_many :subscription
+  has_many :lessons, through: :users
+  has_many :categories
 
   validates :name, presence: true
   validates :address, presence: true

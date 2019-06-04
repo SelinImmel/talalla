@@ -12,10 +12,10 @@ Lesson.destroy_all
 UserPlan.destroy_all
 Order.destroy_all
 Note.destroy_all
+Comment.destroy_all
 Post.destroy_all
 Category.destroy_all
 User.destroy_all
-Comment.destroy_all
 Event.destroy_all
 Subscription.destroy_all
 Studio.destroy_all
@@ -88,7 +88,8 @@ l = Lesson.create!(
   slots: 20,
   time: "18:00",
   occurrence: 'weekly',
-  user_id: t.id
+  user_id: t.id,
+  studio_id: s.id
   )
 
 puts 'Creating a subscription..'
@@ -149,7 +150,8 @@ puts 'Creating a channel-category...'
 c = Category.create!(
   user_id: u.id,
   title: 'Mysore',
-  description: 'Exchange about mysore-techniques and a safe-space for questions'
+  description: 'Exchange about mysore-techniques and a safe-space for questions',
+  studio_id: s.id
   )
 
 puts 'Creating a post...'
