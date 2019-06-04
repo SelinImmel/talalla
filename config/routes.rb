@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resource :user, only: [:show, :edit, :update, :delete] do
     resources :notes
-    resources :bookings, except [:edit, :update]
+    resources :bookings, except: [:edit, :update]
     resources :orders,  only: [:show, :create]
     resources :user_plan, only: [:index]
   end
@@ -26,10 +26,10 @@ Rails.application.routes.draw do
   resources :pages, only: [ :admin_dashboard ]
 
   resources :subscriptions
-  resources :studio, only [:edit, :update]
+  resources :studio, only: [:edit, :update]
   resources :lessons
-  resources :bookings, only [:index, :show]
-  resources :orders, only [:index, :show]
+  resources :bookings, only: [:index, :show]
+  resources :orders, only: [:index, :show]
   resources :user_plans, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
