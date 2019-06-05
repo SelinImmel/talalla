@@ -2,7 +2,7 @@
   <h1>Tick to make teacher</h1>
   <% @students.each do|student|%>
     <%= student.first_name %>
-  <%= link_to "Edit", edit_user_registration_path() %>
+  <%= link_to "Edit", edit_user_path(student) %>
   </p>
   <% end %>
   <%= link_to "Back", admin_path %>

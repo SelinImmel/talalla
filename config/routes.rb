@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "teacher", to: "pages#teacher_new", as: "teacher"
   post "subscriptions", to: "subscriptions#create"
 
+  resources :users, only: [:show, :edit, :update]
+
+
   resources :studio, only: [:show] do
     resources :lessons, only: [:index]
     resources :events, only: [:new, :create]
