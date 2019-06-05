@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home' # possibly change this later, maybe personal dashboard?
   get "personal_dashboard", to: "pages#personal_dashboard"
   get "admin_dashboard", to: "pages#admin_dashboard"
-  get "studios/:id/community", to: "studios#community", as: "community"
+  get "studios/:studio_id/community", to: "studios#community", as: "community"
 
 
   resources :studios, only: [:show] do
