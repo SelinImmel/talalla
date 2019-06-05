@@ -1,20 +1,59 @@
-<h1>Personal dashboard</h1>
-  <div class="container">
+<div class="container">
+  <h1>Personal dashboard</h1>
+      <div class="personal-details">
+        <h2>My Account</h2>
+        <img src="" alt="avatar" class="rounded-circle"><br>
+        <br>
+           <%= current_user.first_name %><br>
+           <%= current_user.last_name %><br>
+           <%= current_user.address %><br>
+           <%= current_user.email %><br>
+           <br>
+          <button type="button" class="btn"></button>
+          <%= link_to 'edit', edit_user_registration_path %>
 
-    <div class="card-personal-details">
-  <img src="stylesheet/avatar.png" alt="avatar" class="rounded-circle">
-      <% @firstname %>
-      <% @lastname %>
-      <% @address %>
-      <% @email %>
-<button type="button" class="btn">Edit</button>
-<button type="button" class="btn">Delete</button>
-    </div>
+          <button type="button" class="btn"></button>
+          <%= link_to 'delete', cancel_user_registration_path %>
+      </div>
 
-    <div class="card-user-plan"></div>
+      <div class="user-plan">
+        <h2>User Plans</h2>
+        <ul>
+          <!-- list users userplans -->
+          <% @plans.each do |user_plan| %>
+            <li>
+              <%= user_plan.order.subscription.name %>
+              Left usage: <%= user_plan.left_usage %>
+            </li>
+          <% end %>
+        </ul>
+        <!-- user can create new user plan -->
+        <%= link_to 'Create New User Plan', new_user_plan_path %><br>
+        <button type="button" class="btn"></button>
+      </div>
 
-  <div class="card-calendar"></div>
+      <div class="calendar">
+        <h2>Calendar</h2>
+        <%= "Bookings" %><br>
+        <%= "Orders" %><br>
+        <br>
+      </div>
 
-  <div class="card-notes"></div>
+      <div class="notes">
+        <%= current_user.notes %>
+      </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
