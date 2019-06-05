@@ -1,15 +1,15 @@
-
 <div class="container">
   <h1>Personal dashboard</h1>
+
+  <!-- list users details -->
   <div class="personal-details">
-    <h2>My Account</h2>
-    <img src="" alt="avatar" class="rounded-circle"><br>
-    <br>
-    <%= current_user.first_name %><br>
-    <%= current_user.last_name %><br>
-    <%= current_user.address %><br>
-    <%= current_user.email %><br>
-    <br>
+
+    <h2>Account</h2>
+    <img src="" alt="avatar" class="rounded-circle">
+    <%= current_user.first_name %>
+    <%= current_user.last_name %>
+    <%= current_user.address %>
+    <%= current_user.email %>
     <button type="button" class="btn"></button>
     <%= link_to 'edit', edit_user_registration_path %>
 
@@ -17,57 +17,44 @@
     <%= link_to 'delete', cancel_user_registration_path %>
   </div>
 
-  <div class="user-plan">
-    <h2>User Plans</h2>
-    <ul>
       <!-- list users userplans -->
+  <div class="user-plan">
+
+    <h2>Plans</h2>
+    <ul>
       <% @plans.each do |user_plan| %>
       <li>
         <%= user_plan.order.subscription.name %>
-        Left usage: <%= user_plan.left_usage %>
+        Left usage:
+        <%= user_plan.left_usage %>
       </li>
       <% end %>
     </ul>
+
     <!-- user can create new user plan -->
-    <%= link_to 'Create New User Plan', new_user_plan_path %><br>
+    <%= link_to 'Create New User Plan', new_user_plan_path %>
     <button type="button" class="btn"></button>
   </div>
 
+  <!-- user can add a note to calendar -->
   <div class="calendar">
+
     <h2>Calendar</h2>
     <div class="w-50">
       <%= month_calendar(events: current_user.notes, attribute: :created_at) do |date, notes| %>
       <%= date.day %>
-
       <% notes.each do |note| %>
-      <p><%= note.title %></p>
+      <p>
+        <%= note.title %>
+      </p>
       <% end %>
-
       <% end %>
     </div>
-    <%#= "Bookings" %><br>
-    <%#= "Orders" %><br>
-    <br>
   </div>
 
   <div class="notes">
-    <%#= current_user.notes %>
+
+    <h2>Notes</h2>
+    <%= current_user.notes %>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -15,7 +15,7 @@ Note.destroy_all
 Comment.destroy_all
 Post.destroy_all
 Category.destroy_all
-User.destroy_all•••••••••••••••
+User.destroy_all
 Event.destroy_all
 Subscription.destroy_all
 Studio.destroy_all
