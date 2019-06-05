@@ -2,13 +2,19 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home' # possibly change this later, maybe personal dashboard?
   get "personal_dashboard", to: "pages#personal_dashboard"
-  get "admin_dashboard", to: "pages#admin_dashboard"
+  get "admin_dashboard", to: "pages#admin_dashboard", as: "admin"
   get "studio/:id/community", to: "studios#community", as: "community"
+
+  get "students", to: "pages#students_index", as: "students"
+  get "teachers", to: "pages#teachers_index", as: "teachers"
+  get "teacher", to: "pages#teacher_new", as: "teacher"
+  post "subscriptions", to: "subscriptions#create"
 
   resources :studio, only: [:show] do
     resources :lessons, only: [:index]
     resources :events, only: [:new, :create]
     resources :subscriptions, only: [:index, :new, :create]
+
   end
 
   resources :notes, only: [:create, :destroy]

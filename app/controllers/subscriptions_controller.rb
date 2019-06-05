@@ -10,7 +10,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @subscription = Subscription.create(subscr_params)
+    @subscription = Subscription.new(subscr_params)
+    @subscription.studio = @studio
     if @subscription.save
       redirect_to studio_subscriptions_path(@studio)
     else
@@ -21,7 +22,7 @@ class SubscriptionsController < ApplicationController
   private
 
   def set_studio
-    @studio = Studio.find(params[:id])
+    @studio = Studio.find(params[:studio_id])
   end
 
   def subscr_params
