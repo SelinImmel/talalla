@@ -11,7 +11,6 @@
   <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 
   <br>
-  <br>
   <% @events.each do |e| %>
   <%= link_to e.title, studio_event_path(@studio) %> <br>
   <%= e.date %> <br>
@@ -20,6 +19,7 @@
   <br>
   <% end %>
   <br>
+
   <br>
   <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
 
