@@ -1,3 +1,5 @@
 <div class="container">
-  <h2>Show lesson new page</h2>
+  <h2>Add a new lesson</h2>
+  <%= render "form_for_lesson" %>
+  <%= link_to "Back", studio_lessons_path(current_user.studio), class: "btn btn-outline-primary btn-sm"%>
 </div>

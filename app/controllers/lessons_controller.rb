@@ -1,7 +1,8 @@
 class LessonsController < ApplicationController
   def index
     @studio = Studio.find(params[:studio_id])
-    @lessons = Lesson.where(studio: @studio)
+    @lessons = Lesson.where(studio_id: @studio.id)
+
   end
 
   def show
@@ -14,7 +15,8 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.studio = current_user.studio
+    @lesson.user = current_user
+    @lesson.studio_id = current_user.studio.id
     if @lesson.save
       redirect_to studio_lessons_path(current_user.studio)
     else

@@ -2,10 +2,10 @@
   <h1>This is the event show page</h1>
     <br>
     ------------------------------------------
-      <br>
-      <%= @event.title %>
-      <%= @event.content %>
-      <%= @event.date %>
+
+    <br>  <%= @event.title %>
+    <br>  <%= @event.date %>
+    <br>  <%= @event.content %>
 <br>------------------------------------------
 <br>  <%= link_to "Edit", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm" %>
 <br>  <%= link_to "Delete", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>

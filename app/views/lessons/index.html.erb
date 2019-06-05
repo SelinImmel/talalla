@@ -1,3 +1,22 @@
 <div class="container">
-  <h2>Show lesson index page</h2>
+
+  <h2>Show lessons index</h2>
+<br>
+------------------------------------------
+<br>
+  <p>All lessons</p>
+  <% @lessons.each do |l| %>
+<br>  <%= link_to l.name, lesson_path(l.id) %>
+<br>  <%= l.location %>
+<br>  <%= l.content %>
+<br>  <%= l.slots %>
+<br>  <%= l.time %>
+<br>  <%= l.occurrence %>
+<br>------------------------------------------
+<br>
+  <% end %>
+  <%= link_to "Add new class", new_lesson_path(@lesson), class: "btn btn-outline-primary btn-sm" %>
+
+
+  <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 </div>
