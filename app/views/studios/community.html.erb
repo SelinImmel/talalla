@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>This is the studio community view</h1>
+  <hr>
+
+  <% @categories.each do |category| %>
+    <h3><b>Category:</b> <%= category.title %></h3>
+    <p><b>Description:</b> <%= category.description %></p>
+
+    <% category.posts.each do |post| %>
+      <h4><b>Post title:</b> <%= post.title %></h4>
+      <p><b>Written by (user):</b> <%= post.user.first_name %> <%= post.user.last_name %> + avatar </p>
+      <p><b>This posts content:</b> <%= post.content %></p>
+
+
+      <h5><b>All comments for this particular post:</b></h5>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li><%= comment.user.first_name %> <%= comment.user.last_name %> + avatar: <%= comment.content %></li>
+        <% end %>
+      </ul>
+      <%= render 'comments/form_for_comment', post: post %>
+    <% end %>
+
+    <h5>Add a post</h5>
+    <%= render 'posts/form_for_post', category: category %>
+  <% end %>
+  <br>
+  <%= link_to "add a category", new_category_path, class: "btn btn-primary" %>
+
+  <hr>
+  <h4>Still to do!!</h4>
+  <ul>
+    <li>add photo-attribute to user and display each users avatar</li>
+  </ul>
+
+
+</div>
+

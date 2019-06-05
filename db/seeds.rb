@@ -68,7 +68,7 @@ u = User.create!(
   password: '123456',
   studio_id: s.id
   )
-User.create!(
+o = User.create!(
   first_name: 'Richard',
   last_name: 'Angapin',
   email: 'richard.angapin@gmail.com',
@@ -167,6 +167,13 @@ Comment.create!(
   user_id: u.id,
   post_id: p.id,
   content: 'Thank you so much, this really improved my flow!'
+  )
+
+puts 'Creating a second comment...'
+Comment.create!(
+  user_id: o.id,
+  post_id: p.id,
+  content: 'Wow already my second comment!'
   )
 
 puts 'All done, YAY 🐣'
