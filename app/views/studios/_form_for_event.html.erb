@@ -1,0 +1,6 @@
+<%= simple_form_for(@studio) do |f| %>
+<%= f.input :title, placeholder: "Add a title for the event..." %>
+<%= f.input :date, as: :date, placeholder: Date.tomorrow %>
+<%= f.input :content, placeholder: "Add a detailed description of the event..." %>
+<%= f.button :submit, :value => "Add event"%>
+<%= end %>
