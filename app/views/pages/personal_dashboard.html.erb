@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1>Personal dashboard</h1>
       <div class="personal-details">
@@ -54,6 +55,20 @@
 
 
 
+
+
+
+<h1>Personal dashboard</h1>
+<div class="w-50">
+<%= month_calendar(events: current_user.notes, attribute: :created_at) do |date, notes| %>
+  <%= date.day %>
+
+    <% notes.each do |note| %>
+     <p><%= note.title %></p>
+  <% end %>
+
+<% end %>
+</div>
 
 
 
