@@ -1,13 +1,20 @@
 <div class="container">
-  <h2>Show events index</h2>
 
+  <h2>Show events index</h2>
+<br>
+------------------------------------------
+<br>
   <p>All events</p>
-  <%#= Event.where(params[:studio_id]).each do |e| %>
+
   <% @events.each do |e| %>
-    <%= e.title %>
-    <%= e.date %>
-    <%= e.content %>
-    <p>link to the show of event</p>
+<br> <%= link_to e.title, studio_event_path(e.studio, e.id) %>
+<br> <%= e.date %>
+<br> <%= e.content %>
+<br>
+------------------------------------------
+<br>
   <% end %>
 
+
+  <%= link_to "Back to StudioWorld", studio_path(@studio) %>
 </div>

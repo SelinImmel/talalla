@@ -1,6 +1,21 @@
 <div class="container">
-  <%= @event.title %>
-  <%= @event.content %>
-  <%= @event.date %>
-
+  <h1>This is the event show page</h1>
+    <br>
+    ------------------------------------------
+      <br>
+      <%= @event.title %>
+      <%= @event.content %>
+      <%= @event.date %>
+      <br>
+    ------------------------------------------
+    <br>
+  <%= link_to "Back to event index", studio_events_path(@studio) %>
+<br>
+------------------------------------------
+<br>
+  <%= link_to "Back to StudioWorld", studio_path(@studio) %>
+<br>
+------------------------------------------
+<br>
+  <h4>special guest information - we would need to create a 'teacher' for that and make it possible to choose a teacher in the create event form</h4>
 </div>
