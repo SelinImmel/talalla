@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'registrations/create'
   devise_for :users, :controllers => {:registrations => "registrations"}
-  root to: 'pages#home' # possibly change this later, maybe personal dashboard?
+  root to: 'pages#home' # have the root_path render the view with the 4 world-entries
   get "personal_dashboard", to: "pages#personal_dashboard"
   get "admin_dashboard", to: "pages#admin_dashboard"
   get "studios/:studio_id/community", to: "studios#community", as: "community"
