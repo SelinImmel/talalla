@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'registrations/create'
+  devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'pages#home' # possibly change this later, maybe personal dashboard?
   get "personal_dashboard", to: "pages#personal_dashboard"
   get "admin_dashboard", to: "pages#admin_dashboard"

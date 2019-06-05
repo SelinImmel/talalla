@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :studio
+  # belongs_to :studio
   has_many :orders
   has_many :user_plans
   has_many :bookings
