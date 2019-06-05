@@ -1,0 +1,17 @@
+<div class="container">
+
+  <h2>Show events index</h2>
+<br>
+------------------------------------------
+<br>
+  <p>All events</p>
+
+  <% @events.each do |e| %>
+<br>  <%= link_to e.title, studio_event_path(e.studio, e.id) %>
+<br>  <%= e.date %>
+<br>  <%= e.content %>
+<br>------------------------------------------
+<br>
+  <% end %>
+  <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+</div>
