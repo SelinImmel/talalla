@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "teachers", to: "pages#teachers_index", as: "teachers"
   get "teacher", to: "pages#teacher_new", as: "teacher"
   post "subscriptions", to: "subscriptions#create"
+  #delete "subscriptions", to: "subscriptions#destroy"
 
   resources :users, only: [:show, :edit, :update]
 
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   resources :studio, only: [:show] do
     resources :lessons, only: [:index]
     resources :events, only: [:new, :create]
-    resources :subscriptions, only: [:index, :new, :create]
+    resources :subscriptions, only: [:index, :new, :create, :destroy]
 
   end
 

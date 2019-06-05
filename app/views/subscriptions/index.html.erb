@@ -7,7 +7,8 @@
     <br><%= subscription.content%>
     <br>Number of lessons: <%= subscription.package_size%>
     <br><%= subscription.durability%>
-    <br><%= subscription.amount%> IDR <%= link_to "Delete" %>
+    <br><%= subscription.amount%> IDR
+    <%= link_to "Delete", studio_subscription_path(@studio, subscription), :method => "delete" %>
     </p>
   <% end %>
 

@@ -19,6 +19,12 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    @subscription = Subscription.find(params[:id])
+    @subscription.destroy
+    redirect_to studio_subscriptions_path
+  end
+
   private
 
   def set_studio

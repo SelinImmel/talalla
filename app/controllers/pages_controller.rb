@@ -35,7 +35,4 @@ class PagesController < ApplicationController
   def teacher_new
     @students = User.where(studio: current_user.studio).where(is_teacher: false).where(is_admin: false)
   end
-
-
-
 end
