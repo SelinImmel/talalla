@@ -1,6 +1,15 @@
 class EventsController < ApplicationController
   before_action :set_studio
 
+  def index
+    @studio = Studio.find(params[:studio_id])
+    @events = Event.where(studio: @studio)
+  end
+
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def new
     @event = Event.new
   end

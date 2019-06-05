@@ -8,6 +8,7 @@ class StudiosController < ApplicationController
 
   def show
     @lessons = Lesson.where(studio: @studio)
+    @events = Event.where(studio: @studio)
   end
 
   def edit
