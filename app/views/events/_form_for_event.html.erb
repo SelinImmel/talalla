@@ -1,0 +1,9 @@
+<%= simple_form_for [@studio, @event] do |f| %>
+<%= f.input :title, placeholder: "Add a title for the event..." %>
+<%= f.input :date, as: :date, placeholder: Date.tomorrow %>
+<%= f.input :content, placeholder: "Add a detailed description of the event..." %>
+<p >Photoupload is commented out in _form_for_event</p>
+<%#= f.input :photo %>
+<%#= f.input :photo_cache , as: :hidden %>
+<%= f.button :submit%>
+<% end %>
