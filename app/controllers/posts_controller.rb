@@ -2,10 +2,11 @@ class PostsController < ApplicationController
   before_action :set_category
 
   def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
     @post.user = current_user
-    @studio = @post.category.studio
-    redirect_to community_path(@studio)
+    @post.category = @category
+    @post.save
+    redirect_to community_path(current_user.studio)
   end
 
   def destroy
@@ -18,10 +19,10 @@ class PostsController < ApplicationController
   private
 
   def set_category
-    @category = Category.find(:category_id)
+    @category = Category.find(params[:category_id])
   end
 
   def post_params
-    params.permit(:post).require(:title, :content)
+    params.require(:post).permit(:title, :content)
   end
 end
