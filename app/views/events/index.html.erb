@@ -3,11 +3,11 @@
 
   <p>All events</p>
   <%#= Event.where(params[:studio_id]).each do |e| %>
-  <%= @events.each do |e| %>
-  <%= e.title %>
-  <%= e.date %>
-  <%= e.content %>
-  <p>link to the show of event</p>
+  <% @events.each do |e| %>
+    <%= e.title %>
+    <%= e.date %>
+    <%= e.content %>
+    <p>link to the show of event</p>
   <% end %>
 
 </div>
