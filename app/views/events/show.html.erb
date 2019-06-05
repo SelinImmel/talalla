@@ -6,9 +6,12 @@
       <%= @event.title %>
       <%= @event.content %>
       <%= @event.date %>
-      <br>
-    ------------------------------------------
-    <br>
+<br>------------------------------------------
+<br>  <%= link_to "Edit", edit_studio_event_path(@studio, @event) %>
+<br>  <%= link_to "Delete", studio_event_path(@studio, @event), method: :delete %>
+<br>
+------------------------------------------
+<br>
   <%= link_to "Back to event index", studio_events_path(@studio) %>
 <br>
 ------------------------------------------

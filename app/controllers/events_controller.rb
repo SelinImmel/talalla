@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.studio = @studio
     if @event.save
-      redirect_to studio_path(@studio)
+      redirect_to studio_event_path(@studio, @event)
     else
       render :new
     end

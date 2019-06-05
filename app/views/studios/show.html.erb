@@ -1,8 +1,16 @@
 <div class="container">
   <h2>Show studio dashboard</h2>
 
+  <%= @studio.name %> <br>
+  <%= @studio.address %> <br>
+  <%= @studio.phone_number %> <br>
+  <%= @studio.email %> <br>
+  <%= @studio.homepage %> <br>
+  <br>
+  <br>
+  ----------------------------------------
+
   <p>Upcoming events</p>
-  <%#= Event.where(params[:studio_id]).each do |e| %>
   <% @events.each do |e| %>
   <%= link_to e.title, studio_event_path(@studio) %> <br>
   <%= e.date %> <br>
