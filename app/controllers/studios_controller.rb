@@ -1,7 +1,8 @@
 class StudiosController < ApplicationController
-  before_action :set_studio
+  before_action :set_studio, except: [:community]
 
   def community
+    @studio = current_user.studio
     @users = @studio.users
     @categories = @studio.categories
   end
