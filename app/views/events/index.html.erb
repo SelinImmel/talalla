@@ -7,11 +7,12 @@
   <p>All events</p>
 
   <% @events.each do |e| %>
-<br> <%= link_to e.title, studio_event_path(e.studio, e.id) %>
-<br> <%= e.date %>
-<br> <%= e.content %>
-<br>
-------------------------------------------
+<br>  <%= link_to e.title, studio_event_path(e.studio, e.id) %>
+<br>  <%= e.date %>
+<br>  <%= e.content %>
+<br>  <%= link_to "Edit", edit_studio_event_path(e.studio, e.id) %>
+<br>  <%= link_to "Delete", studio_event_path(e.studio, e.id), method: :delete %>
+<br>------------------------------------------
 <br>
   <% end %>
 

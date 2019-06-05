@@ -24,6 +24,26 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    if @event.save
+      redirect_to studio_events_path(current_user.studio)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to studio_events_path(current_user.studio)
+  end
+
   private
 
   def set_studio
