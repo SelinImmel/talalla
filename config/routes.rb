@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home' # possibly change this later, maybe personal dashboard?
   get "personal_dashboard", to: "pages#personal_dashboard"
   get "admin_dashboard", to: "pages#admin_dashboard"
-  get "studio/:id/community", to: "studios#community", as: "community"
+  get "studios/:id/community", to: "studios#community", as: "community"
 
-  resources :studio, only: [:show] do
+  resources :studios, only: [:show] do
     resources :lessons, only: [:index]
     resources :events, only: [:new, :create]
     resources :subscriptions, only: [:index, :new, :create]
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   # resources :pages, only: [ :admin_dashboard, :personal_dashboard ]
 
-  resources :studio, only: [:edit, :update]
+  resources :studios, only: [:edit, :update]
 
   resources :lessons, except: [:index] do
     resources :bookings, only: [:create]

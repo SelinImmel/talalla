@@ -6,7 +6,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params)
+    @event = Event.new(event_params)
+    @event.studio = @studio
     if @event.save
       redirect_to studio_path(@studio)
     else
