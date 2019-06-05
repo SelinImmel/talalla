@@ -1,16 +1,16 @@
 <div class="container">
   <h2>Show studio dashboard</h2>
 
-  <%= @studio.name %> <br>
-  <%= @studio.address %> <br>
-  <%= @studio.phone_number %> <br>
-  <%= @studio.email %> <br>
-  <%= @studio.homepage %> <br>
-  <br>
-  <br>
-  ----------------------------------------
+  <h3> <%= @studio.name %> </h3><br>
+  <h4><%= @studio.address %> </h4> <br>
+  <h5><%= @studio.phone_number %> </h5><br>
+  <h5><%= @studio.email %> </h5><br>
+  <h5><%= @studio.homepage %> </h5><br>
 
-  <p>Upcoming events</p>
+<br>
+  <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+
+  <br>
   <% @events.each do |e| %>
   <%= link_to e.title, studio_event_path(@studio) %> <br>
   <%= e.date %> <br>
@@ -19,8 +19,8 @@
   <br>
   <% end %>
   <br>
-  <%= link_to "See all events - event index", studio_events_path(@studio) %>
+
   <br>
-  <%= link_to "Add event", new_studio_event_path(@studio)%>
+  <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
 
 </div>

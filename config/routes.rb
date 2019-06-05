@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "admin_dashboard", to: "pages#admin_dashboard"
   get "studios/:studio_id/community", to: "studios#community", as: "community"
 
+
   resources :studios, only: [:show] do
     resources :lessons, only: [:index]
     resources :events#, only: [:index, :new, :create, :show, :destroy]
