@@ -102,7 +102,7 @@ subs = Subscription.create!(
   durability: 60,
   subscription_sku: '12-class-pack',
   studio_id: s.id,
-  amount_cents: 200000
+  amount_cents: 200_000_00
   )
 
 puts 'Creating a order...'
