@@ -6,6 +6,7 @@
   <br> <h5><b>Phone:</b> <%= @studio.phone_number %> </h5>
   <br> <h5><b>Email:</b> <%= @studio.email %> </h5>
   <br> <h5><b>Webpage:</b> <%= @studio.homepage %> </h5>
+  <%= link_to "Change Studio details", edit_studio_path(current_user.studio_id)%>
 
   <hr>
   <%= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
@@ -29,14 +30,11 @@
   <p><b>Places: </b>      <%= l.slots %></p>
   <hr>
   <% end %>
-  
-  <%= link_to "Change Studio details", edit_studio_path(current_user.studio_id)%>
 
-
+<hr>
   <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 
-  <hr>
-  <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
+  <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-outline-primary btn-sm"%>
   <hr>
 
   <% @events.each do |e| %>
