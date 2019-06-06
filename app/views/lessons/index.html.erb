@@ -2,9 +2,8 @@
 
   <h2>Show lessons index</h2>
 <br>
-------------------------------------------
-<br>
   <p>All lessons</p>
+------------------------------------------
   <% @lessons.each do |l| %>
     <p><b>Name: </b>       <%= link_to l.name, lesson_path(l.id) %></p>
     <p><b>Room: </b>       <%= l.location %></p>
@@ -14,8 +13,6 @@
     <p><b>End time: </b>   <%= l.end_time %></p>
     <p><b>When: </b>       <%= l.occurrence %></p>
 ------------------------------------------
-<br>
-
   <% end %>
 <br>
   <%= link_to "Add new class", new_lesson_path(@lesson), class: "btn btn-outline-primary btn-sm" %>
