@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_092353) do
+ActiveRecord::Schema.define(version: 2019_06_05_094325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,8 +66,10 @@ ActiveRecord::Schema.define(version: 2019_06_06_092353) do
     t.string "location"
     t.text "content"
     t.integer "slots"
-    t.time "start_time"
-    t.string "occurrence"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.date "start_date"
+    t.integer "occurrence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "end_time"
