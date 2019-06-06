@@ -1,10 +1,25 @@
 <div class="container">
-  <% @teachers.each do|teacher|%>
-  <p><strong><%= teacher.first_name%> <%= teacher.last_name%> </strong>
-    <br><%= teacher.email%>
-    <br><%= teacher.address%>
-    <br><%= teacher.biography %>
-  </p>
-  <% end %>
-  <%= link_to "Back", admin_path %>
+  <br>
+  <h1>Welcome to your Teachers overview</h1>
+  <br>
+  <p><strong>You have <%= @teachers.count %> teachers</strong></p>
+  <table class="table table_admin" style="width:100%">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Biography</th>
+    </tr>
+    <% @teachers.each do|teacher|%>
+    <tr>
+      <td><%= teacher.first_name %></td>
+      <td><%= teacher.last_name %></td>
+      <td><%= teacher.email %></td>
+      <td><%= teacher.address %></td>
+      <td><%= teacher.biography %></td>
+    </tr>
+    <% end %>
+  </table>
+  <%= link_to "Back", admin_dashboard_path %>
 </div>

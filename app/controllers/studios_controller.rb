@@ -16,7 +16,8 @@ class StudiosController < ApplicationController
   end
 
   def update
-    if @studio.update(studio_params)
+    @studio.update(studio_params)
+    if @studio.save
       redirect_to admin_dashboard_path
     else
       render :edit
@@ -30,6 +31,6 @@ class StudiosController < ApplicationController
   end
 
   def studio_params
-    params.permit(:studio).require(:name, :address, :phone_number, :email, :homepage)
+    params.require(:studio).permit(:name, :address, :phone_number, :email, :homepage)
   end
 end

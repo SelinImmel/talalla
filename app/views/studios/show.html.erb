@@ -29,6 +29,9 @@
   <p><b>Places: </b>      <%= l.slots %></p>
   <hr>
   <% end %>
+  
+  <%= link_to "Change Studio details", edit_studio_path(current_user.studio_id)%>
+
 
   <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 
