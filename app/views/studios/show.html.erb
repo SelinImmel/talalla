@@ -16,6 +16,7 @@
   <br>
 
   <br>
+
   <% @events.each do |e| %>
   <p><b>Title: </b><%= link_to e.title, studio_event_path(@studio, e) %></p>
   <p><b>Date: </b><%= e.date %></p>
@@ -24,6 +25,7 @@
   <br>
   <% end %>
   <br>
+
   <br>
   <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
 
