@@ -40,24 +40,22 @@
     <div class="w-50">
       <%= month_calendar(events: current_user.notes, attribute: :created_at) do |date, notes| %>
       <%= date.day %>
-      <p>
-      <% notes.each do |note| %>
-        <a href="#note-<%= note.id %>"><%= note.title %></a>
-      </p>
-      <% end %>
+        <% notes.each do |note| %>
+          <p><%= link_to note.title, personal_dashboard_path %></p>
+        <% end %>
       <% end %>
     </div><hr>
   </div>
 
   <div class="notes">
     <h2>Notes</h2>
+    <% current_user.notes.each do |note| %>
+      <p id="note-<%= note.id %>"><%= note.created_at.to_formatted_s(:short) %>: <%= note.content %></p>
+    <% end %>
     <%= simple_form_for @note do |f| %>
       <%= f.input :title %>
       <%= f.input :content %>
       <%= f.submit 'Add a note', class: 'btn btn-primary' %>
     <% end %><hr>
-    <% current_user.notes.each do |note| %>
-      <p id="note-<%= note.id %>"><%= note.id %>: <%= note.content %></p>
-    <% end %>
   </div>
 </div>
