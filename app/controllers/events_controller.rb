@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+  include Pundit
+  after_action :verify_authorized, except: [:index, :show], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
   before_action :set_studio
 
   def index
@@ -7,8 +11,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    authorize @event
     @event = Event.find(params[:id])
+    authorize @event
   end
 
   def new
