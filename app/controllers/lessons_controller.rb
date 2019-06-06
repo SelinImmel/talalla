@@ -13,10 +13,8 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(lesson_params)
-    @lesson.user = current_user
-    @lesson.studio_id = current_user.studio.id
-    if @lesson.save
+    occurrence = params[:lesson][:occurrence]
+    if create_lessons(occurrence)
       redirect_to studio_lessons_path(current_user.studio)
     else
       render :new
@@ -45,7 +43,18 @@ class LessonsController < ApplicationController
 
   private
 
+  def create_lessons(occurrence)
+    count = -1
+    occurrence.to_i.times do
+      count += 1
+      @lesson = Lesson.new(lesson_params)
+      @lesson.start_date += count.weeks
+      @lesson.studio = current_user.studio
+      @lesson.save
+    end
+  end
+
   def lesson_params
-    params.require(:lesson).permit(:name, :location, :content, :slots, :start_time, :end_time, :occurrence, :user_id)
+    params.require(:lesson).permit(:name, :location, :content, :slots, :start_time, :end_time, :start_date, :occurrence, :user_id)
   end
 end
