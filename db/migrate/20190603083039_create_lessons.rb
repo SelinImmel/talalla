@@ -7,9 +7,9 @@ class CreateLessons < ActiveRecord::Migration[5.2]
       t.string :location
       t.text :content
       t.integer :slots
-      t.time :time
+      t.datetime :start_time
+      t.datetime :end_time
       t.string :occurrence
-
       t.timestamps
     end
   end
