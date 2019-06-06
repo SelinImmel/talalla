@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_094325) do
+ActiveRecord::Schema.define(version: 2019_06_06_132429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,13 +66,12 @@ ActiveRecord::Schema.define(version: 2019_06_05_094325) do
     t.string "location"
     t.text "content"
     t.integer "slots"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.date "start_date"
-    t.integer "occurrence"
+    t.time "start_time"
+    t.string "occurrence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "end_time"
+    t.date "start_date"
     t.index ["studio_id"], name: "index_lessons_on_studio_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
@@ -91,7 +90,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_094325) do
     t.bigint "subscription_id"
     t.bigint "user_id"
     t.integer "total_amount_cents", default: 0, null: false
-    t.string "total_amount_currency", default: "IDR", null: false
+    t.string "total_amount_currency", default: "USD", null: false
     t.date "date"
     t.string "status"
     t.jsonb "payment"
@@ -127,7 +126,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_094325) do
     t.string "name"
     t.text "content"
     t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: "IDR", null: false
+    t.string "amount_currency", default: "USD", null: false
     t.integer "package_size"
     t.integer "durability"
     t.string "subscription_sku"
@@ -161,8 +160,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_094325) do
     t.string "last_name"
     t.string "address"
     t.text "biography"
-    t.boolean "is_teacher", default: false
-    t.boolean "is_admin", default: false
+    t.boolean "is_teacher"
+    t.boolean "is_admin"
     t.bigint "studio_id"
     t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
