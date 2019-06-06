@@ -7,6 +7,8 @@
   <h5><b>Email:</b> <%= @studio.email %> </h5><br>
   <h5><b>Webpage:</b> <%= @studio.homepage %> </h5><br>
 
+  <%= link_to "Change Studio details", edit_studio_path(current_user.studio_id)%>
+
   <br>
   <%= link_to "See choice of lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
   <p>List of todays and tomorrows lessons</p>

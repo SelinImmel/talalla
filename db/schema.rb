@@ -159,8 +159,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_092353) do
     t.string "last_name"
     t.string "address"
     t.text "biography"
-    t.boolean "is_teacher"
-    t.boolean "is_admin"
+    t.boolean "is_teacher", default: false
+    t.boolean "is_admin", default: false
     t.bigint "studio_id"
     t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
