@@ -8,11 +8,7 @@
     <%= current_user.last_name %><br>
     <%= current_user.address %><br>
     <%= current_user.email %><br><br>
-    <button type="button" class="btn btn-primary">Edit</button>
-    <%= link_to '', edit_user_registration_path %>
-
-    <button type="button" class="btn btn-primary">Cancel</button>
-    <%= link_to '', cancel_user_registration_path %><hr>
+    <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary" %>
   </div>
 
   <div class="user-plan">
@@ -26,8 +22,7 @@
       </li>
       <% end %>
     </ul>
-    <%= link_to '', new_user_plan_path %>
-    <button type="button" class="btn btn-primary">Create plan</button>
+    
   </div><hr>
 
   <div class="calendar">
