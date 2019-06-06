@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @user = current_user
     @plans = @user.user_plans
     @bookings = @user.bookings
-    # @subscriptions = @user.studio.subscriptions
+    @subscriptions = @user.studio.subscriptions
     @notes = @user.notes
     @note = Note.new
     @orders = @user.orders
