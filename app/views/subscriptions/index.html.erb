@@ -1,17 +1,29 @@
 
-<br>
-
 <div class="container">
-  <% @subscriptions.each do|subscription|%>
-   <p><strong><%= subscription.name%></strong>
-    <br><%= subscription.content%>
-    <br>Number of lessons: <%= subscription.package_size%>
-    <br><%= subscription.durability%>
-    <br><%= subscription.amount%> IDR
-    <%= link_to "Delete", studio_subscription_path(@studio, subscription), :method => "delete" %>
-    </p>
-  <% end %>
+  <h1>Your subscriptions </h1>
+  <br>
+  <table class="table" style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Durability in days</th>
+      <th>Number of usages</th>
+      <th>Costs per subscription</th>
+      <th>Number of times sold </th>
+      <th>Total revenue </th>
+    </tr>
+    <% @subscriptions.each do|subscription|%>
+      <tr>
+        <td><%= subscription.name %></td>
+        <td><%= subscription.content %></td>
+        <td><%= subscription.durability %></td>
+        <td><%= subscription.package_size %></td>
+        <td><%= subscription.amount %></td>
+        <td>to be added</td>
+        <td>to be added</td>
+      </tr>
+    <% end %>
+  </table>
 
-  <%= link_to "Back", admin_path %>
+    <%= link_to "Back", admin_dashboard_path %>
 </div>
-

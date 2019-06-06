@@ -5,11 +5,14 @@
   <h1>Admin dashboard</h1>
   <br>
   <h3>Welcome <%= current_user.first_name%>! </h3>
+
+  <p><strong>Manage your yoga studio</strong></p>
+  <hr>
   <%= link_to "Your students", students_path%>
   <br>
   <br>
   <%= link_to "Your teachers", teachers_path%>
-  <%= link_to "Add teacher", teacher_path%>
+  <%= link_to "Add teacher", new_teacher_path%>
   <br>
   <br>
   <%= link_to "Your subscriptions", studio_subscriptions_path(current_user.studio_id)%>
@@ -18,5 +21,13 @@
   <br>
   <%= link_to "Your lessons", studio_lessons_path(current_user.studio_id)%>
   <%= link_to "Add lesson", new_lesson_path%>
+  <br>
+  <br>
+  <%= link_to "Your events", studio_events_path(current_user.studio_id)%>
+  <%= link_to "Add events", new_studio_event_path(current_user.studio_id)%>
+  <hr>
+  <p><strong>See your orders</strong></p>
+  <hr>
+
 
 </div>
