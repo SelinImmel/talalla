@@ -14,6 +14,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
+    # false
     user_is_admin?
   end
 

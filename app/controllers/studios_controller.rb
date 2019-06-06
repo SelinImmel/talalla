@@ -9,6 +9,8 @@ class StudiosController < ApplicationController
 
   def show
     @lessons = Lesson.where(studio: @studio)
+    # @event = Event.new
+    # authorize @event
     @events = Event.where(studio: @studio)
   end
 
