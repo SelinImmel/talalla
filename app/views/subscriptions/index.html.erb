@@ -1,7 +1,10 @@
-
 <div class="container">
   <h1>Your subscriptions </h1>
   <br>
+  <p>Total revenue <strong>xx EUR</strong></p>
+  <p>Sold <strong>x</strong> subscriptions</p>
+
+
   <table class="table table_admin" style="width:100%">
     <tr>
       <th>Name</th>
@@ -13,15 +16,15 @@
       <th>Total revenue </th>
     </tr>
     <% @subscriptions.each do|subscription|%>
-      <tr>
-        <td><%= subscription.name %></td>
-        <td><%= subscription.content %></td>
-        <td><%= subscription.durability %></td>
-        <td><%= subscription.package_size %></td>
-        <td><%= subscription.amount %></td>
-        <td>to be added</td>
-        <td>to be added</td>
-      </tr>
+    <tr>
+      <td><%= subscription.name %></td>
+      <td><%= subscription.content %></td>
+      <td><%= subscription.durability %></td>
+      <td><%= subscription.package_size %></td>
+      <td><%= subscription.amount %></td>
+      <td>to be added</td>
+      <td>to be added</td>
+    </tr>
     <% end %>
   </table>
 

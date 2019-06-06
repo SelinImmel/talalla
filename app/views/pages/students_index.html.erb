@@ -1,11 +1,8 @@
-
 <div class="container">
   <br>
-<h1>Welcome to your Students overview</h1>
-<br>
-
+  <h1>Welcome to your Students overview</h1>
+  <br>
   <p><strong>You have <%= @students.count %> students</strong></p>
-
   <table class="table table_admin" style="width:100%">
     <tr>
       <th>First name</th>
@@ -18,16 +15,16 @@
       <th>Valid until</th>
     </tr>
     <% @students.each do|student|%>
-      <tr>
-        <td><%= student.first_name %></td>
-        <td><%= student.last_name %></td>
-        <td><%= student.email %></td>
-        <td><%= student.address %></td>
-        <td><%= student.biography %></td>
-        <td>to be added</td>
-        <td>to be added</td>
-        <td>to be added</td>
-      </tr>
+    <tr>
+      <td><%= student.first_name %></td>
+      <td><%= student.last_name %></td>
+      <td><%= student.email %></td>
+      <td><%= student.address %></td>
+      <td><%= student.biography %></td>
+      <td>to be added</td>
+      <td>to be added</td>
+      <td>to be added</td>
+    </tr>
     <% end %>
   </table>
   <%= link_to "Back", admin_dashboard_path %>
