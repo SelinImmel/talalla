@@ -86,8 +86,9 @@ l = Lesson.create!(
   location: 'Room 1',
   content: 'A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!',
   slots: 20,
-  time: "18:00",
+  start_time: "18:00",
   occurrence: 'weekly',
+  end_time: "19:00",
   user_id: t.id,
   studio_id: s.id
   )
