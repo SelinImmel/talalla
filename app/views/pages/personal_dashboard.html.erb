@@ -3,7 +3,7 @@
 
   <div class="personal-details">
     <h2>Account</h2><hr>
-    <img src="" alt="avatar" class="rounded-circle"><hr>
+    <img src="https://image.flaticon.com/icons/png/512/129/129728.png" alt="avatar" class="avatar rounded-circle"><hr>
     <%= current_user.first_name %><br>
     <%= current_user.last_name %><br>
     <%= current_user.address %><br>
@@ -23,9 +23,8 @@
         </li>
       <% end %>
     </ul>
-    
   </div><hr>
-
+  <div>
     <!-- see all available subscriptions and order one -->
     <h2>Chose a new subscription</h2>
     <ul>
@@ -37,7 +36,6 @@
 
   <!-- user can add a note to calendar -->
   <div class="calendar">
-
     <h2>Calendar</h2>
     <div class="w-50">
       <%= month_calendar(events: current_user.notes, attribute: :created_at) do |date, notes| %>
@@ -48,8 +46,8 @@
       </p>
       <% end %>
       <% end %>
-    </div>
-  </div><hr>
+    </div><hr>
+  </div>
 
   <div class="notes">
     <h2>Notes</h2>
@@ -61,6 +59,5 @@
     <% current_user.notes.each do |note| %>
       <p id="note-<%= note.id %>"><%= note.id %>: <%= note.content %></p>
     <% end %>
-</form>
-</div>
+  </div>
 </div>
