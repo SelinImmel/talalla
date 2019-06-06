@@ -9,8 +9,8 @@ class CreateLessons < ActiveRecord::Migration[5.2]
       t.integer :slots
       t.datetime :start_time
       t.datetime :end_time
-      t.string :occurrence
-
+      t.date :start_date
+      t.integer :occurrence
       t.timestamps
     end
   end

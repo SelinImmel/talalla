@@ -1,6 +1,6 @@
 class Subscription < ApplicationRecord
   belongs_to :studio
-  has_many :orders
+  has_many :orders, dependent: :destroy
   monetize :amount_cents
 
   validates :name, presence: true
