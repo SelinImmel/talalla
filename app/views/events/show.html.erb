@@ -6,13 +6,13 @@
       <%= @event.title %>
       <%= @event.content %>
       <%= @event.date %>
-<br>------------------------------------------
-<br>  <%= link_to "Edit", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm" %>
-<br>  <%= link_to "Delete", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>
-<br>
+      <%= cl_image_tag @event.photo, height: 300, width: 400, crop: :fill %>
+
+  <br>------------------------------------------
+  <br>  <%= link_to "Edit", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm" %>
+  <br>  <%= link_to "Delete", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>
+  <br>
   <%= link_to "Back to event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 
   <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-  
-  <h4>special guest information - we would need to create a 'teacher' for that and make it possible to choose a teacher in the create event form</h4>
 </div>
