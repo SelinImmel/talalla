@@ -1,23 +1,25 @@
 <div class="container">
   <h2>Show studio dashboard</h2>
 
-  <h3> <%= @studio.name %> </h3><br>
-  <h4><%= @studio.address %> </h4> <br>
-  <h5><%= @studio.phone_number %> </h5><br>
-  <h5><%= @studio.email %> </h5><br>
-  <h5><%= @studio.homepage %> </h5><br>
+  <h3><b>Name:</b> <%= @studio.name %> </h3><br>
+  <h4><b>Address:</b> <%= @studio.address %> </h4> <br>
+  <h5><b>Phone:</b> <%= @studio.phone_number %> </h5><br>
+  <h5><b>Email:</b> <%= @studio.email %> </h5><br>
+  <h5><b>Webpage:</b> <%= @studio.homepage %> </h5><br>
 
+  <br>
+  <%= link_to "See choice of lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+  <p>List of todays and tomorrows lessons</p>
+<br>
 <br>
   <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
   <br>
-  <%= link_to "See all lessons - lessons index", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 
   <br>
-  <br>
   <% @events.each do |e| %>
-  <%= link_to e.title, studio_event_path(@studio, e) %> <br>
-  <%= e.date %> <br>
-  <%= e.content %>
+  <p><b>Title: </b><%= link_to e.title, studio_event_path(@studio, e) %></p>
+  <p><b>Date: </b><%= e.date %></p>
+  <p><b>Description: </b><%= e.content %></p>
   <br>
   <br>
   <% end %>

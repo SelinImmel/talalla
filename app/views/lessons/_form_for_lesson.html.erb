@@ -3,8 +3,8 @@
 <%= f.input :location, placeholder: "What room is the lesson in..." %>
 <%= f.input :content, placeholder: "Add a detailed description of the lesson..." %>
 <%= f.input :slots, placeholder: "How many people can participate..." %>
-<%= f.input :time, as: :time, placeholder: "What time does the lesson start..." %>
-<%= f.input :time, as: :time, placeholder: "What time does the lesson end..." %>
+<%= f.input :time, as: :time %>
+<%= f.input :time, as: :time %>
 <%= f.input :occurrence, placeholder: "daily, weekly, monthly..." %>
 <%#= f.association :user, collection: User.where(:is_teacher) %>
 <%= f.submit 'Save',  class: "btn btn-primary"%>

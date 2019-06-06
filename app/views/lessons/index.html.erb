@@ -6,15 +6,17 @@
 <br>
   <p>All lessons</p>
   <% @lessons.each do |l| %>
-<br>  <%= link_to l.name, lesson_path(l.id) %>
-<br>  <%= l.location %>
-<br>  <%= l.content %>
-<br>  <%= l.slots %>
-<br>  <%= l.time %>
-<br>  <%= l.occurrence %>
-<br>------------------------------------------
+    <p><b>Name: </b>       <%= link_to l.name, lesson_path(l.id) %></p>
+    <p><b>Room: </b>       <%= l.location %></p>
+    <p><b>Description: </b><%= l.content %></p>
+    <p><b>Places: </b>     <%= l.slots %></p>
+    <p><b>Time: </b>       <%= l.time %></p>
+    <p><b>When: </b>       <%= l.occurrence %></p>
+------------------------------------------
 <br>
+
   <% end %>
+<br>
   <%= link_to "Add new class", new_lesson_path(@lesson), class: "btn btn-outline-primary btn-sm" %>
 
 

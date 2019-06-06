@@ -3,9 +3,9 @@
     <br>
     ------------------------------------------
 
-    <br>  <%= @event.title %>
-    <br>  <%= @event.date %>
-    <br>  <%= @event.content %>
+    <br> <p><b>Title:</b>       <%= @event.title %></p>
+    <br> <p><b>Date:</b>        <%= @event.date %></p>
+    <br> <p><b>Description:</b> <%= @event.content %></p>
 <br>------------------------------------------
 <br>  <%= link_to "Edit", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm" %>
 <br>  <%= link_to "Delete", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>

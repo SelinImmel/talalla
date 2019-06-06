@@ -7,9 +7,9 @@
   <p>All events</p>
 
   <% @events.each do |e| %>
-<br>  <%= link_to e.title, studio_event_path(e.studio, e.id) %>
-<br>  <%= e.date %>
-<br>  <%= e.content %>
+<br> <p><b>Title:</b>       <%= link_to e.title, studio_event_path(e.studio, e.id) %></p>
+<br> <p><b>Date:</b>        <%= e.date %></p>
+<br> <p><b>Description:</b> <%= e.content %></p>
 <br>------------------------------------------
 <br>
   <% end %>
