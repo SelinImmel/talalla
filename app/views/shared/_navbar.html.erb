@@ -1,12 +1,22 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "https://image.flaticon.com/icons/png/512/129/129728.png" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
+
+  <div class="d-flex">
+    <%= link_to 'Yogi space', personal_dashboard_path, class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
+    <%= link_to 'Shala space', studio_path(current_user.studio), class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
+    <%= link_to 'Community space', community_path(current_user.studio), class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
+    <% if current_user.is_admin? %>
+      <%= link_to 'Admin space', admin_dashboard_path, class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
+    <% end %>
+  </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -15,7 +25,7 @@
           <%= link_to "Home", "#", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+          <%= link_to 'Community space', community_path(current_user.studio), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
