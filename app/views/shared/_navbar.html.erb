@@ -11,11 +11,11 @@
   <% if user_signed_in? %>
 
     <div class="d-flex">
-      <%= link_to 'Yogi space', personal_dashboard_path, class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
-      <%= link_to 'Shala space', studio_path(current_user.studio), class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
-      <%= link_to 'Community space', community_path(current_user.studio), class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
+      <%= link_to 'Yogi space', personal_dashboard_path, class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
+      <%= link_to 'Shala space', studio_path(current_user.studio), class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
+      <%= link_to 'Community space', community_path(current_user.studio), class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
       <% if current_user.is_admin? %>
-        <%= link_to 'Admin space', admin_dashboard_path, class: "btn btn-outline-primary btn-lg m-2 flex-grow-1" %>
+        <%= link_to 'Admin space', admin_dashboard_path, class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
       <% end %>
     </div>
 
