@@ -7,7 +7,8 @@
   <p><b>Room: </b>       <%= @lesson.location %></p>
   <p><b>Description: </b><%= @lesson.content %></p>
   <p><b>Places: </b>     <%= @lesson.slots %></p>
-  <p><b>Time: </b>       <%= @lesson.time %></p>
+  <p><b>Start time: </b> <%= @lesson.start_time %></p>
+  <p><b>End time: </b>   <%= @lesson.end_time %></p>
   <p><b>When: </b>       <%= @lesson.occurrence %></p>
 
 <br>  <%= link_to "Edit", edit_lesson_path(@lesson),class: "btn btn-outline-primary btn-sm" %>
