@@ -1,10 +1,23 @@
 <div class="container">
-  <h1>Tick to make teacher</h1>
+  <h1>Manage your teachers </h1>
+  <hr>
+  <h3>Teachers</h3>
+  <hr>
+  <p><strong>Name</strong></p>
+  <hr>
+  <% @teachers.each do|teacher|%>
+    <p><%= teacher.first_name%> <%= teacher.last_name%>
+    <%= link_to "Change to student", user_path(teacher, :user => { :is_teacher =>"0" }), method: :patch  %>
+  <% end %>
+  <hr>
+  <h3>Students</h3>
+  <hr>
+  <p><strong>Name</strong></p>
+  <hr>
   <% @students.each do|student|%>
-    <%= student.first_name %>
-    <%= student.last_name %>
-  <%= link_to "Edit", edit_user_path(student) %>
+    <%= student.first_name %> <%= student.last_name %>
+    <%= link_to "Change to teacher", user_path(student, :user => { :is_teacher =>"1" }), method: :patch  %>
   </p>
   <% end %>
-  <%= link_to "Back", admin_path %>
+  <%= link_to "Back", admin_dashboard_path %>
 </div>

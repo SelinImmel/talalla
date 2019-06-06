@@ -12,19 +12,30 @@
   </div>
 
   <div class="user-plan">
-    <h2>Plans</h2>
+
+    <h2>My subscriptions</h2>
     <ul>
-      <% @plans.each do |user_plan| %>
-      <li>
-        <%= user_plan.order.subscription.name %>
-        Left usage:
-        <%= user_plan.left_usage %>
-      </li>
+      <% current_user.user_plans.each do |user_plan| %>
+        <li><%= user_plan.order.subscription.name %>,
+          <b><%= user_plan.left_usage %></b> times remaining,
+          Start date: <%= user_plan.start_date %>,
+          End date: <%= user_plan.end_date %>
+        </li>
       <% end %>
     </ul>
     
   </div><hr>
 
+    <!-- see all available subscriptions and order one -->
+    <h2>Chose a new subscription</h2>
+    <ul>
+      <% @subscriptions.each do |subscription| %>
+        <li><%= subscription.name %>: <%= subscription.content %> <%= link_to 'Buy now', orders_path(subscription_id: subscription), method: :post %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- user can add a note to calendar -->
   <div class="calendar">
 
     <h2>Calendar</h2>

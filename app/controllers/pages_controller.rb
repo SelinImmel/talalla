@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
 
   def home
   end
@@ -8,7 +7,7 @@ class PagesController < ApplicationController
     @user = current_user
     @plans = @user.user_plans
     @bookings = @user.bookings
-    # @subscriptions = @user.studio.subscriptions
+    @subscriptions = @user.studio.subscriptions
     @notes = @user.notes
     @note = Note.new
     @orders = @user.orders
@@ -34,5 +33,6 @@ class PagesController < ApplicationController
 
   def teacher_new
     @students = User.where(studio: current_user.studio).where(is_teacher: false).where(is_admin: false)
+    @teachers = User.where(is_teacher: true)
   end
 end
