@@ -14,7 +14,6 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.user = current_user
     @lesson.studio_id = current_user.studio.id
     if @lesson.save
       redirect_to studio_lessons_path(current_user.studio)
@@ -46,6 +45,6 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.require(:lesson).permit(:name, :location, :content, :slots, :start_time, :end_time, :occurrence, :user_id)
+    params.require(:lesson).permit(:name, :location, :content, :slots, :start_time, :end_time, :start_date, :occurrence, :user_id)
   end
 end

@@ -88,7 +88,8 @@ l = Lesson.create!(
   slots: 20,
   start_time: "18:00",
   end_time: "19:00",
-  occurrence: 'weekly',
+  start_date: "06.06.2019",
+  occurrence: 10,
   user_id: t.id,
   studio_id: s.id
   )
