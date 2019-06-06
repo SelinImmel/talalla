@@ -1,25 +1,21 @@
 <div class="container">
   <h1>Personal dashboard</h1>
 
-  <!-- list users details -->
   <div class="personal-details">
+    <h2>Account</h2><hr>
+    <img src="" alt="avatar" class="rounded-circle"><hr>
+    <%= current_user.first_name %><br>
+    <%= current_user.last_name %><br>
+    <%= current_user.address %><br>
+    <%= current_user.email %><br><br>
+    <button type="button" class="btn btn-primary">Edit</button>
+    <%= link_to '', edit_user_registration_path %>
 
-    <h2>Account</h2>
-    <img src="" alt="avatar" class="rounded-circle">
-    <%= current_user.first_name %>
-    <%= current_user.last_name %>
-    <%= current_user.address %>
-    <%= current_user.email %>
-    <button type="button" class="btn"></button>
-    <%= link_to 'edit', edit_user_registration_path %>
-
-    <button type="button" class="btn"></button>
-    <%= link_to 'delete', cancel_user_registration_path %>
+    <button type="button" class="btn btn-primary">Cancel</button>
+    <%= link_to '', cancel_user_registration_path %><hr>
   </div>
 
-      <!-- list users userplans -->
   <div class="user-plan">
-
     <h2>Plans</h2>
     <ul>
       <% @plans.each do |user_plan| %>
@@ -30,31 +26,35 @@
       </li>
       <% end %>
     </ul>
+    <%= link_to '', new_user_plan_path %>
+    <button type="button" class="btn btn-primary">Create plan</button>
+  </div><hr>
 
-    <!-- user can create new user plan -->
-    <%= link_to 'Create New User Plan', new_user_plan_path %>
-    <button type="button" class="btn"></button>
-  </div>
-
-  <!-- user can add a note to calendar -->
   <div class="calendar">
 
     <h2>Calendar</h2>
     <div class="w-50">
       <%= month_calendar(events: current_user.notes, attribute: :created_at) do |date, notes| %>
       <%= date.day %>
-      <% notes.each do |note| %>
       <p>
-        <%= note.title %>
+      <% notes.each do |note| %>
+        <a href="#note-<%= note.id %>"><%= note.title %></a>
       </p>
       <% end %>
       <% end %>
     </div>
-  </div>
+  </div><hr>
 
   <div class="notes">
-
     <h2>Notes</h2>
-    <%= current_user.notes %>
-  </div>
+    <%= simple_form_for @note do |f| %>
+      <%= f.input :title %>
+      <%= f.input :content %>
+      <%= f.submit 'Add a note', class: 'btn btn-primary' %>
+    <% end %><hr>
+    <% current_user.notes.each do |note| %>
+      <p id="note-<%= note.id %>"><%= note.id %>: <%= note.content %></p>
+    <% end %>
+</form>
+</div>
 </div>
