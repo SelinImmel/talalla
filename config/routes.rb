@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :notes, only: [:create, :destroy]
-  resources :orders, only: [:show, :create]
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
 
   resources :categories do
     resources :posts, only: [:create, :destroy]
