@@ -18,6 +18,7 @@
   <!-- <p><b>Weeks: </b>       <%#= l.occurrence %></p> -->
   <p><b>Teacher: </b>       <%= l.user.first_name %></p>
   <%= link_to "Delete", lesson_path(l.id), class: "btn btn-outline-primary btn-sm", method: :delete %>
+  <%= link_to "Book", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?', commit: 'I would love to!'} %>
   <hr>
   <% end %>
 

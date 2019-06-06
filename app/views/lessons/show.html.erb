@@ -2,7 +2,7 @@
   <h1>This is the lesson show page</h1>
     <br>
     ------------------------------------------
-<br>  <%#= link_to "Book", USER-PLAN EDIT AND CLAS EDIT,class: "btn btn-outline-primary btn-sm" %>
+<br>  <%= link_to "Book", lesson_path(@lesson), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?', commit: 'I would love to!'} %>
 
   <p><b>Name: </b>       <%= @lesson.name %></p>
   <p><b>Room: </b>       <%= @lesson.location %></p>
@@ -10,15 +10,16 @@
   <p><b>Places: </b>     <%= @lesson.slots %></p>
   <p><b>Start time: </b> <%= @lesson.start_time.to_formatted_s(:time) %></p>
   <p><b>End time: </b>   <%= @lesson.end_time.to_formatted_s(:time) %></p>
-  <p><b>Date: </b> <%= @lesson.start_date.to_formatted_s(:rfc822) %></p>
+  <p><b>Date: </b>       <%= @lesson.start_date.to_formatted_s(:rfc822) %></p>
   <!-- <p><b>Weeks: </b>       <%#= @lesson.occurrence %></p> -->
-  <p><b>Teacher: </b>       <%= @lesson.user.first_name %></p>
+  <p><b>Teacher: </b>    <%= @lesson.user.first_name %></p>
 
-<br>  <%= link_to "Edit", edit_lesson_path(@lesson),class: "btn btn-outline-primary btn-sm" %>
-<br>  <%= link_to "Delete", lesson_path(@lesson), class: "btn btn-outline-primary btn-sm", method: :delete %>
-<br>
 
-  <%= link_to "Back to lesson index", studio_lessons_path(@lesson.studio_id), class: "btn btn-outline-primary btn-sm" %>
+<%= link_to "Edit", edit_lesson_path(@lesson),class: "btn btn-outline-primary btn-sm" %>
+
+<%= link_to "Delete", lesson_path(@lesson), class: "btn btn-outline-primary btn-sm", method: :delete %>
+
+<%= link_to "Back to lesson index", studio_lessons_path(@lesson.studio_id), class: "btn btn-outline-primary btn-sm" %>
 
 
 </div>
