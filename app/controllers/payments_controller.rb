@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
       order: order,
       left_usage: order.subscription.package_size,
       start_date: Date.today,
-      end_date: Date.today + order.subscription.usability
+      end_date: Date.today + order.subscription.durability
     )
     @user_plan.save
   end
