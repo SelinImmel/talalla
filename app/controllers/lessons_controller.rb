@@ -2,7 +2,6 @@ class LessonsController < ApplicationController
   def index
     @studio = Studio.find(params[:studio_id])
     @lessons = Lesson.where(studio_id: @studio.id)
-
   end
 
   def show
