@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'pages#home' # have the root_path render the view with the 4 world-entries
   get "personal_dashboard", to: "pages#personal_dashboard"
-  get "admin_dashboard", to: "pages#admin_dashboard", as: "admin"
+  get "admin_dashboard", to: "pages#admin_dashboard", as: "admin_dashboard"
   get "studios/:studio_id/community", to: "studios#community", as: "community"
 
   get "students", to: "pages#students_index", as: "students"
@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :notes, only: [:create, :destroy]
-  resources :orders, only: [:show, :create]
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
 
   resources :categories do
     resources :posts, only: [:create, :destroy]
