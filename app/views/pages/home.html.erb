@@ -1,16 +1,16 @@
-<%= image_tag('entry-banner.jpg', style: "height: 100%; width: 100%") %>
-<div class="container">
-  <h1 class="text-center m-3"><%= image_tag "https://image.flaticon.com/icons/png/512/129/129728.png", style: "height: 2.5rem" %> talalla</h1>
-  <h5 class="text-center">- connect beyond the mat - </h5>
+<div class="background">
+  <div class="container entrance">
+    <h1 class="text-center"><%= image_tag "https://image.flaticon.com/icons/png/512/129/129728.png", style: "height: 6rem" %></h1>
+    <h1 class="text-center">talalla</h1>
+    <h5 class="text-center">- connect beyond the mat - </h5>
 
-  <div class="d-flex">
-      <%= link_to 'Yogi space', personal_dashboard_path, class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
-      <%= link_to 'Shala space', studio_path(current_user.studio), class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
-      <%= link_to 'Community space', community_path(current_user.studio), class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
+    <div class="buttons d-flex">
+      <%= link_to 'Yogi space', personal_dashboard_path, class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
+      <%= link_to 'Shala space', studio_path(current_user.studio), class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
+      <%= link_to 'Community space', community_path(current_user.studio), class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
       <% if current_user.is_admin? %>
-        <%= link_to 'Admin space', admin_dashboard_path, class: "btn btn-outline-primary btn-sm m-2 flex-grow-1" %>
+        <%= link_to 'Admin space', admin_dashboard_path, class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
       <% end %>
     </div>
-
+  </div>
 </div>
-

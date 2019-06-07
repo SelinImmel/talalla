@@ -1,1 +1,39 @@
 // Specific CSS for your home-page
+
+.background {
+  background-image: url('entry-banner.jpg');
+  height: 100vh;
+  width: auto;
+  // height: 900px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
+  font-size: 64px;
+  }
+  h5 {
+  padding-top: 16px;
+  color: white;
+  opacity: .8;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  }
+}
+
+.entrance {
+    padding-top: 88px;
+  .buttons {
+    padding-top: 360px;
+  }
+ }
+
+
+//   background-image: img_url('entry-banner.jpg');
+//   background-size: 100%;
+//   background-position: cover;
+//   background-repeat: no-repeat;
+//   padding: 150px 0;
