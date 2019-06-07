@@ -13,8 +13,11 @@
     <!-- can the two days be displayed in the simple calender with the option of scrolling to future dates? -->
     <%#= calendar number_of_days: 1 do |date| %>
     <%# end %>
-  <h3>List of todays lessons - <%= Date.today.to_formatted_s(:short) %></h3>
+  
     <% @lessons = Lesson.where(start_date: Date.today) %>
+    <% if @lessons.exists? %>
+      <h3>List of todays lessons - <%= Date.today.to_formatted_s(:short) %></h3>
+    <% end %>
       <% @lessons.each do |l| %>
         <p><b>Name: </b>        <%= link_to l.name, lesson_path(l.id) %></p>
         <p><b>Room: </b>        <%= l.location %></p>
@@ -23,8 +26,10 @@
         <hr>
       <% end %>
 
-  <h3>List of tomorrows lessons - <%= Date.tomorrow.to_formatted_s(:short) %></h3>
-    <% @lessons = Lesson.where(start_date: Date.tomorrow) %>
+      <% @lessons = Lesson.where(start_date: Date.tomorrow) %>
+       <% if @lessons.exists? %>
+          <h3>List of tomorrows lessons - <%= Date.tomorrow.to_formatted_s(:short) %></h3>
+       <% end %>
       <% @lessons.each do |l| %>
         <p><b>Name: </b>        <%= link_to l.name, lesson_path(l.id) %></p>
         <p><b>Room: </b>        <%= l.location %></p>
