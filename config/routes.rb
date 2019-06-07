@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:index, :new, :create, :destroy]
   end
 
-  resources :notes, only: [:create, :destroy]
+  resources :notes, only: [:new, :create, :destroy, :edit, :update, :index]
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end

@@ -1,0 +1,23 @@
+// 1. select the element that will hold the notes
+// 2. Create the HTML we want to render
+// 3. insertAdjacentHTML @notes(HTML that we created) afterbegin of the element
+// 4. Handle in case there are no notes
+
+<% if @notes.present? %>
+  notes = document.querySelector(".notes");
+  notes.innerHTML = "";
+  notesIndex = "<% @notes.each do |note| %>\n<b><%= note.title%><br></b><%= note.content %><hr><% end %>";
+  notes.insertAdjacentHTML('afterbegin', notesIndex);
+<% else %>
+  notes = document.querySelector(".notes");
+  notes.innerHTML = " ";
+  notes.insertAdjacentHTML('afterbegin', "got no notes yo");
+<% end %>
+
+
+// THE very manual equivalent of rails ajax
+
+// button.addEventListener('click', () => {
+//   fetch(indexcontrolaction)
+//     .then()
+// })

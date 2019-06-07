@@ -10,6 +10,7 @@
     <%= current_user.email %><br><br>
     <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary" %>
   </div>
+  <hr>
 
   <div class="user-plan">
 
@@ -34,28 +35,41 @@
     </ul>
   </div>
 
+  <hr>
+
   <!-- user can add a note to calendar -->
   <div class="calendar">
     <h2>Calendar</h2>
+    <p> <%= link_to "Add note", new_note_path%></p>
     <div class="w-50">
-      <%= month_calendar(events: current_user.notes, attribute: :created_at) do |date, notes| %>
-      <%= date.day %>
-        <% notes.each do |note| %>
-          <p><%= link_to note.title, personal_dashboard_path %></p>
+      <%= month_calendar(events: current_user.notes, attribute: :date) do |date, notes| %>
+        <%= date.day %>
+        <% if Note.where(date: date.to_datetime).exists? %>
+        <!-- create a link showing the sticky note to the notes index -->
+          <%= link_to notes_path(date: date), remote: true do  %>
+            <i class="fas fa-sticky-note"></i>
+          <% end %>
         <% end %>
       <% end %>
     </div><hr>
   </div>
 
+  <h2>Notes</h2>
   <div class="notes">
-    <h2>Notes</h2>
-    <% current_user.notes.each do |note| %>
-      <p id="note-<%= note.id %>"><%= note.created_at.to_formatted_s(:short) %>: <%= note.content %></p>
-    <% end %>
-    <%= simple_form_for @note do |f| %>
-      <%= f.input :title %>
-      <%= f.input :content %>
-      <%= f.submit 'Add a note', class: 'btn btn-primary' %>
-    <% end %><hr>
+
   </div>
 </div>
+
+
+<%# notes.each do |note| %>
+  <!-- <p><%#= link_to note.title, personal_dashboard_path %></p> -->
+<%# end %>
+
+<!--
+      <%# current_user.notes.each do |note| %>
+      <p> <strong> <%#= note.title %> </strong> <br>
+        <%#= note.content %> </p>
+      <p> <%#= link_to "Edit",  edit_note_path(note)%> <%#= link_to "Delete", note_path(note), method: :delete %></p>
+      <hr>
+      <%# end %> -->
+
