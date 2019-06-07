@@ -37,11 +37,12 @@
   <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 
   <hr>
-  <% if current_user.is_admin == true %>
-    <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
-  <% end %>
   <% if policy(Event).create? %>
-    <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
+    <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary m-2 rounded"%>
+  <% end %>
+
+  <% if policy(Subscription).create? %>
+    <%= link_to "Add subscription", new_studio_subscription_path(@studio), class: "btn btn-primary m-2 rounded" %>
   <% end %>
   <hr>
 

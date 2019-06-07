@@ -1,16 +1,8 @@
-class EventPolicy < ApplicationPolicy
+class SubscriptionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
-  end
-
-  def index?
-    true
-  end
-
-  def show?
-    true
   end
 
   def create?
@@ -18,10 +10,6 @@ class EventPolicy < ApplicationPolicy
   end
 
   def update?
-    user_is_admin?
-  end
-
-  def destroy?
     user_is_admin?
   end
 
