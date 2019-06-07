@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :studios, only: [:edit, :update]
 
   resources :lessons, except: [:index] do
-    resources :bookings, only: [:create, :edit, :update ]
+    resources :bookings, only: [:new, :create, :edit, :update ]
   end
 
   resources :user_plans, only: [:new, :create, :edit, :update ]

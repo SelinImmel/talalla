@@ -18,4 +18,11 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
+
+
+  def can_make_bookings?
+    # assuming there's only one user plan per user
+    the_user_plan = self.user_plans.first
+    the_user_plan.bookings.size < the_user_plan.left_usage
+  end
 end
