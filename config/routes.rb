@@ -38,9 +38,9 @@ Rails.application.routes.draw do
   resources :studios, only: [:edit, :update]
 
   resources :lessons, except: [:index] do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :edit, :update ]
   end
 
-  resources :user_plans, only: [:new, :create]
+  resources :user_plans, only: [:new, :create, :edit, :update ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
