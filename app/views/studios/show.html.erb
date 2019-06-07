@@ -40,6 +40,9 @@
   <% if current_user.is_admin == true %>
     <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
   <% end %>
+  <% if policy(Event).create? %>
+    <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary"%>
+  <% end %>
   <hr>
 
   <% @events.each do |e| %>
