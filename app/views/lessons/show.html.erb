@@ -2,16 +2,14 @@
   <h1>This is the lesson show page</h1>
     <br>
     ------------------------------------------
-<br>  <%= link_to "Book", lesson_path(@lesson), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?', commit: 'I would love to!'} %>
+<br>  <%= link_to "Book", lesson_bookings_path(@lesson.id) , class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?', commit: 'I would love to!'}, method: :post %>
 
   <p><b>Name: </b>       <%= @lesson.name %></p>
   <p><b>Room: </b>       <%= @lesson.location %></p>
   <p><b>Description: </b><%= @lesson.content %></p>
-  <p><b>Places: </b>     <%= @lesson.slots %></p>
-  <p><b>Start time: </b> <%= @lesson.start_time.to_formatted_s(:time) %></p>
-  <p><b>End time: </b>   <%= @lesson.end_time.to_formatted_s(:time) %></p>
+  <p><b>Slots: </b>     <%= @lesson.slots %></p>
+   <p><b>Time: </b>      <%= @lesson.start_time.to_formatted_s(:time) %> - <%= @lesson.end_time.to_formatted_s(:time) %></p>
   <p><b>Date: </b>       <%= @lesson.start_date.to_formatted_s(:rfc822) %></p>
-  <!-- <p><b>Weeks: </b>       <%#= @lesson.occurrence %></p> -->
   <p><b>Teacher: </b>    <%= @lesson.user.first_name %></p>
 
 

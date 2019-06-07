@@ -11,4 +11,9 @@ class Lesson < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :occurrence, presence: true
+
+  def can_be_booked?
+    self.bookings.size < self.slots
+  end
+
 end
