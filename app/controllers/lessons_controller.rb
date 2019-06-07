@@ -49,6 +49,8 @@ class LessonsController < ApplicationController
       count += 1
       @lesson = Lesson.new(lesson_params)
       @lesson.start_date += count.weeks
+      @lesson.start_time += count.weeks
+      @lesson.end_time += count.weeks
       @lesson.studio = current_user.studio
       @lesson.save
     end

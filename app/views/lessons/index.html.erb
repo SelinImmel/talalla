@@ -10,12 +10,15 @@
   <p><b>Room: </b>       <%= l.location %></p>
   <p><b>Description: </b><%= l.content %></p>
   <p><b>Places: </b>     <%= l.slots %></p>
-  <p><b>Start time: </b> <%= l.start_time %></p>
-  <p><b>End time: </b>   <%= l.end_time %></p>
-  <p><b>Start date: </b> <%= l.start_date %></p>
-  <p><b>Weeks: </b>       <%= l.occurrence %></p>
+  <p><b>Start time: </b> <%= l.start_time.to_formatted_s(:short) %></p>
+  <p><b>End time: </b>   <%= l.end_time.to_formatted_s(:time) %></p>
+  <p><b>Time: </b> <%= l.start_time.to_formatted_s(:time) %> - <%= l.end_time.to_formatted_s(:time) %></p>
+
+  <p><b>Date: </b>        <%= l.start_date.to_formatted_s(:rfc822) %></p>
+  <!-- <p><b>Weeks: </b>       <%#= l.occurrence %></p> -->
   <p><b>Teacher: </b>       <%= l.user.first_name %></p>
   <%= link_to "Delete", lesson_path(l.id), class: "btn btn-outline-primary btn-sm", method: :delete %>
+  <%= link_to "Book", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?', commit: 'I would love to!'} %>
   <hr>
   <% end %>
 

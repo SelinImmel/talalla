@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2019_06_05_094325) do
     t.integer "occurrence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "end_time"
     t.index ["studio_id"], name: "index_lessons_on_studio_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
