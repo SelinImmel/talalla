@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
       @booking.user = current_user
 
       if @booking.save
-        redirect_to personal_dashboard_path(current_user.id)
+        redirect_to personal_dashboard_path
       else
         render :new
       end
@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
   private
 
   def set_user
-    @user = current_user.id
+    @user = current_user
   end
 
 
