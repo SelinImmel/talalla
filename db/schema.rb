@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 2019_06_06_132429) do
     t.text "content"
     t.integer "slots"
     t.time "start_time"
+    t.time "end_time"
+    t.date "start_date"
     t.string "occurrence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "end_time"
-    t.date "start_date"
     t.index ["studio_id"], name: "index_lessons_on_studio_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end

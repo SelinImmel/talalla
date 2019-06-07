@@ -12,6 +12,20 @@ class UserPlansController < ApplicationController
     end
   end
 
+  # def edit
+  #   @user_plan = UserPlan.find(params[:id])
+  # end
+
+  # def update
+  #   @user_plan = UserPlan.find(params[:id])
+  #   @user_plan.update(user_plan_params)
+  #   if @user_plan.save
+  #     redirect_to studio_user_plans_path(current_user.studio)
+  #   else
+  #     render :edit
+  #   end
+  # end
+
   private
 
   def user_plan_params
