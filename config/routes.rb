@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   get "personal_dashboard", to: "pages#personal_dashboard"
   get "admin_dashboard", to: "pages#admin_dashboard", as: "admin_dashboard"
+  get "about_us", to: "pages#about_us", as: "about_us"
   get "studios/:studio_id/community", to: "studios#community", as: "community"
 
   get "students", to: "pages#students_index", as: "students"
