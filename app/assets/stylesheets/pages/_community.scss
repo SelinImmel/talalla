@@ -1,0 +1,24 @@
+.channels {
+  margin: 16px;
+  width: 200px;
+}
+
+.conversations {
+  margin: 16px;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment {
+  width: 720px;
+  align-items: right;
+  .comment-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -2,37 +2,55 @@
   <h1>This is the studio community view</h1>
   <hr>
 
-  <% @categories.each do |category| %>
-    <h3><b>Category:</b> <%= category.title %></h3>
-    <p><b>Description:</b> <%= category.description %></p>
+  <div class="community d-flex m-2">
+    <div class="channels">
+      <% @categories.each do |category| %>
+        <h2><%= category.title %></h2>
+      <% end %>
+      <%= link_to "add category", new_category_path, class: "btn btn-primary" %>
+    </div>
 
-    <% category.posts.each do |post| %>
-      <h4><b>Post title:</b> <%= post.title %></h4>
-      <p><b>Written by (user):</b> <%= post.user.first_name %> <%= post.user.last_name %> + avatar </p>
-      <p><b>This posts content:</b> <%= post.content %></p>
+    <div class="conversations">
+      <div class="channel-info">
+        <% @categories.each do |category| %>
+          <div class="title-add-post d-flex justify-content-between">
+            <h3><b><%= category.title %></b></h3>
+            <h5><%= link_to "Add a post", community_path(@studio) %></h5>
+            <!-- popup upon click to add a post -->
+          </div>
+          <p><b>Description:</b> <%= category.description %></p>
+      </div>
 
-
-      <h5><b>All comments for this particular post:</b></h5>
-      <ul>
-        <% post.comments.each do |comment| %>
-          <li><%= comment.user.first_name %> <%= comment.user.last_name %> + avatar: <%= comment.content %></li>
+          <% category.posts.each do |post| %>
+            <div class="post">
+              <div class="post-info">
+                <div class="post-info-left">
+                  <h6><%= post.user.first_name %> <%= post.user.last_name %></h6>
+                  <h4><b>Post title:</b> <%= post.title %></h4>
+                </div>
+                <p> avatar here </p>
+                <%#= image_tag post.user.photo, class: "avatar-sm" %>
+              </div>
+              <p><b>This posts content:</b> <%= post.content %></p>
+            </div>
+              <h5><b>All comments for this particular post:</b></h5>
+                <% post.comments.each do |comment| %>
+                  <div class="comment">
+                    <div class="comment-info">
+                      <p><%= comment.user.first_name %> <%= comment.user.last_name %></p>
+                      <p>avatar here</p>
+                    </div>
+                    <p><%= comment.content %></p>
+                <% end %>
+                    <div class="new-comment">
+                      <!-- d-flex the submit button next to form input field -->
+                      <%= render 'comments/form_for_comment', post: post %>
+                    </div>
+                  </div>
+          <% end %>
         <% end %>
-      </ul>
-      <%= render 'comments/form_for_comment', post: post %>
-    <% end %>
-
-    <h5>Add a post</h5>
-    <%= render 'posts/form_for_post', category: category %>
-  <% end %>
-  <br>
-  <%= link_to "add a category", new_category_path, class: "btn btn-primary" %>
-
-  <hr>
-  <h4>Still to do!!</h4>
-  <ul>
-    <li>add photo-attribute to user and display each users avatar</li>
-  </ul>
-
-
+    </div>
+  </div>
+<!--             <%#= render 'posts/form_for_post', category: category %> as a popup -->
 </div>
 
