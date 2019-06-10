@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get "teachers", to: "pages#teachers_index", as: "teachers"
   get "teacher", to: "pages#teacher_new", as: "new_teacher"
   post "subscriptions", to: "subscriptions#create"
+  patch "subscriptions", to: "subscriptions#update"
+  get "subscriptions", to: "subscriptions#edit"
+  delete "subscriptions", to: "subscriptions#destroy"
+
   #delete "subscriptions", to: "subscriptions#destroy"
 
   resources :users, only: [:show, :edit, :update]
@@ -21,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :notes, only: [:new, :create, :destroy, :edit, :update, :index]
-  resources :orders, only: [:show, :create] do
+  resources :orders, only: [:index, :show, :create] do
     resources :payments, only: [:new, :create]
   end
 

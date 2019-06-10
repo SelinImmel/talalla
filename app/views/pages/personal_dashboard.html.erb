@@ -43,20 +43,25 @@
     <p> <%= link_to "Add note", new_note_path%></p>
     <div class="w-50">
       <%= month_calendar(events: current_user.notes, attribute: :date) do |date, notes| %>
-        <%= date.day %>
-        <% if Note.where(date: date.to_datetime).exists? %>
-        <!-- create a link showing the sticky note to the notes index -->
-          <%= link_to notes_path(date: date), remote: true do  %>
-            <i class="fas fa-sticky-note"></i>
-          <% end %>
-        <% end %>
+          <%= date.day %>
+            <% if Note.where(date: date.to_datetime, user: current_user).exists? %>
+              <%= link_to notes_path(date: date), remote: true do  %>
+                <i class="fas fa-sticky-note" style="
+                color: #6d8092"></i>
+              <% end %>
+            <% end %>
+            <% if Booking.where(date: date.to_datetime, user: current_user).exists? %>
+              <div class="booked_lesson"></div>
+            <% end %>
+
       <% end %>
     </div><hr>
   </div>
 
   <h2>Notes</h2>
   <div class="notes">
-
+  <br>
+  <hr>
   </div>
 </div>
 

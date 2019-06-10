@@ -24,6 +24,20 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  def edit
+    @subscription = Subscription.find(params[:id])
+  end
+
+  def update
+    @subscription = Subscrition.find(params[:id])
+    @subscription.update(subscr_params)
+    if @subscription.update(subscr_params)
+      redirect_to admin_dashboard_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @subscription = Subscription.find(params[:id])
     authorize @subscription

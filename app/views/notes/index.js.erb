@@ -8,10 +8,6 @@
   notes.innerHTML = "";
   notesIndex = "<% @notes.each do |note| %>\n<b><%= note.title%><br></b><%= note.content %><hr><% end %>";
   notes.insertAdjacentHTML('afterbegin', notesIndex);
-<% else %>
-  notes = document.querySelector(".notes");
-  notes.innerHTML = " ";
-  notes.insertAdjacentHTML('afterbegin', "got no notes yo");
 <% end %>
 
 
