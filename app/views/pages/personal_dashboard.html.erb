@@ -38,7 +38,7 @@
   <% if !@available_usage || !@date_validity %>
     <div>
       <!-- see all available subscriptions and order one -->
-      <h2>Chose a new subscription</h2>
+      <h2>Choose a new subscription</h2>
         <ul>
           <% @subscriptions.each do |subscription| %>
             <li><%= subscription.name %>: <%= subscription.content %> <%= link_to 'Buy now', orders_path(subscription_id: subscription), method: :post %></li>
