@@ -47,7 +47,7 @@
             <% if Note.where(date: date.to_datetime, user: current_user).exists? %>
               <%= link_to notes_path(date: date), remote: true do  %>
                 <i class="fas fa-sticky-note" style="
-                color: #6d8092;></i>
+                color: #6d8092"></i>
               <% end %>
             <% end %>
             <% if Booking.where(date: date.to_datetime, user: current_user).exists? %>
