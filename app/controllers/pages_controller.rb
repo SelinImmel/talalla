@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @notes = @user.notes
     @note = Note.new
     @orders = @user.orders
+    # raise
   end
 
   def admin_dashboard
