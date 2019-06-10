@@ -18,7 +18,7 @@
     <ul>
       <% current_user.user_plans.each do |user_plan| %>
         <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
-          <% if left_usage > 0 %>
+          <% if left_usage > 0 && user_plan.end_date > Date.today %>
             <li><%= user_plan.order.subscription.name %>,
               <b><%= left_usage %></b> times remaining,
               Start date: <%= user_plan.start_date %>,

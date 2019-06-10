@@ -1,17 +1,18 @@
 <div class="container">
   <h1>This is the lesson show page</h1>
     <hr>
-  <% if @lesson.slots - @lesson.bookings.size > 0 %>
+  <% if @available_spots && @available_usage && @date_validity %>
     <%= link_to "Book", lesson_bookings_path(@lesson.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
-    <hr>
-    <% else %>
+  <% else %>
+     <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm"%>
   <% end %>
+  <hr>
 
   <p><b>Name: </b>       <%= @lesson.name %></p>
   <p><b>Room: </b>       <%= @lesson.location %></p>
   <p><b>Description: </b><%= @lesson.content %></p>
-  <p><b>Slots: </b>     <%= @lesson.slots %></p>
-   <p><b>Time: </b>      <%= @lesson.start_time.to_formatted_s(:time) %> - <%= @lesson.end_time.to_formatted_s(:time) %></p>
+  <p><b>Slots: </b>     <%= @lesson.slots - @lesson.bookings.size  %></p>
+  <p><b>Time: </b>      <%= @lesson.start_time.to_formatted_s(:time) %> - <%= @lesson.end_time.to_formatted_s(:time) %></p>
   <p><b>Date: </b>       <%= @lesson.start_date.to_formatted_s(:rfc822) %></p>
   <p><b>Teacher: </b>    <%= @lesson.user.first_name %></p>
 
