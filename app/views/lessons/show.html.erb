@@ -12,10 +12,14 @@
   <p><b>Date: </b>       <%= @lesson.start_date.to_formatted_s(:rfc822) %></p>
   <p><b>Teacher: </b>    <%= @lesson.user.first_name %></p>
 
-
-<%= link_to "Edit", edit_lesson_path(@lesson),class: "btn btn-outline-primary btn-sm" %>
-
-<%= link_to "Delete", lesson_path(@lesson), class: "btn btn-outline-primary btn-sm", method: :delete %>
+<% if policy(Lesson).update? %>
+  <%= link_to "Edit", edit_lesson_path(@lesson),class: "btn btn-outline-primary btn-sm" %>
+<% end %>
+<br>
+<% if policy(Lesson).destroy? %>
+  <%= link_to "Delete", lesson_path(@lesson), class: "btn btn-outline-primary btn-sm", method: :delete %>
+<% end %>
+<br>
 
 <%= link_to "Back to lesson index", studio_lessons_path(@lesson.studio_id), class: "btn btn-outline-primary btn-sm" %>
 

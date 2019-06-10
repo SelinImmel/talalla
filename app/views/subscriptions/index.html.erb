@@ -22,9 +22,9 @@
       <td><%= subscription.durability %></td>
       <td><%= subscription.package_size %></td>
       <td><%= subscription.amount %></td>
-      <td>to be added</td>
-      <td>to be added</td>
-    </tr>
+      <td><%= subscription.orders.count %></td>
+      <td><%= (subscription.orders.count * subscription.amount) %></td>
+      </tr>
     <% end %>
   </table>
 

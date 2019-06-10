@@ -133,6 +133,25 @@ Booking.create!(
   date: Date.today
   )
 
+puts 'Creating a secondbooking...'
+boo =Booking.new(
+  user_plan_id: up.id,
+  user_id: u.id,
+  lesson_id: l.id,
+  date: Date.today-5
+  )
+boo.save
+
+puts 'Creating a third booking...'
+boo =Booking.new(
+  user_plan_id: up.id,
+  user_id: u.id,
+  lesson_id: l.id,
+  date: Date.today-3
+  )
+boo.save
+
+
 puts 'Creating an event...'
 Event.create!(
   title: 'Ashtanga Yoga Workshop',

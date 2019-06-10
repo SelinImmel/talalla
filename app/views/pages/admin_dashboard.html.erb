@@ -9,24 +9,27 @@
   <br>
   <br>
   <%= link_to "Your teachers", teachers_path%>
-  <%= link_to "Add teacher", new_teacher_path%>
+  <%= link_to "Add", new_teacher_path%>
   <br>
   <br>
   <%= link_to "Your subscriptions", studio_subscriptions_path(current_user.studio_id)%>
-  <%= link_to "Add subscription", new_studio_subscription_path(current_user.studio_id)%>
+  <%= link_to "Add", new_studio_subscription_path(current_user.studio_id)%>
   <br>
   <br>
   <%= link_to "Your lessons", studio_lessons_path(current_user.studio_id)%>
-  <%= link_to "Add lesson", new_lesson_path%>
+  <%= link_to "Add", new_lesson_path%>
   <br>
   <br>
   <%= link_to "Your events", studio_events_path(current_user.studio_id)%>
-  <%= link_to "Add events", new_studio_event_path(current_user.studio_id)%>
+  <%= link_to "Add", new_studio_event_path(current_user.studio_id)%>
   <br>
   <br>
   <%= link_to "Your studio", studio_path(current_user.studio_id)%>
   <%= link_to "change studio details", edit_studio_path(current_user.studio_id)%>
+
   <hr>
-  <p><strong>See your orders</strong></p>
+  <p><%=  link_to "all orders", orders_path %>
+
+  </p>
   <hr>
 </div>
