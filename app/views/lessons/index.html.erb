@@ -19,7 +19,12 @@
     <% if policy(Lesson).destroy? %>
       <%= link_to "Delete", lesson_path(l.id), class: "btn btn-outline-primary btn-sm", method: :delete %>
     <% end %>
-    <%= link_to "Book", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?', commit: 'I would love to!'} %>
+    <% if (l.slots - l.bookings.size) > 0 && (current_user.user_plans.last.left_usage - current_user.bookings.size) > 0 && current_user.user_plans.last.end_date > Date.today %>
+      <%= link_to "Book", lesson_bookings_path(l.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
+    <% else %>
+      <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm"%>
+    <% end %>
+    <%= link_to "Pay cash at studio", lesson_bookings_path(l.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post %>
     <hr>
   <% end %>
   <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm" %>

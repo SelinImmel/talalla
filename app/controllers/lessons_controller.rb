@@ -10,6 +10,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    book_or_buy
   end
 
   def new
@@ -67,6 +68,14 @@ class LessonsController < ApplicationController
       @lesson.end_time += count.weeks
       @lesson.studio = current_user.studio
       @lesson.save
+    end
+  end
+
+  def book_or_buy
+    unless current_user.user_plans.empty?
+      @available_spots = (@lesson.slots - @lesson.bookings.size) > 0
+      @available_usage = (current_user.user_plans.last.left_usage - current_user.bookings.size) > 0
+      @date_validity = current_user.user_plans.last.end_date > Date.today
     end
   end
 
