@@ -17,11 +17,14 @@
     <h2>My subscriptions</h2>
     <ul>
       <% current_user.user_plans.each do |user_plan| %>
-        <li><%= user_plan.order.subscription.name %>,
-          <b><%= user_plan.left_usage - user_plan.bookings.size %></b> times remaining,
-          Start date: <%= user_plan.start_date %>,
-          End date: <%= user_plan.end_date %>
-        </li>
+        <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
+          <% if left_usage > 0 %>
+            <li><%= user_plan.order.subscription.name %>,
+              <b><%= left_usage %></b> times remaining,
+              Start date: <%= user_plan.start_date %>,
+              End date: <%= user_plan.end_date %>
+            </li>
+          <% end %>
       <% end %>
     </ul>
   </div><hr>
