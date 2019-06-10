@@ -2,12 +2,11 @@ class LessonsController < ApplicationController
   def index
     @studio = Studio.find(params[:studio_id])
     @lessons = Lesson.where(studio_id: @studio.id)
-    @book_or_buy
   end
 
   def show
     @lesson = Lesson.find(params[:id])
-    @book_or_buy
+    book_or_buy
   end
 
   def new

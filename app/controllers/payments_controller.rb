@@ -35,13 +35,21 @@ class PaymentsController < ApplicationController
 
   def create_user_plan(order)
     # UserPlan.create...
-    @user_plan = UserPlan.new(
-      user: current_user,
-      order: order,
-      left_usage: order.subscription.package_size,
-      start_date: Date.today,
-      end_date: Date.today + order.subscription.durability
-    )
+    if !UserPlan.where(user: current_user).empty?
+      @user_plan = UserPlan.where(user: current_user).first
+      @user_plan.order = order
+      # Assuming that the user buys a new subscription right after usage left = 0
+      @user_plan.left_usage = @user_plan.left_usage + order.subscription.package_size
+      # Assuming that the user buys a new subscription right after the end date of his previous subscription
+      @user_plan.end_date = Date.today + order.subscription.durability
+    else
+      @user_plan = UserPlan.new
+      @user_plan.user = current_user
+      @user_plan.order = order
+      @user_plan.left_usage = order.subscription.package_size
+      @user_plan.start_date = Date.today
+      @user_plan.end_date = Date.today + order.subscription.durability
+    end
     @user_plan.save
   end
 end
