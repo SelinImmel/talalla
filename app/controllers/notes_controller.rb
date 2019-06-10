@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   def index
     date = params[:date].to_datetime
-    @notes = Note.where(date: date)
+    @notes = Note.where(date: date).where(user: current_user)
   end
 
   def new
@@ -21,7 +21,6 @@ class NotesController < ApplicationController
     @note.destroy
     redirect_to personal_dashboard_path
   end
-
 
   def edit
     @note = Note.find(params[:id])

@@ -10,8 +10,13 @@
       <%= cl_image_tag @event.photo, height: 300, width: 400, crop: :fill %>
 
   <br>------------------------------------------
-  <br>  <%= link_to "Edit", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm" %>
-  <br>  <%= link_to "Delete", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>
+  <% if policy(@event).edit? %>
+    <%= link_to "Edit", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm" %>
+  <% end %>
+
+  <% if policy(@event).destroy? %>
+    <%= link_to "Delete", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>
+  <% end %>
   <br>
 
   <%= link_to "Back to event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
