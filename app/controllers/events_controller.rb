@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  include Pundit
+  after_action :verify_authorized, except: [:index, :show], unless: :skip_pundit?
+
   before_action :set_studio
 
   def index
@@ -8,14 +11,17 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    authorize @event
   end
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
+    authorize @event
     @event.studio = @studio
     if @event.save
       # raise
@@ -26,11 +32,13 @@ class EventsController < ApplicationController
   end
 
   def edit
+    authorize @event
     @event = Event.find(params[:id])
   end
 
   def update
     @event = Event.find(params[:id])
+    authorize @event
     @event.update(event_params)
     if @event.save
       redirect_to studio_events_path(current_user.studio)
@@ -41,6 +49,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    authorize @event
     @event.destroy
     redirect_to studio_events_path(current_user.studio)
   end

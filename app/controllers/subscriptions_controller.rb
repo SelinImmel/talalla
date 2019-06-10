@@ -1,4 +1,7 @@
 class SubscriptionsController < ApplicationController
+  include Pundit
+  after_action :verify_authorized, except: [:index, :show], unless: :skip_pundit?
+
   before_action :set_studio
 
   def index
@@ -7,10 +10,12 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
+    authorize @subscription
   end
 
   def create
     @subscription = Subscription.new(subscr_params)
+    authorize @subscription
     @subscription.studio = @studio
     if @subscription.save
       redirect_to studio_subscriptions_path(@studio)
@@ -21,6 +26,7 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     @subscription = Subscription.find(params[:id])
+    authorize @subscription
     @subscription.destroy
     redirect_to studio_subscriptions_path
   end
