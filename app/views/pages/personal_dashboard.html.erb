@@ -4,8 +4,7 @@
   <div class="personal-details">
     <h2>Account</h2><hr>
     <img src="https://image.flaticon.com/icons/png/512/129/129728.png" alt="avatar" class="avatar rounded-circle"><p>avatar</p><hr>
-    <%= current_user.first_name %><br>
-    <%= current_user.last_name %><br>
+    <%= current_user.first_name %> <%= current_user.last_name %><br>
     <%= current_user.address %><br>
     <%= current_user.email %><br><br>
     <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary" %>
@@ -13,35 +12,41 @@
   <hr>
 
   <div class="user-plan">
-
     <h2>My subscriptions</h2>
     <ul>
       <% current_user.user_plans.each do |user_plan| %>
         <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
           <% if left_usage > 0 && user_plan.end_date > Date.today %>
-            <li><%= user_plan.order.subscription.name %>,
-              <b><%= left_usage %></b> times remaining,
-              Start date: <%= user_plan.start_date %>,
-              End date: <%= user_plan.end_date %>
+            <li><b><%= left_usage %></b> times remaining of <b><%= user_plan.order.subscription.name %></b>
+              <br>Valid from <%= user_plan.start_date.to_formatted_s(:rfc822) %> to <%= user_plan.end_date.to_formatted_s(:rfc822) %>
             </li>
           <% end %>
       <% end %>
     </ul>
+  </div>
+
+  <div class="user-plan">
+    <% if !Booking.where(user_id: current_user).empty? %>
+    <h3>My last booking</h3>
+    <ul>
+      <%= current_user.bookings.last.created_at.to_formatted_s(:rfc822) %>
+      <%# end %>
+    </ul>
+    <% end %>
   </div><hr>
 
   <% if !@available_usage || !@date_validity %>
     <div>
       <!-- see all available subscriptions and order one -->
       <h2>Chose a new subscription</h2>
-      <ul>
-        <% @subscriptions.each do |subscription| %>
-          <li><%= subscription.name %>: <%= subscription.content %> <%= link_to 'Buy now', orders_path(subscription_id: subscription), method: :post %></li>
-        <% end %>
-      </ul>
-    </div>
+        <ul>
+          <% @subscriptions.each do |subscription| %>
+            <li><%= subscription.name %>: <%= subscription.content %> <%= link_to 'Buy now', orders_path(subscription_id: subscription), method: :post %></li>
+          <% end %>
+        </ul>
+    </div><hr>
   <% end %>
 
-  <hr>
 
   <!-- user can add a note to calendar -->
   <div class="calendar">

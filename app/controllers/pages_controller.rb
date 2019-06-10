@@ -10,7 +10,6 @@ class PagesController < ApplicationController
     @notes = @user.notes
     @note = Note.new
     @orders = @user.orders
-    # raise
     buy_subscription?
   end
 

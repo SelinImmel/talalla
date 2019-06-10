@@ -3,8 +3,9 @@
     <hr>
   <% if @available_spots && @available_usage && @date_validity %>
     <%= link_to "Book", lesson_bookings_path(@lesson.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
-  <% elsif !@available_usage && !@date_validity  %>
-     <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm"%>
+  <% else %>
+     <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm" %>
+     <%= link_to "Pay cash at studio", lesson_bookings_path(@lesson.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post %>
   <% end %>
   <hr>
 

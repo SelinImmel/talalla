@@ -19,6 +19,7 @@
     <% else %>
       <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm"%>
     <% end %>
+    <%= link_to "Pay cash at studio", lesson_bookings_path(l.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post %>
     <hr>
   <% end %>
 
