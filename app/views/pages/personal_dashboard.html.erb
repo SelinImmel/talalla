@@ -3,10 +3,10 @@
 
   <div class="personal-details">
     <h2>Account</h2><hr>
-    <img src="https://image.flaticon.com/icons/png/512/129/129728.png" alt="avatar" class="avatar rounded-circle"><p>avatar</p><hr>
-    <%= current_user.first_name %> <%= current_user.last_name %><br>
-    <%= current_user.address %><br>
-    <%= current_user.email %><br><br>
+    <%= cl_image_tag current_user.photo, width: 150, height: 150, crop: :fill %>
+    <p><%= current_user.first_name %> <%= current_user.last_name %> <br>
+    <%= current_user.address %>
+    <%= current_user.email %></p>
     <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary" %>
   </div>
   <hr>
