@@ -15,12 +15,12 @@
 // right side with all channel threads
 
 .conversations {
+  // border-style: double;
+  // border-color: $t-pink;
+  // border-radius: 8px;
   position: relative;
   margin: 16px;
-  border-style: double;
-  border-color: $t-pink;
-  border-radius: 4px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.1), 0px 15px 12px rgba(0, 0, 0, 0.1);
   text-align: justify;
   .channel-info {
     background-color: $t-pink;
@@ -40,13 +40,14 @@
   }
 
   .comment {
-    background-color: $t-pink;
-    margin: 4px 4px 4px 4px;
+    // background-color: $t-pink;
+    // border-style: solid;
+    // border-color: $t-pink;
+    box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.1), 0px 15px 12px rgba(0, 0, 0, 0.1);
+    margin: 16px 8px 8px 8px;
     padding-bottom: 4px;
     width: 630px;
     margin-left: auto;
-    border-style: solid;
-    border-color: $t-pink;
     border-radius: 4px;
     .comment-info {
       display: flex;
@@ -69,8 +70,9 @@
 }
 
 .new-comment {
-  background-color: $t-pink;
-  margin: 4px 4px 4px 4px;
+  // background-color: $t-pink;
+  box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.1), 0px 15px 12px rgba(0, 0, 0, 0.1);
+  margin: 16px 8px 8px 8px;
   padding: 16px;
   width: 630px;
   margin-left: auto;
