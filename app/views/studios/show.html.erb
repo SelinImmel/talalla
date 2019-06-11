@@ -1,19 +1,19 @@
 <div class="container">
   <h2>Show studio dashboard</h2>
-    <br> <h3><b>Name:</b> <%= @studio.name %> </h3>
-    <br> <h4><b>Address:</b> <%= @studio.address %> </h4>
-    <br> <h5><b>Phone:</b> <%= @studio.phone_number %> </h5>
-    <br> <h5><b>Email:</b> <%= @studio.email %> </h5>
-    <br> <h5><b>Webpage:</b> <%= @studio.homepage %> </h5>
-    <%= link_to "Change Studio details", edit_studio_path(current_user.studio_id)%>
+  <br> <h3><b>Name:</b> <%= @studio.name %> </h3>
+  <br> <h4><b>Address:</b> <%= @studio.address %> </h4>
+  <br> <h5><b>Phone:</b> <%= @studio.phone_number %> </h5>
+  <br> <h5><b>Email:</b> <%= @studio.email %> </h5>
+  <br> <h5><b>Webpage:</b> <%= @studio.homepage %> </h5>
+  <%= link_to "Change Studio details", edit_studio_path(current_user.studio_id)%>
 
   <hr>
-    <%= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+  <%= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
   <hr>
     <!-- can the two days be displayed in the simple calender with the option of scrolling to future dates? -->
     <%#= calendar number_of_days: 1 do |date| %>
     <%# end %>
-  
+
     <% @lessons = Lesson.where(start_date: Date.today) %>
     <% if @lessons.exists? %>
       <h3>List of todays lessons - <%= Date.today.to_formatted_s(:short) %></h3>
@@ -39,14 +39,20 @@
       <% end %>
 
   <hr>
-    <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+  <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 
-    <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-outline-primary btn-sm"%>
   <hr>
+  <% if policy(Event).create? %>
+    <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary m-2 rounded"%>
+  <% end %>
+
+  <% if policy(Subscription).create? %>
+    <%= link_to "Add subscription", new_studio_subscription_path(@studio), class: "btn btn-primary m-2 rounded" %>
+  <% end %>
 
     <% @events.each do |e| %>
       <p><b>Title: </b><%= link_to e.title, studio_event_path(@studio, e) %></p>
-      <p><b>Date: </b><%= e.date %></p>
+      <p><b>Date: </b><%= e.date.to_formatted_s(:rfc822) %></p>
       <p><b>Description: </b><%= e.content %></p>
     <% end %>
   <hr>

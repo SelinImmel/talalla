@@ -1,4 +1,7 @@
 class StudiosController < ApplicationController
+  include Pundit
+  after_action :verify_authorized, except: [:index, :show, :community], unless: :skip_pundit?
+
   before_action :set_studio, except: [:community]
 
   def community
@@ -9,6 +12,8 @@ class StudiosController < ApplicationController
 
   def show
     @lessons = Lesson.where(studio: @studio)
+    @event = Event.new
+    # authorize @event
     @events = Event.where(studio: @studio)
   end
 

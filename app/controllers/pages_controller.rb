@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @notes = @user.notes
     @note = Note.new
     @orders = @user.orders
-    # raise
+    buy_subscription?
   end
 
   def admin_dashboard
@@ -34,5 +34,14 @@ class PagesController < ApplicationController
   def teacher_new
     @students = User.where(studio: current_user.studio).where(is_teacher: false).where(is_admin: false)
     @teachers = User.where(is_teacher: true)
+  end
+
+  private
+
+  def buy_subscription?
+    unless current_user.user_plans.empty?
+      @available_usage = (current_user.user_plans.last.left_usage - current_user.bookings.size) > 0
+      @date_validity = current_user.user_plans.last.end_date > Date.today
+    end
   end
 end
