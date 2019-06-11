@@ -112,7 +112,7 @@ sub_cash = Subscription.create!(
   content: 'Yoga package for a yoga classes',
   package_size: 1,
   durability: 1,
-  subscription_sku: '1-class-pack',
+subscription_sku: '1-class-pack',
   studio_id: s.id,
   amount_cents: 200_000_00,
   payment_option: "cash"

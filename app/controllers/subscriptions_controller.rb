@@ -17,6 +17,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscr_params)
     authorize @subscription
     @subscription.studio = @studio
+    @subscription.subscription_sku = @subscription.name
     if @subscription.save
       redirect_to studio_subscriptions_path(@studio)
     else
