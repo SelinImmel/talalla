@@ -6,4 +6,5 @@ class Subscription < ApplicationRecord
   validates :name, presence: true
   validates :amount_cents, presence: true
   validates :durability, presence: true
+  validates :payment_option, presence: true, inclusion: { in: ['cash', 'card']}
 end
