@@ -6,8 +6,8 @@ $body-font: 'Montserrat', sans-serif;
 $headers-font: 'Raleway', sans-serif;
 
 body{
-  color: #282f36;
-  background-color: #fffcff;
+  color: $t-gray !important;
+  background-color: $t-white !important;
   h1 {
     font-size: 32px;
   }
