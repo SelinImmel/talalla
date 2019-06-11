@@ -6,7 +6,20 @@
   text-align: center;
   box-shadow: 3px 4px 25px -4px rgb(104, 104, 153);
   background-color: #6d8092;
-  color: white;
+  color: #fffcff;
+  text-transform: uppercase;
+  font-size: 17px
+}
+
+.delete-button {
+  padding: 17px;
+  padding-right: 35px;
+  padding-left: 35px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 3px 4px 25px -4px rgb(104, 104, 153);
+  background-color: #282f36;
+  color: #fffcff;
   text-transform: uppercase;
   font-size: 17px
 }
