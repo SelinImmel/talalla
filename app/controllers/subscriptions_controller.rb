@@ -52,6 +52,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscr_params
-    params.require(:subscription).permit(:name, :content, :amount, :package_size, :durability)
+    params.require(:subscription).permit(:name, :content, :amount, :package_size, :durability, :payment_option)
   end
 end

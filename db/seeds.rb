@@ -115,7 +115,7 @@ sub_cash = Subscription.create!(
   subscription_sku: '1-class-pack',
   studio_id: s.id,
   amount_cents: 200_000_00,
-  payment_option: 'cash'
+  payment_option: "cash"
   )
 
 puts 'Creating a order...'
