@@ -51,7 +51,9 @@
               <p><%= post.content %></p>
             </div>
 
-              <%= link_to "see all comments...", show_all_comments_post_path(post), remote: true %>
+              <% if post.comments.count > 2 %>
+                <%= link_to "see all comments...", show_all_comments_post_path(post), remote: true %>
+              <% end %>
               <div id="allComment">
                 <%= render partial: 'comments', locals: { comments: post.comments.last(2)} %>
               </div>
@@ -61,6 +63,36 @@
                 </div>
               <hr class="w-50">
           <% end %>
+
+<!-- attempt at accordion -->
+          <div class="accordion" id="accordionExample">
+          <% category.posts.each do |post| %>
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <div class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <p><%= post.user.first_name %> <%= post.user.last_name %></p>
+                    <h2><%= post.title %></h2>
+                  </button>
+                </div>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <p><%= post.content %></p>
+                  <% if post.comments.count > 2 %>
+                    <%= link_to "see all comments...", show_all_comments_post_path(post), remote: true %>
+                  <% end %>
+                  <div id="allComment">
+                    <%= render partial: 'comments', locals: { comments: post.comments.last(2)} %>
+                  </div>
+                  <div class="new-comment">
+                    <%= render 'comments/form_for_comment', post: post %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
         <% end %>
     </div>
   </div>
