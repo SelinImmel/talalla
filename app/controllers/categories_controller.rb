@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
     else
       render :new
     end
+  end
 
   private
 
