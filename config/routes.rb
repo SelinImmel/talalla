@@ -36,6 +36,9 @@ Rails.application.routes.draw do
 
   resources :posts, only: [] do
     resources :comments, only: [:create]
+    member do
+      get 'show_all_comments'
+    end
   end
 
   # resources :pages, only: [ :admin_dashboard, :personal_dashboard ]

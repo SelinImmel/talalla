@@ -1,24 +1,100 @@
+// left side with overview over all channels
 .channels {
   margin: 16px;
-  width: 200px;
+  .channel {
+    background-color: $t-pink;
+    margin: 4px;
+    padding: 8px;
+    width: 200px;
+    h2 {
+      margin: 0;
+    }
+  }
 }
+
+// right side with all channel threads
 
 .conversations {
+  position: relative;
   margin: 16px;
-}
+  border-style: double;
+  border-color: $t-pink;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  text-align: justify;
+  .channel-info {
+    background-color: $t-pink;
+    padding: 16px;
+  }
+  .post{
+    padding: 16px;
+    .post-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      .post-info-left p {
+        margin: 0;
+      }
+    }
+  }
 
-.post-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .comment {
+    background-color: $t-pink;
+    margin: 4px 4px 4px 4px;
+    padding-bottom: 4px;
+    width: 630px;
+    margin-left: auto;
+    border-style: solid;
+    border-color: $t-pink;
+    border-radius: 4px;
+    .comment-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    p {
+      margin: 0 0 0 4px;
+    }
+    img {
+      margin-right: 8px;
+      margin-top: 4px;
+    }
+  }
 
-.comment {
-  width: 720px;
-  align-items: right;
-  .comment-info {
+  .all-comments {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+  }
+}
+
+.new-comment {
+  background-color: $t-pink;
+  margin: 4px 4px 4px 4px;
+  padding: 16px;
+  width: 630px;
+  margin-left: auto;
+  .comment_content {
+    width: 85%;
+  }
+  textarea.form-control {
+    height: 32px;
+  }
+  .form-group {
+    margin: 0;
+  }
+}
+
+
+.add-button {
+  border-radius: 50%;
+  border-color: $t-blue;
+  border-style: solid;
+  padding: 8px;
+  color: $t-blue;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
   }
 }
