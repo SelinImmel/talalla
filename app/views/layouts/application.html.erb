@@ -18,7 +18,9 @@
     <br>
     <br>
     <br>
-    <%= render 'shared/footer' %>
+    <% unless current_page?(root_url)%>
+      <%= render partial: 'shared/footer', locals: { studio: current_user.studio }  %>
+    <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

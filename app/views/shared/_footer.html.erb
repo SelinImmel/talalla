@@ -1,24 +1,24 @@
 
-<footer class="page-footer font-small footer">
-  <div class="container text-center text-md-left">
+<footer class="page-footer font-small footer footer-container">
+  <div class="text-center text-md-left">
     <div class="row">
       <div class="col-md-5 mx-auto">
-        <h5 class="font-weight-light text-uppercase mt-3 mb-2 "> <%= @studio.name %></h5>
+        <h5 class="font-weight-light text-uppercase mt-2 mb-2 header-footer"> <%= studio.name %></h5>
         <ul class="list-unstyled">
           <li>
-           <p> <%= @studio.address%></p>
+           <p> <%= studio.address%></p>
           </li>
           <li>
-            <p> <%= @studio.email%></p>
+            <p> <%= studio.email%></p>
           </li>
           <li>
-            <p> <%= @studio.phone_number%></p>
+            <p> <%= studio.phone_number%></p>
           </li>
         </ul>
       </div>
 
       <div class="col-md-5 mx-auto">
-        <h5 class="font-weight-light text-uppercase mt-3 mb-2">Follow us!</h5>
+        <h5 class="font-weight-light text-uppercase mt-2 mb-2 header-footer">Follow us!</h5>
         <ul class="list-unstyled footer-links">
           <li>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -28,7 +28,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-2 mx-0 my-5">
+      <div class="col-md-2 mx-0 my-4">
         <ul class="list-unstyled">
           <li>
             <%= link_to root_path, class: "footer-brand" do %>
