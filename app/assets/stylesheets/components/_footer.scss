@@ -1,0 +1,44 @@
+.footer-container {
+   background: white;
+   padding-right: 40px;
+   padding-left: 60px;
+}
+
+.header-footer {
+   font-size: 16px;
+   font-weight: 400;
+}
+
+
+
+.footer {
+  width: 100%;
+  height: 100px;
+  color: rgba(0,0,0,0.4);
+  position: fixed;
+  bottom: 0;
+  p {
+    display: block;
+    font-size: 12px;
+    line-height: 5px;
+    font-weight: 400;
+  }
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: #282f36;
+  opacity: 0.3;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-brand img {
+  width: 40px;
+}
