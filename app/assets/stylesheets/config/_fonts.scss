@@ -1,9 +1,23 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Raleway:300,500&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Open Sans", "Helvetica", "sans-serif";
-$headers-font: "Raleway", "Helvetica", "sans-serif";
+$body-font: 'Montserrat', sans-serif;
+$headers-font: 'Raleway', sans-serif;
+
+body{
+  color: #282f36;
+  background-color: #fffcff;
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  p {
+    font-size: 16px;
+  }
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
