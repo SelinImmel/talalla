@@ -1,0 +1,20 @@
+.col7 {
+  padding: 3% 7% 3% 7%;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col8 {
+  background-size: cover;
+  background-position: center;
+  width: 50vw;
+  background-image: url(https://images.unsplash.com/photo-1504807783906-9306816733ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60);
+}
+
+.channel-container {
+  display:flex;
+  background-color: white;
+  min-height: calc(100vh - 65px);
+}

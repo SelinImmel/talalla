@@ -1,5 +1,9 @@
-<div class="container">
-  <h2>Add a new lesson</h2>
+<div class="lesson-container">
+  <div class="col12">
+  </div>
+  <div class="col11">
+  <h2 class="d-flex justify-content-center mb-3">Add a new lesson</h2>
   <%= render "form_for_lesson" %>
-  <%= link_to "Back", studio_lessons_path(current_user.studio), class: "btn btn-outline-primary btn-sm"%>
+  <%= link_to "Back", studio_lessons_path(current_user.studio) %>
+</div>
 </div>

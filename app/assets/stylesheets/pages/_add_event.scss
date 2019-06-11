@@ -1,4 +1,4 @@
-.col6 {
+.col14 {
   padding: 3% 7% 3% 7%;
   margin-bottom: 100px;
   width: 50vw;
@@ -7,29 +7,19 @@
   justify-content: center;
 }
 
-.col5 {
+.col13 {
   background-size: cover;
   background-position: center;
   width: 50vw;
-  background-image: url(https://images.unsplash.com/photo-1502230831726-fe5549140034?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60);
+  background-image: url(https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60);
 }
 
-.edit-container {
+.event-container {
   position: relative;
   display:flex;
   background-color: white;
   min-height: calc(100vh - 65px);
   padding-top: 44px;
 }
-
-#cancellation {
-  display: flex;
-  flex-direction: column;
-  align-self: left;
-  p {
-    margin-bottom: 0px;
-  }
-}
-
 
 

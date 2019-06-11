@@ -19,7 +19,10 @@
     <br>
     <br>
     <% unless current_page?(root_url)%>
+      <% if user_signed_in? %>
       <%= render partial: 'shared/footer', locals: { studio: current_user.studio }  %>
+      <% else %>
+      <% end %>
     <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
