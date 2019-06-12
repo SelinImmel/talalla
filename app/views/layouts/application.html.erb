@@ -15,9 +15,6 @@
     <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <br>
-    <br>
-    <br>
     <% unless current_page?(root_url) || current_page?(new_user_session_url) %>
       <%= render partial: 'shared/footer', locals: { studio: current_user.studio }  %>
     <% end %>

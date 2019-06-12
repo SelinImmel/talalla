@@ -89,8 +89,21 @@ l = Lesson.create!(
   slots: 20,
   start_time: "18:00",
   end_time: "19:00",
-  start_date: "06.06.2019",
+  start_date: "14.06.2019",
   occurrence: 10,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Hatha beginner',
+  location: 'Room 2',
+  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
+  slots: 10,
+  start_time: "16:00",
+  end_time: "17:00",
+  start_date: "15.06.2019",
+  occurrence: 5,
   user_id: t.id,
   studio_id: s.id
   )
