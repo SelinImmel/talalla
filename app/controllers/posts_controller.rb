@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_category
+  before_action :set_category, except: [:show_all_comments]
 
   def create
     @post = Post.new(post_params)
@@ -14,6 +14,13 @@ class PostsController < ApplicationController
     @studio = @post.category.studio
     @post.destroy
     redirect_to community_path(@studio)
+  end
+
+  def show_all_comments
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
