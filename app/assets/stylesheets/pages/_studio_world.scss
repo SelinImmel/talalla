@@ -1,13 +1,15 @@
 .studio-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
 }
 
 .studio-left-container {
-//   display: flex;
 //   flex-direction: column;
 //   align-items: stretch;
-//   height: 100vh;
+  height: 100vh;
 //   width: 50%;
+
 }
 
 .studio-right-container {

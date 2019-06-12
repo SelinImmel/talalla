@@ -3,6 +3,15 @@
   background-color: gray;
   margin: 4px;
 }
-.lessons-title {
-  width: 100%;
+
+.lessons-today {
+  height: 50vh;
+  overflow: scroll;
+  background-attachment: scroll;
+}
+
+.lessons-tomorrow {
+  height: 45vh;
+  overflow: scroll;
+  background-attachment: scroll;
 }
