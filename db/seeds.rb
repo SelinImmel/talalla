@@ -54,7 +54,8 @@ t = User.create!(
   is_teacher: true,
   is_admin: false,
   password: '123456',
-  studio_id: s.id
+  studio_id: s.id,
+  remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
   )
 
 puts 'Creating students...'
