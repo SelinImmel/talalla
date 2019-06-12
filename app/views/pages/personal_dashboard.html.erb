@@ -21,23 +21,31 @@
       </div>
 
       <div class="table-class">
-        <table class="table table_admin" style="width:100%">
-          <tr>
-            <th>Name</th>
-            <th>Time</th>
-            <th>Teacher</th>
-            <th>Teacher</th>
-          </tr>
         <% if !Booking.where(user_id: current_user).empty? %>
             <% current_user.bookings.each do |booking| %>
-              <tr>
-                  <td><%= booking.lesson.name %></td>
-                  <td><%= booking.lesson.start_time %></td>
-                  <td><%= booking.lesson.user.photo %></td>
-                  <td><%= booking.lesson.user.first_name %></td>
-              </tr>
+              <div class="notification">
+                <div class="notification-content">
+                  <div class="lesson">
+                    <p><%= booking.lesson.name %></p>
+                  </div>
+                  <div class="time">
+                    <p>
+                      <%= booking.lesson.start_time.strftime('%H:%M') %>
+                      <%= booking.lesson.end_time.strftime('%H:%M') %>
+                    </p>
+                  </div>
+                  <div class="avatar-large">
+                    <%= cl_image_tag booking.lesson.user.photo %>
+                  </div>
+                  <div class="name-teacher">
+                    <p>
+                      <%= booking.lesson.user.first_name %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
             <% end %>
-        </table>
         <% end %>
       </div>
         <%# if !@available_usage || !@date_validity %>

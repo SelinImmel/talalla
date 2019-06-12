@@ -1,6 +1,6 @@
 
 .background-about {
-  background-image: url('about-banner.jpg');
+  background-image: url('about-banner2.jpg');
   height: 100vh;
   width: auto;
   // height: 900px;
@@ -9,9 +9,16 @@
   background-repeat: no-repeat;
 }
 
+.container-about
+{
+  display: flex;
+}
+
+
 .left-side {
-    padding-top: 120px;
-    padding-right: 40px;
+    padding-top: 50px;
+    padding-right: 30px;
+    align: center;
     display: flex;
 
     h1 {
@@ -20,6 +27,8 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     font-weight: bold;
     font-size: 64px;
+    margin-left: 20px;
+    margin-top: 29px;
     }
     h5 {
     padding-top: 16px;
@@ -28,14 +37,29 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     font-size: 32px;
   }
-
  }
 
-.right-side {
+.tag-line {
+  display: flex;
 
 }
+.right-side {
+    padding-top: 321px;
+    text-align: center;
+    font-size: 27px;
+}
+.photos {
+   padding-top: 53px;
+}
 
+.avatar-large-about {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-
-
+.back-button{
+  margin-top: 31px;
+}
 
