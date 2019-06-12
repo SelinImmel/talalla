@@ -11,35 +11,97 @@
     <div class="right-pannel">
       <p>I am the right pannel</p>
       <h1><%= @studio.name %>: an overview</h1>
-      <div class="third-card d-flex justify-content-around">
-        <div class="stats">
-          <%= link_to do %>
-            <h2>XX</h2> <br>
-            <p>and here</p>
-          <% end %>
-        </div>
-        <div class="stats">
-          <h2>XX</h2> <br>
-          <p>and here</p>
-        </div>
-        <div class="stats">
-          <h2>XX</h2> <br>
-          <p>and here</p>
-        </div>
-        <div class="stats">
-          <h2>XX</h2> <br>
-          <p>and here</p>
-        </div>
-      </div>
       <div class="third-card">
-        <p>I am also a third card<br>editing options with icons will be displayed in here</p>
+        <div class="d-flex justify-content-around">
+          <div class="stats">
+            <%= link_to students_path, class: "link-icon" do %>
+              <h2><%= @students.count %></h2> <br>
+              <p>Yogis</p>
+            <% end %>
+          </div>
+          <div class="stats">
+            <%= link_to teachers_path, class: "link-icon" do %>
+              <h2><%= @teachers.count %></h2> <br>
+              <p>Teachers</p>
+            <% end %>
+          </div>
+          <div class="stats">
+              <% sum = 0 %>
+              <% @subscriptions.each do |subscription| %>
+                <% sum += (subscription.orders.count * subscription.amount).to_i %>
+              <% end %>
+            <%= link_to studio_subscriptions_path(@studio), class: "link-icon" do %>
+              <h2><%= sum %> IDR</h2> <br>
+              <p>Revenue</p>
+            <% end %>
+          </div>
+          <div class="stats">
+            <%= link_to studio_lessons_path(@studio), class: "link-icon" do %>
+              <h2><%= @lessons.count %></h2> <br>
+              <p>Lessons</p>
+            <% end %>
+          </div>
+        </div>
+        <!-- where is this link supposed to lead to? -->
+        <%= link_to "more information", orders_path, class: "btn btn-primary btn-sm more-button" %>
+      </div>
+
+      <!-- bottom right -- many editing actions -->
+      <h1>Any header we'd like</h1>
+      <div class="third-card">
+        <div class="top-of-third d-flex justify-content-between">
+          <div class="edit-details">
+            <h1><i class="fas fa-users fa-users-one"></i></h1>
+            <p>manage my studio information</p>
+            <%= link_to edit_studio_path(@studio), class: "link" do %>
+              <p class="btn btn-primary btn-sm">edit</p>
+            <% end %>
+          </div>
+          <div class="edit-details">
+            <%= link_to studio_lessons_path(@studio), class: "link" do %>
+              <h1><i class="fas fa-users"></i></h1>
+              <p>add, edit, and manage lessons</p>
+              <p class="btn btn-primary btn-sm">edit</p>
+            <% end %>
+          </div>
+          <div class="edit-details">
+            <%= link_to studio_events_path(@studio), class: "link" do %>
+              <h1><i class="fas fa-users"></i></h1>
+              <p>add, edit, and manage events</p>
+              <p class="btn btn-primary btn-sm">edit</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="bottom-of-third d-flex">
+          <div class="edit-details">
+            <%= link_to students_path, class: "link" do %>
+              <h1><i class="fas fa-users"></i></h1>
+              <p>manage my students</p>
+              <p class="btn btn-primary btn-sm">edit</p>
+            <% end %>
+          </div>
+          <div class="edit-details">
+            <%= link_to teachers_path, class: "link" do %>
+              <h1><i class="fas fa-users"></i></h1>
+              <p>manage my teachers</p>
+              <p class="btn btn-primary btn-sm">edit</p>
+            <% end %>
+          </div>
+          <div class="edit-details">
+            <%= link_to studio_subscriptions_path(@studio), class: "link" do %>
+              <h1><i class="fas fa-users"></i></h1>
+              <p>add and edit the available subscriptions</p>
+              <p class="btn btn-primary btn-sm">edit</p>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 
-
+<!-- almost all available paths -->
 <!--   <hr>
   <%#= link_to "Your students", students_path%>
   <br>
