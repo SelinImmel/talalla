@@ -1,0 +1,93 @@
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 34px;
+  margin-bottom: 120px;
+  max-width: 1000px;
+}
+
+.right-pannel {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  min-width: 500px;
+}
+
+.left-pannel {
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  min-width: 400px;
+}
+
+.first-card {
+  background-color: white;
+  display: flex;
+  padding: 16px;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
+
+  .avatar-and-buttons {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+    .avatar-talalla img {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 16px;
+    }
+    .description-talalla {
+      padding-left: 8px;
+    }
+}
+
+.second-card {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  background-color: white;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+}
+
+.lessons-cards {
+  padding-top: 8px;
+}
+
+.lesson-card {
+  display: flex;
+  align-items: center;
+  margin: 16px;
+  background: white;
+  padding: 8px;
+  border: 1px solid rgb(235,235,235);
+  border-radius: 4px;
+  .avatar-large img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  }
+}
+
+.lesson-card-content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+
+
+
+.third-card {
+  background-color: white;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+}
