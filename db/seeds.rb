@@ -44,6 +44,7 @@ User.create!(
   remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
 )
 
+
 puts 'Creating a teacher...'
 t = User.create!(
   first_name: 'Alina',
@@ -51,6 +52,19 @@ t = User.create!(
   email: 'alina.heimgartner@gmail.com',
   address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
   biography: 'Dedicated teacher, looooove yoga. See you guys on the mat!',
+  is_teacher: true,
+  is_admin: false,
+  password: '123456',
+  studio_id: s.id,
+  remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
+  )
+
+User.create!(
+  first_name: 'Hugo',
+  last_name: 'Smith',
+  email: 'hugo@gmail.com',
+  address: 'Gang Jalak 17, Bali',
+  biography: 'Dedicated teacher, mixes yoga with fitness!',
   is_teacher: true,
   is_admin: false,
   password: '123456',
@@ -81,6 +95,8 @@ o = User.create!(
   studio_id: s.id
   )
 
+
+
 puts 'Creating a lesson...'
 10.times do
 l = Lesson.create!(
@@ -90,12 +106,55 @@ l = Lesson.create!(
   slots: 20,
   start_time: "18:00",
   end_time: "19:00",
+
   start_date: Date.today + rand(2...10),
+
+  start_date: "14.06.2019",
+  occurrence: 10,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Hatha',
+  location: 'Room 1',
+  content: 'A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!',
+  slots: 20,
+  start_time: "08:00",
+  end_time: "09:00",
+  start_date: "14.06.2019",
   occurrence: 10,
   user_id: t.id,
   studio_id: s.id
   )
 end
+
+Lesson.create!(
+  name: 'Hatha beginner',
+  location: 'Room 2',
+  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
+  slots: 10,
+  start_time: "16:00",
+  end_time: "17:00",
+  start_date: "15.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Hatha beginner',
+  location: 'Room 2',
+  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
+  slots: 10,
+  start_time: "08:00",
+  end_time: "09:00",
+  start_date: "15.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
 puts 'Creating a subscription..'
 subs = Subscription.create!(
   name: '12 class pack',
@@ -104,7 +163,19 @@ subs = Subscription.create!(
   durability: 60,
   subscription_sku: '12-class-pack',
   studio_id: s.id,
-  amount_cents: 200_000_00
+  amount_cents: 200_000_00,
+  payment_option: "card"
+  )
+
+sub_cash = Subscription.create!(
+  name: '1 class pack',
+  content: 'Yoga package for a yoga classes',
+  package_size: 1,
+  durability: 1,
+subscription_sku: '1-class-pack',
+  studio_id: s.id,
+  amount_cents: 200_000_00,
+  payment_option: "cash"
   )
 
 puts 'Creating a order...'

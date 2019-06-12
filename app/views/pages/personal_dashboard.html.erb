@@ -1,81 +1,104 @@
-<div class="container">
-  <h1>Personal dashboard</h1>
+<div class="main-container">
+  <div class="left-pannel">
+    <div class="first-card">
+      <div class="avatar-and-buttons">
+        <div class="avatar-talalla">
+          <%= cl_image_tag current_user.photo, crop: :fill %>
+        </div>
+        <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-primary btn-sm'%>
+        <!-- <div class="global-button mt-3"> -->
+        <!-- </div> -->
+      </div>
+      <div class="description-talalla">
+        <h2><%= current_user.first_name %> <%= current_user.last_name %> <br> </h2>
+          <hr>
+        <p><%= current_user.address %> <br>
+        <%= current_user.email %></p>
+      </div>
+    </div>
+    <div class="second-card">
+          <h2>My upcoming classes</h2>
 
-  <div class="personal-details">
-    <h2>Account</h2><hr>
-    <%= cl_image_tag current_user.photo, width: 150, height: 150, crop: :fill %>
-    <p><%= current_user.first_name %> <%= current_user.last_name %> <br>
-    <%= current_user.address %>
-    <%= current_user.email %></p>
-    <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary" %>
+      <div class="lessons-cards">
+        <% if !Booking.where(user_id: current_user).empty? %>
+            <% current_user.bookings.each do |booking| %>
+              <div class="lesson-card">
+                <div class="lesson-card-content">
+                  <div class="lesson">
+                    <%= booking.lesson.name %>
+                  </div>
+                  <div class="time">
+                      <%= booking.lesson.start_time.strftime('%H:%M') %>
+                      <%= booking.lesson.end_time.strftime('%H:%M') %>
+                  </div>
+                  <div class="avatar-large">
+                    <%= cl_image_tag booking.lesson.user.photo %>
+                  </div>
+                  <div class="name-teacher">
+                      <%= booking.lesson.user.first_name %>
+                  </div>
+                </div>
+              </div>
+
+            <% end %>
+        <% end %>
+      </div>
+        <%# if !@available_usage || !@date_validity %>
+    </div>
   </div>
-  <hr>
 
-  <div class="user-plan">
-    <h2>My subscriptions</h2>
-    <ul>
-      <% current_user.user_plans.each do |user_plan| %>
-        <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
-          <% if left_usage > 0 && user_plan.end_date > Date.today %>
-            <li><b><%= left_usage %></b> times remaining of <b><%= user_plan.order.subscription.name %></b>
+  <div class="right-pannel">
+    <div class="third-card">
+      <h2> My current   subscription:</h2>
+      <hr>
+      <div class="my-subscription-container">
+          <% current_user.user_plans.each do |user_plan| %>
+            <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
+            <% if left_usage > 0 && user_plan.end_date > Date.today %>
+              <b><%= left_usage %></b> / <b><%= user_plan.order.subscription.name %></b> remaining
               <br>Valid from <%= user_plan.start_date.to_formatted_s(:rfc822) %> to <%= user_plan.end_date.to_formatted_s(:rfc822) %>
-            </li>
+            <% end %>
           <% end %>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="user-plan">
-    <% if !Booking.where(user_id: current_user).empty? %>
-    <h3>My last booking</h3>
-    <ul>
-      <%= current_user.bookings.last.created_at.to_formatted_s(:rfc822) %>
-      <%# end %>
-    </ul>
-    <% end %>
-  </div><hr>
-
-  <% if !@available_usage || !@date_validity %>
-    <div>
-      <!-- see all available subscriptions and order one -->
-      <h2>Choose a new subscription</h2>
-        <ul>
-          <% @subscriptions.each do |subscription| %>
-            <li><%= subscription.name %>: <%= subscription.content %> <%= link_to 'Buy now', orders_path(subscription_id: subscription), method: :post %></li>
-          <% end %>
-        </ul>
-    </div><hr>
-  <% end %>
+      </div>
 
 
-  <!-- user can add a note to calendar -->
-  <div class="calendar">
-    <h2>Calendar</h2>
-    <p> <%= link_to "Add note", new_note_path%></p>
-    <div class="w-50">
-      <%= month_calendar(events: current_user.notes, attribute: :date) do |date, notes| %>
-          <%= date.day %>
+      <div class="subscription-cards">
+        <% @subscriptions.each do |subscription| %>
+          <div class="subscription-card text-center">
+            <strong><%= subscription.name %>:</strong> <br> <%= subscription.content %>
+            <div>
+            <%= link_to 'Buy now', orders_path(subscription_id: subscription), method: :post, class: 'btn btn-primary btn-sm' %> </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="calendar-notes-container">
+      <div class="title-calendar d-flex justify-content-between">
+        <h2>My calendar / diary </h2>
+        <hr>
+        <div><%= link_to "Add note", new_note_path, class: 'btn btn-primary btn-sm'%></div>
+      </div>
+      <div class="calendar">
+          <%= month_calendar(events: current_user.notes, attribute: :date) do |date, notes| %>
+            <%= date.day %>
             <% if Note.where(date: date.to_datetime, user: current_user).exists? %>
               <%= link_to notes_path(date: date), remote: true do  %>
-                <i class="fas fa-sticky-note" style="
-                color: #6d8092"></i>
+                <i class="fas fa-sticky-note" style="color: #6d8092"></i>
               <% end %>
             <% end %>
             <% if Booking.where(date: date.to_datetime, user: current_user).exists? %>
               <div class="booked_lesson"></div>
             <% end %>
+          <% end %>
+        </div>
 
-      <% end %>
-    </div><hr>
-  </div>
-
-  <h2>Notes</h2>
-  <div class="notes">
-  <br>
-  <hr>
+      <div class="notes">
+        <h2>Notes</h2>
+      </div>
+    </div>
   </div>
 </div>
-
 
 <%# notes.each do |note| %>
   <!-- <p><%#= link_to note.title, personal_dashboard_path %></p> -->
