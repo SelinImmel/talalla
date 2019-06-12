@@ -44,6 +44,7 @@ User.create!(
   remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
 )
 
+
 puts 'Creating a teacher...'
 t = User.create!(
   first_name: 'Alina',
@@ -51,6 +52,18 @@ t = User.create!(
   email: 'alina.heimgartner@gmail.com',
   address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
   biography: 'Dedicated teacher, looooove yoga. See you guys on the mat!',
+  is_teacher: true,
+  is_admin: false,
+  password: '123456',
+  studio_id: s.id
+  )
+
+User.create!(
+  first_name: 'Hugo',
+  last_name: 'Smith',
+  email: 'hugo@gmail.com',
+  address: 'Gang Jalak 17, Bali',
+  biography: 'Dedicated teacher, mixes yoga with fitness!',
   is_teacher: true,
   is_admin: false,
   password: '123456',
@@ -80,6 +93,8 @@ o = User.create!(
   password: '123456',
   studio_id: s.id
   )
+
+
 
 puts 'Creating a lesson...'
 l = Lesson.create!(

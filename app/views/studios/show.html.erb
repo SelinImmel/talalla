@@ -1,9 +1,7 @@
 <div class="container">
   <div class="left-container">
-    <div class="title">
-      <h2>Upcomming lessons</h2>
-    </div>
     <div class="lessons-container">
+      <h2>Upcomming lessons</h2>
       <%#= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
         <!-- can the two days be displayed in the simple calender with the option of scrolling to future dates? -->
         <%#= calendar number_of_days: 1 do |date| %>
@@ -35,44 +33,41 @@
     </div>
   </div>
   <div class="right-container">
-    <div class="title">
-      <h2>Our teachers</h2>
-    </div>
     <div class="teacher-container">
+      <h2>Our teachers</h2>
       <div class="teachers">
         <% users = User.where(is_teacher: true) %>
-        <% users.each do |u| %>
+        <% users.each_with_index do |u, index| %>
+          <!-- if index === 1 then add id="highlight" -->
           <div class="teacher-cards">
             <div class="teacher-avatar"><%= cl_image_tag u.photo, width: 64, height: 64, gravity: "face", radius: "max", crop: "thumb" %>
               </div>
-                <div class="teacher-name"><%= u.first_name %>
-                </div>
+              <div class="teacher-name"><%= u.first_name %>
+              </div>
               <div class="teacher-bio"><%= u.biography %>
-            </div>
+              </div>
           </div>
         <% end %>
       </div>
     </div>
 
         <%#= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-    <div class="title">
-      <h2>Upcomming events</h2>
-    </div>
-    <div class="event-container">
-      <div class="events">
-        <% @events.each do |e| %>
-          <div class="event-card">
-            <div class="event-photo"><%= cl_image_tag e.photo, height: 104, width: 128, crop: :fill%>
-            </div>
-              <div class="event-title"><%= link_to e.title, studio_event_path(@studio, e)%>
-              </div>
-                <div class="event-date"><%= e.date.to_formatted_s(:rfc822) %>
-                </div>
-              <div class="event-content"><%= e.content %>
-            </div>
+  <div class="event-container">
+    <h2>Upcomming events</h2>
+    <div class="events">
+      <% @events.each do |e| %>
+        <div class="event-card">
+          <div class="event-photo"><%= cl_image_tag e.photo, height: 104, width: 128, crop: :fill%>
           </div>
-        <% end %>
-      </div>
+            <div class="event-title"><%= link_to e.title, studio_event_path(@studio, e)%>
+              <div class="event-date"><%= e.date.to_formatted_s(:rfc822) %>
+              </div>
+            </div>
+            <div class="event-content"><%= e.content %>
+          </div>
+        </div>
+      <% end %>
+    </div>
     </div>
   </div>
 </div>
