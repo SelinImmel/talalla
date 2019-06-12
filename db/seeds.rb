@@ -82,6 +82,7 @@ o = User.create!(
   )
 
 puts 'Creating a lesson...'
+10.times do
 l = Lesson.create!(
   name: 'Hatha',
   location: 'Room 1',
@@ -89,12 +90,12 @@ l = Lesson.create!(
   slots: 20,
   start_time: "18:00",
   end_time: "19:00",
-  start_date: "06.06.2019",
+  start_date: Date.today + rand(2...10),
   occurrence: 10,
   user_id: t.id,
   studio_id: s.id
   )
-
+end
 puts 'Creating a subscription..'
 subs = Subscription.create!(
   name: '12 class pack',
@@ -129,7 +130,7 @@ puts 'Creating a booking...'
 Booking.create!(
   user_plan_id: up.id,
   user_id: u.id,
-  lesson_id: l.id,
+  lesson_id: Lesson.all.sample.id,
   date: Date.today
   )
 
@@ -137,7 +138,7 @@ puts 'Creating a secondbooking...'
 boo =Booking.new(
   user_plan_id: up.id,
   user_id: u.id,
-  lesson_id: l.id,
+  lesson_id: Lesson.all.sample.id,
   date: Date.today-5
   )
 boo.save
@@ -146,7 +147,7 @@ puts 'Creating a third booking...'
 boo =Booking.new(
   user_plan_id: up.id,
   user_id: u.id,
-  lesson_id: l.id,
+  lesson_id: Lesson.all.sample.id,
   date: Date.today-3
   )
 boo.save

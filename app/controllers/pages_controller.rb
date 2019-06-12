@@ -18,6 +18,11 @@ class PagesController < ApplicationController
     @teachers = @users.where(is_teacher: true)
     @students = @users.where(is_teacher: false).where(is_admin: false)
     @lessons = Lesson.where(studio: current_user.studio)
+    @lessons_monthly = @lessons.where("start_date > ? AND start_date < ?", Date.new(Date.today.year, Date.today.month, 1), Date.new((Date.today + 1.month).year, (Date.today + 1.month).month, 1))
+    @dates = @lessons.pluck(:start_date).uniq
+    @subscriptions = Subscription.where(studio: current_user.studio).where("created_at > ?", Date.new(Date.today.year, Date.today.month, 1))
+    @revenues = @subscriptions.reduce(0) { |sum, x| sum + x.amount }
+
     # @subscriptions = Subscription.where(studio: current_user.studio)
   end
 

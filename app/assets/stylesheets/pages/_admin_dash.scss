@@ -1,0 +1,91 @@
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 24px 5%;
+}
+
+.welcome-yo {
+  text-align: left;
+  padding-bottom: 10px;
+}
+.anga {
+text-align: right;
+}
+
+.upcoming-classes-container {
+  min-width: 540px;
+  height: 544px;
+  background: #f7dfcd;
+  padding-top: 12px;
+}
+
+.events-container {
+  align-self: center;
+  min-width: 540px;
+  height: 180px;
+  background: #f7dfcd;
+  margin-bottom: 60px;
+   h6 {
+    position: relative;
+    top: 24px;
+   }
+   p {
+    position: relative;
+    top: 24px;
+   }
+   .btn {
+    position: relative;
+    top: 50px;
+   }
+}
+ .studio-info-container {
+  margin-top: 10px;
+  min-width: 560px;
+  height: 304px;
+  background: #f7dfcd;
+  padding-left: 10px;
+}
+
+.edit.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.col-sm rich {
+  text-align: center;
+}
+
+table {
+  th {
+    line-height: 28px;
+    padding-left: 60px;
+    text-align: center;
+  }
+  td {
+    line-height: 28px;
+    padding-left: 60px;
+      }
+}
+
+.events-and-studio-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-width: 580px;
+}
+
+.dash-manage {
+  height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-camera {
+  font-size: 30px;
+}
+
+
+
