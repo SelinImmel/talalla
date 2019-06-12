@@ -1,8 +1,22 @@
 
-<div class="background">
-  <div class="container entrance">
-    <h1 class="text-center"><%= image_tag "https://image.flaticon.com/icons/png/512/129/129728.png", style: "height: 6rem" %></h1>
-    <h1 class="text-center">talalla</h1>
-    <h5 class="text-center">- connect beyond the mat - </h5>
+<div class="background-about">
+  <div class="container">
+
+    <div class="left-side">
+      <%= image_tag "logo", style: "height: 8rem" %>
+      <h1 class="text-center">talalla</h1>
+      <h5 class="text-center">- connect beyond the mat - </h5>
+    </div>
+
+    <div class="right-side">
+      <p>A simple yoga studio management app with a strong focus on community building</p>
+      <div class="photos">
+        <%= image_tag "about-nico.jpeg", class: "avatar-large mx-2"%>
+        <%= image_tag "about-richard.jpeg", class: "avatar-large mx-2"%>
+        <%= image_tag "about-selin.jpeg", class: "avatar-large mx-2"%>
+        <%= image_tag "about-alina.jpeg", class: "avatar-large mx-2"%>
+      </div>
+    </div>
+
   </div>
 </div>
