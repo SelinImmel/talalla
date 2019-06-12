@@ -1,59 +1,73 @@
-<div class="container">
-  <h2>Show studio dashboard</h2>
-  <br> <h3><b>Name:</b> <%= @studio.name %> </h3>
-  <br> <h4><b>Address:</b> <%= @studio.address %> </h4>
-  <br> <h5><b>Phone:</b> <%= @studio.phone_number %> </h5>
-  <br> <h5><b>Email:</b> <%= @studio.email %> </h5>
-  <br> <h5><b>Webpage:</b> <%= @studio.homepage %> </h5>
-  <%= link_to "Change Studio details", edit_studio_path(current_user.studio_id)%>
+<div class="container studio-container">
+  <div class="studio-left-container">
+    <div class="lessons-container">
+      <h2>Upcomming lessons</h2>
+      <%#= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+        <!-- can the two days be displayed in the simple calender with the option of scrolling to future dates? -->
+        <%#= calendar number_of_days: 1 do |date| %>
+        <%# end %>
 
-  <hr>
-  <%= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-  <hr>
-    <!-- can the two days be displayed in the simple calender with the option of scrolling to future dates? -->
-    <%#= calendar number_of_days: 1 do |date| %>
-    <%# end %>
+        <% if @lessons.exists? %>
+          <% @lessons = Lesson.where(start_date: Date.today) %>
+            <h3>List of todays lessons - <%= Date.today.to_formatted_s(:short) %></h3>
+          <% end %>
+          <% @lessons.each do |l| %>
+            <%= link_to l.name, lesson_path(l.id) %>
+            <%= l.location %>
+            <%= l.content %>
+            <%= l.slots %>
+            <hr>
+          <% end %>
 
-    <% @lessons = Lesson.where(start_date: Date.today) %>
-    <% if @lessons.exists? %>
-      <h3>List of todays lessons - <%= Date.today.to_formatted_s(:short) %></h3>
-    <% end %>
-      <% @lessons.each do |l| %>
-        <p><b>Name: </b>        <%= link_to l.name, lesson_path(l.id) %></p>
-        <p><b>Room: </b>        <%= l.location %></p>
-        <p><b>Description: </b> <%= l.content %></p>
-        <p><b>Places: </b>      <%= l.slots %></p>
-        <hr>
+        <% if @lessons.exists? %>
+          <% @lessons = Lesson.where(start_date: Date.tomorrow) %>
+            <h3>List of tomorrows lessons - <%= Date.tomorrow.to_formatted_s(:short) %></h3>
+          <% end %>
+          <% @lessons.each do |l| %>
+            <%= link_to l.name, lesson_path(l.id) %>
+            <%= l.location %>
+            <%= l.content %>
+            <%= l.slots %>
+            <hr>
+          <% end %>
+    </div>
+  </div>
+  <div class="studio-right-container">
+    <div class="teacher-container">
+      <h2>Our teachers</h2>
+      <div class="teachers">
+        <% users = User.where(is_teacher: true) %>
+        <% users.each_with_index do |u, index| %>
+          <!-- if index === 1 then add id="highlight" -->
+          <div class="teacher-cards">
+            <div class="teacher-avatar"><%= cl_image_tag u.photo, width: 64, height: 64, gravity: "face", radius: "max", crop: "thumb" %>
+              </div>
+              <div class="teacher-name"><%= u.first_name %>
+              </div>
+              <div class="teacher-bio"><%= u.biography %>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+        <%#= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+  <div class="event-container">
+    <h2>Upcomming events</h2>
+    <div class="events">
+      <% @events.each do |e| %>
+        <div class="event-card">
+          <div class="event-photo"><%= cl_image_tag e.photo, height: 104, width: 128, crop: :fill%>
+          </div>
+            <div class="event-title"><%= link_to e.title, studio_event_path(@studio, e)%>
+              <div class="event-date"><%= e.date.to_formatted_s(:rfc822) %>
+              </div>
+            </div>
+            <div class="event-content"><%= e.content %>
+          </div>
+        </div>
       <% end %>
-
-      <% @lessons = Lesson.where(start_date: Date.tomorrow) %>
-       <% if @lessons.exists? %>
-          <h3>List of tomorrows lessons - <%= Date.tomorrow.to_formatted_s(:short) %></h3>
-       <% end %>
-      <% @lessons.each do |l| %>
-        <p><b>Name: </b>        <%= link_to l.name, lesson_path(l.id) %></p>
-        <p><b>Room: </b>        <%= l.location %></p>
-        <p><b>Description: </b> <%= l.content %></p>
-        <p><b>Places: </b>      <%= l.slots %></p>
-        <hr>
-      <% end %>
-
-  <hr>
-  <%= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-
-  <hr>
-  <% if policy(Event).create? %>
-    <%= link_to "Add event", new_studio_event_path(@studio),  class: "btn btn-primary m-2 rounded"%>
-  <% end %>
-
-  <% if policy(Subscription).create? %>
-    <%= link_to "Add subscription", new_studio_subscription_path(@studio), class: "btn btn-primary m-2 rounded" %>
-  <% end %>
-
-    <% @events.each do |e| %>
-      <p><b>Title: </b><%= link_to e.title, studio_event_path(@studio, e) %></p>
-      <p><b>Date: </b><%= e.date.to_formatted_s(:rfc822) %></p>
-      <p><b>Description: </b><%= e.content %></p>
-    <% end %>
-  <hr>
+    </div>
+    </div>
+  </div>
 </div>
