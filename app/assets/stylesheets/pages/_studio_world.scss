@@ -1,15 +1,16 @@
 .studio-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-around;
 }
 
 .studio-left-container {
 //   flex-direction: column;
 //   align-items: stretch;
-  height: 100vh;
-//   width: 50%;
-
+  width: 50%;
+  min-width: 400px;
+  max-width: 500px;
 }
 
 .studio-right-container {
@@ -17,7 +18,7 @@
 //   flex-direction: column;
 //   align-items: stretch;
 //   height: 100vh;
-//   width: 50%;
+   width: 50%;
+   min-width: 400px;
+  max-width: 500px;
 }
-
-
