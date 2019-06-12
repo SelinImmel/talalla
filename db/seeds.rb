@@ -104,7 +104,19 @@ subs = Subscription.create!(
   durability: 60,
   subscription_sku: '12-class-pack',
   studio_id: s.id,
-  amount_cents: 200_000_00
+  amount_cents: 200_000_00,
+  payment_option: "card"
+  )
+
+sub_cash = Subscription.create!(
+  name: '1 class pack',
+  content: 'Yoga package for a yoga classes',
+  package_size: 1,
+  durability: 1,
+  subscription_sku: '1-class-pack',
+  studio_id: s.id,
+  amount_cents: 200_000_00,
+  payment_option: 'cash'
   )
 
 puts 'Creating a order...'
