@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_category, except: [:show_all_comments]
+  before_action :set_category, except: [:show_all_comments, :show_less_comments]
 
   def create
     @post = Post.new(post_params)
@@ -17,6 +17,13 @@ class PostsController < ApplicationController
   end
 
   def show_all_comments
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_less_comments
     @post = Post.find(params[:id])
     respond_to do |format|
       format.js

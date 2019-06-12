@@ -1,45 +1,100 @@
+.community-container {
+  margin: 40px 80px;
+  min-height: calc(100vh - 166px)
+}
+
+
 // left side with overview over all channels
 .channels {
-  margin: 16px;
+  margin-top: 16px;
+  padding: 0;
+  .new-channel {
+    margin: 4px auto;
+  }
   .channel {
-    background-color: $t-pink;
-    margin: 4px;
-    padding: 8px;
-    width: 200px;
+    margin-bottom: 8px;
+    border-style: solid;
+    border-color: $t-pink;
+    transition: 0.25s;
     h2 {
       margin: 0;
     }
   }
+  .nav-link {
+    background-color: $t-pink;
+    color: white;
+    width: 96%;
+    border-radius: 4px;
+    // margin: 4px;
+    // padding: 8px;
+    // width: 200px;
+    a {
+      color: $t-gray !important;
+      h2 {
+        margin: 0 8px;
+      }
+    }
+  }
+  .nav-link.active {
+    background-color: $t-pink;
+    color: $t-gray;
+    width: 100%;
+    border-radius: 0px;
+  }
 }
-
 // right side with all channel threads
 
 .conversations {
-  // border-style: double;
-  // border-color: $t-pink;
-  // border-radius: 8px;
-  // margin-top: 16px;
+  margin: 16px 0;
+  border-style: solid;
+  border-color: $t-pink;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  padding-bottom: 8px;
   position: relative;
-  box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.1), 0px 15px 12px rgba(0, 0, 0, 0.1);
   text-align: justify;
   .channel-info {
     background-color: $t-pink;
     padding: 16px;
   }
   .post{
-    padding: 16px;
+    // padding: 16px;
+    p {
+      padding: 0 40px 16px 40px;
+    }
     .post-info {
+      padding: 16px 40px;
       display: flex;
       justify-content: space-between;
       margin-bottom: 8px;
       text-align: left;
       transition: 0.3s;
       .post-info-left p {
+        text-align: left;
         margin: 0;
+        padding: 0;
       }
+      .post-info-right {
+        text-align: right;
+        margin: 0;
+        padding: 0;
+        p {
+          padding: 0;
+          margin: 0;
+        }
+      }
+      &:hover h2 {
+        text-decoration: underline;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    .more {
+      text-align: right;
       &:hover {
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.1);
+        font-weight: bold;
       }
     }
   }
@@ -48,12 +103,13 @@
     // background-color: $t-pink;
     // border-style: solid;
     // border-color: $t-pink;
-    box-shadow:  0px 7px 19px rgba(0, 0, 0, 0.1), 0px 6px 9px rgba(0, 0, 0, 0.1);
-    margin: 16px 8px 8px 8px;
+    margin: 16px 8px;
     padding-bottom: 4px;
     width: 800px;
     margin-left: auto;
     border-radius: 4px;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 20px;
     .comment-info {
       display: flex;
       justify-content: space-between;
@@ -76,7 +132,6 @@
 
 .new-comment {
   // background-color: $t-pink;
-  box-shadow:  0px 7px 19px rgba(0, 0, 0, 0.1), 0px 6px 9px rgba(0, 0, 0, 0.1);
   margin: 16px 8px 8px 8px;
   padding: 16px;
   width: 800px;
@@ -90,6 +145,11 @@
   .form-group {
     margin: 0;
   }
+}
+
+.comment-details {
+  margin-right: 3%;
+  margin-left: 3%;
 }
 
 

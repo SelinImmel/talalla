@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     member do
       get 'show_all_comments'
+      get 'show_less_comments'
     end
   end
 

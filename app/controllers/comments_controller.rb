@@ -5,10 +5,18 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.post = @post
-    @comment.save
-    # @studio = current_user.studio # @comment.post.category.studio
 
-    redirect_to community_path(current_user.studio)
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to community_path(current_user.studio) }
+        format.js  # <-- will render `app/views/comments/create.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render 'sutdios/community' }
+        format.js  # <-- idem
+      end
+    end
   end
 
   private

@@ -1,1 +1,2 @@
 document.querySelector(`#allComment${<%= @post.id %>}`).innerHTML = "<%= j render partial: 'studios/comments', locals: { comments: @post.comments.all} %>"
+document.querySelector("#see-comment-options<%= @post.id %>").innerHTML = "<%= j link_to 'see less comments...', show_less_comments_post_path(@post), remote: true %>"
