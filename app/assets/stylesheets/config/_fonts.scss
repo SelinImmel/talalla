@@ -1,9 +1,10 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Raleway:300,500&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,700&display=swap');
 // Define fonts for body and headers
 $body-font: 'Montserrat', sans-serif;
-$headers-font: 'Raleway', sans-serif;
+$headers-font: 'Muli', sans-serif;
 
 body{
   color: $t-gray !important;
