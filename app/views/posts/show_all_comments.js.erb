@@ -1,3 +1,1 @@
-const allComment = document.querySelector('#allComment')
-
-allComment.innerHTML = "<%= j render partial: 'studios/comments', locals: { comments: @post.comments.all} %>"
+document.querySelector(`#allComment${<%= @post.id %>}`).innerHTML = "<%= j render partial: 'studios/comments', locals: { comments: @post.comments.all} %>"
