@@ -96,6 +96,19 @@ l = Lesson.create!(
   )
 
 Lesson.create!(
+  name: 'Hatha',
+  location: 'Room 1',
+  content: 'A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!',
+  slots: 20,
+  start_time: "08:00",
+  end_time: "09:00",
+  start_date: "14.06.2019",
+  occurrence: 10,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
   name: 'Hatha beginner',
   location: 'Room 2',
   content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
@@ -107,6 +120,20 @@ Lesson.create!(
   user_id: t.id,
   studio_id: s.id
   )
+
+Lesson.create!(
+  name: 'Hatha beginner',
+  location: 'Room 2',
+  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
+  slots: 10,
+  start_time: "08:00",
+  end_time: "09:00",
+  start_date: "15.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
 
 puts 'Creating a subscription..'
 subs = Subscription.create!(
