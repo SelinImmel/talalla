@@ -1,35 +1,70 @@
 <div class="container">
+  <div class="main-container">
+    <div class="left-pannel">
+      <p>I am the left pannel</p>
+      <h1>Upcoming classes at <%= @studio.name %></h1>
+      <div class="first-card">
+        <p>I am the first card.<br>I will be displaying the upcoming classes at the <%= @studio.name %>.<br>We will see whether display: flex; is the best choice for me.</p>
+      </div>
+    </div>
+
+    <div class="right-pannel">
+      <p>I am the right pannel</p>
+      <h1><%= @studio.name %>: an overview</h1>
+      <div class="third-card d-flex justify-content-around">
+        <div class="stats">
+          <%= link_to do %>
+            <h2>XX</h2> <br>
+            <p>and here</p>
+          <% end %>
+        </div>
+        <div class="stats">
+          <h2>XX</h2> <br>
+          <p>and here</p>
+        </div>
+        <div class="stats">
+          <h2>XX</h2> <br>
+          <p>and here</p>
+        </div>
+        <div class="stats">
+          <h2>XX</h2> <br>
+          <p>and here</p>
+        </div>
+      </div>
+      <div class="third-card">
+        <p>I am also a third card<br>editing options with icons will be displayed in here</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--   <hr>
+  <%#= link_to "Your students", students_path%>
   <br>
-  <h1>Admin dashboard</h1>
   <br>
-  <h3>Welcome <%= current_user.first_name%>! </h3>
-  <p><strong>Manage your yoga studio</strong></p>
-  <hr>
-  <%= link_to "Your students", students_path%>
+  <%#= link_to "Your teachers", teachers_path%>
+  <%#= link_to "Add", new_teacher_path%>
   <br>
   <br>
-  <%= link_to "Your teachers", teachers_path%>
-  <%= link_to "Add", new_teacher_path%>
+  <%#= link_to "Your subscriptions", studio_subscriptions_path(current_user.studio_id)%>
+  <%#= link_to "Add", new_studio_subscription_path(current_user.studio_id)%>
   <br>
   <br>
-  <%= link_to "Your subscriptions", studio_subscriptions_path(current_user.studio_id)%>
-  <%= link_to "Add", new_studio_subscription_path(current_user.studio_id)%>
+  <%#= link_to "Your lessons", studio_lessons_path(current_user.studio_id)%>
+  <%#= link_to "Add", new_lesson_path%>
   <br>
   <br>
-  <%= link_to "Your lessons", studio_lessons_path(current_user.studio_id)%>
-  <%= link_to "Add", new_lesson_path%>
+  <%#= link_to "Your events", studio_events_path(current_user.studio_id)%>
+  <%#= link_to "Add", new_studio_event_path(current_user.studio_id)%>
   <br>
   <br>
-  <%= link_to "Your events", studio_events_path(current_user.studio_id)%>
-  <%= link_to "Add", new_studio_event_path(current_user.studio_id)%>
-  <br>
-  <br>
-  <%= link_to "Your studio", studio_path(current_user.studio_id)%>
-  <%= link_to "change studio details", edit_studio_path(current_user.studio_id)%>
+  <%#= link_to "Your studio", studio_path(current_user.studio_id)%>
+  <%#= link_to "change studio details", edit_studio_path(current_user.studio_id)%>
 
   <hr>
-  <p><%=  link_to "all orders", orders_path %>
+  <p><%#=  link_to "all orders", orders_path %>
 
   </p>
-  <hr>
-</div>
+  <hr> -->
