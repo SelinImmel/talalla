@@ -1,7 +1,8 @@
-<div class="container studio-container">
-  <div class="studio-left-container">
-    <div class="lessons-container">
+<div class="container main-container">
+  <div class="left-pannel">
+    <div class="first-card">
       <h2>Upcomming lessons</h2>
+      <hr>
       <%#= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
         <!-- can the two days be displayed in the simple calender with the option of scrolling to future dates? -->
         <%#= calendar number_of_days: 1 do |date| %>
@@ -9,14 +10,12 @@
 
         <% if @lessons.exists? %>
           <% @lessons = Lesson.where(start_date: Date.today) %>
-            <h3>List of todays lessons - <%= Date.today.to_formatted_s(:short) %></h3>
+            <div><%= Date.today.to_formatted_s(:short) %></div>
           <% end %>
           <% @lessons.each do |l| %>
             <%= link_to l.name, lesson_path(l.id) %>
             <%= l.location %>
             <%= l.content %>
-            <%= l.slots %>
-            <hr>
           <% end %>
 
         <% if @lessons.exists? %>
@@ -32,28 +31,27 @@
           <% end %>
     </div>
   </div>
-  <div class="studio-right-container">
-    <div class="teacher-container">
+
+  <div class="right-pannel">
+    <div class="second-card-studio">
       <h2>Our teachers</h2>
-      <div class="teachers">
+      <hr>
+      <div class="teacher-cards">
         <% users = User.where(is_teacher: true) %>
         <% users.each_with_index do |u, index| %>
           <!-- if index === 1 then add id="highlight" -->
-          <div class="teacher-cards">
-            <div class="teacher-avatar"><%= cl_image_tag u.photo, width: 64, height: 64, gravity: "face", radius: "max", crop: "thumb" %>
-              </div>
-              <div class="teacher-name"><%= u.first_name %>
-              </div>
-              <div class="teacher-bio"><%= u.biography %>
-              </div>
-          </div>
+          <div class="teacher-card">
+            <div class="avatar-large"><%= cl_image_tag u.photo, width: 64, height: 64, gravity: "face", radius: "max", crop: "thumb" %></div>
+            <div class="teacher-name"><%= u.first_name %></div>
         <% end %>
+          </div>
       </div>
     </div>
 
         <%#= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-  <div class="event-container">
+  <div class="third-card">
     <h2>Upcomming events</h2>
+    <hr>
     <div class="events">
       <% @events.each do |e| %>
         <div class="event-card">

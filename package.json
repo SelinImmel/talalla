@@ -1,5 +1,5 @@
 {
-  "name": "talalla",
+  "name": "talla",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.0.6",
