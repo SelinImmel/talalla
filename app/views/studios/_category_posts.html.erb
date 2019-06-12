@@ -1,5 +1,5 @@
-  <div class="community m-2">
-    <div class="conversations">
+  <div class="community">
+    <div class="">
 
       <div class="channel-info">
         <div class="title-add-post d-flex justify-content-between">
@@ -23,20 +23,28 @@
             </div>
           </div>
         </div>
-        <p><b>Description:</b> <%= category.description %></p>
+        <p><b>About:</b> <%= category.description %></p>
       </div>
 
     <% category.posts.each do |post| %>
         <div class="accordion" id="accordionExample<%= post.id %>">
           <div class="post" id="heading<%= post.id %>">
-            <div class="post-info" data-toggle="collapse" data-target="#collapse<%= post.id %>">
-              <div class="post-info-left">
-                <p><%= post.user.first_name %> <%= post.user.last_name %></p>
-                <h2><b><%= post.title %></b></h2>
+            <div data-toggle="collapse" data-target="#collapse<%= post.id %>">
+              <div class="post-info">
+                <div class="post-info-left">
+                  <p><%= post.created_at.to_formatted_s(:long_ordinal) %></p>
+                  <h2><%= post.title %></h2>
+                </div>
+                <div class="post-info-right">
+                  <%= cl_image_tag post.user.photo, class: "avatar" %>
+                  <p><%= post.user.first_name %> <%= post.user.last_name %></p>
+                </div>
               </div>
-              <%= cl_image_tag post.user.photo, class: "avatar" %>
+              <p><%= post.content %></p>
+              <% if post.comments.exists? %>
+                <p class="more">Show comments</p>
+              <% end %>
             </div>
-            <p><%= post.content %></p>
           </div>
           <div id="collapse<%= post.id %>" class="collapse" aria-labelledby="heading<%= post.id %>" data-parent="#accordionExample<%= post.id %>">
             <% if post.comments.count > 2 %>
@@ -46,11 +54,11 @@
               <%= render partial: 'comments', locals: { comments: post.comments.last(2)} %>
             </div>
             <div class="new-comment">
-              <!-- d-flex the submit button next to form input field -->
               <%= render 'comments/form_for_comment', post: post %>
             </div>
           </div>
         </div>
+        <hr>
       <% end %>
     </div>
   </div>

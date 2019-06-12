@@ -1,0 +1,22 @@
+// Here you generate *JavaScript* that would be executed in the browser
+console.log('yay')
+
+function refreshForm(innerHTML) {
+}
+
+function addComment(commentHTML) {
+  const comment = document.getElementById('allComment');
+  console.log(comment)
+  // comment.innerHTML = commentHTML
+  comment.insertAdjacentHTML('beforeend', commentHTML);
+}
+
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "comments/form_for_comment", post: @post %>');
+<% else %>
+  // refreshForm("");
+  newCommentForm = document.querySelector('#new_comment');
+  newCommentForm.reset();
+  addComment("<%= j render partial: 'studios/comments', locals: { comments: @post.comments.last(1)} %>");
+<% end %>

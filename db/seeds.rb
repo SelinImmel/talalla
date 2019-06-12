@@ -31,7 +31,7 @@ s = Studio.create!(
   )
 
 puts 'Creating an admin...'
-User.create!(
+a = User.create!(
   first_name: 'Selin',
   last_name: 'Immel',
   email: 'selin.immel@gmail.com',
@@ -94,8 +94,6 @@ o = User.create!(
   password: '123456',
   studio_id: s.id
   )
-
-
 
 puts 'Creating a lesson...'
 l = Lesson.create!(
@@ -236,9 +234,17 @@ Note.create!(
   date: Date.today
   )
 
-puts 'Creating a channel-category...'
-c = Category.create!(
+puts 'Creating the default studio-announcements-channel'
+ya = Category.create!(
   user_id: u.id,
+  title: 'Studio News',
+  description: 'All general studio announcements will be made via this channel so make sure to log in regularly 🧘🏻‍♀️🧘🏽‍♂️',
+  studio_id: s.id
+  )
+
+puts 'Creating a second channel-category...'
+c = Category.create!(
+  user_id: a.id,
   title: 'Mysore',
   description: 'Exchange about mysore-techniques and a safe-space for questions',
   studio_id: s.id
@@ -251,6 +257,15 @@ p = Post.create!(
   title: 'My Mysore tips and tricks',
   content: 'MYSORE STYLE is a particular way of teaching yoga within the tradition of Ashtanga Yoga as taught by Sri K. Pattabhi Jois in Mysore, India. In this class everyone practices at their own pace, with assistance and adjustment from the teacher. The support is given to each student individually but within a group of people practicing together. Each student memorizes the sequence of asana (postures) to follow and new poses are progressively added to it when a student is ready. In Mysore style one begins learning slowly, respecting the limitations of the body and focusing on the breathing. The time of the class is the time it takes you to practice. Your first practice may only be about 30-45 min, while for someone more experienced it can take up to 1 h and 45 minutes. The entry to Mysore class is flexible, people start and finish at different times.'
   )
+
+puts 'Creating a studio announcement'
+Post.create!(
+  user_id: a.id,
+  category_id: ya.id,
+  title: 'Hatha class 30mins later on Monday, 17.06.',
+  content: 'Please remember that next weeks Hatha class will start 30 minutes later due to the extended meditation session. If you are able to come by the studio at 4pm already you are more than welcome to join the meditation lesson plus the regular Hatha class.
+  In case of any questions, please comment 😊'
+)
 
 puts 'Creating a comment...'
 Comment.create!(

@@ -1,9 +1,11 @@
 <% comments.each do |comment| %>
     <div class="comment">
-      <div class="comment-info">
-        <p><b><%= comment.user.first_name %> <%= comment.user.last_name %></b></p>
-        <%= cl_image_tag comment.user.photo, class: "avatar" %>
+      <div class="comment-details">
+        <div class="comment-info">
+          <p><b><%= comment.user.first_name %> <%= comment.user.last_name %></b></p>
+          <%= cl_image_tag comment.user.photo, class: "avatar" %>
+        </div>
+        <p><%= comment.content %></p>
       </div>
-      <p><%= comment.content %></p>
     </div>
   <% end %>
