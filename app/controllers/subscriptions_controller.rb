@@ -17,6 +17,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscr_params)
     authorize @subscription
     @subscription.studio = @studio
+    @subscription.subscription_sku = @subscription.name
     if @subscription.save
       redirect_to studio_subscriptions_path(@studio)
     else
@@ -52,6 +53,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscr_params
-    params.require(:subscription).permit(:name, :content, :amount, :package_size, :durability)
+    params.require(:subscription).permit(:name, :content, :amount, :package_size, :durability, :payment_option)
   end
 end

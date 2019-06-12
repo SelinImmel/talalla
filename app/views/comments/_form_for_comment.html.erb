@@ -1,4 +1,6 @@
 <%= simple_form_for [post, Comment.new] do |f| %>
-  <%= f.input :content, label: false, placeholder: 'Type your comment here...' %>
-  <%= f.submit 'comment', class: "btn btn-outline-primary btn-sm" %>
+  <div class="d-flex">
+    <%= f.input :content, label: false, placeholder: 'Type your comment here...', style: "height: 32px;" %>
+    <%= f.submit 'comment', class: "btn btn-outline-primary btn-sm ml-2", style: "height: 32px;" %>
+  </div>
 <% end %>

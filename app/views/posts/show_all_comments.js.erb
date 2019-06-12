@@ -1,0 +1,1 @@
+document.querySelector(`#allComment${<%= @post.id %>}`).innerHTML = "<%= j render partial: 'studios/comments', locals: { comments: @post.comments.all} %>"

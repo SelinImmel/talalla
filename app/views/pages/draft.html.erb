@@ -1,0 +1,47 @@
+<!-- to add to the left panel -->
+  <div class="my-classes">
+      <div class="title-class">
+        <h2>My upcoming classes</h2>
+      </div>
+      <div class="table-class">
+        <% if !Booking.where(user_id: current_user).empty? %>
+          <ul>
+            <li>
+              <%= current_user.bookings.last.created_at.to_formatted_s(:rfc822) %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+      <%# if !@available_usage || !@date_validity %>
+    </div>
+  </div>
+<!-- to add to the left panel -->
+
+
+
+    <div class="title-calendar">
+    <h2>My calendar / diary </h2>
+    </div>
+    <div class="calendar-button">
+    <p> <%= link_to "Add note", new_note_path%></p>
+    </div>
+    <div class="calendar">
+      <div class="w-99">
+        <%= month_calendar(events: current_user.notes, attribute: :date) do |date, notes| %>
+          <%= date.day %>
+          <% if Note.where(date: date.to_datetime, user: current_user).exists? %>
+            <%= link_to notes_path(date: date), remote: true do  %>
+              <i class="fas fa-sticky-note" style="
+                color: #6d8092"></i>
+            <% end %>
+          <% end %>
+          <% if Booking.where(date: date.to_datetime, user: current_user).exists? %>
+            <div class="booked_lesson"></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="notes">
+      <h2>Notes</h2>
+    </div>
+  </div>

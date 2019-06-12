@@ -1,16 +1,55 @@
-<div class="background">
-  <div class="container entrance">
-    <h1 class="text-center"><%= image_tag "https://image.flaticon.com/icons/png/512/129/129728.png", style: "height: 6rem" %></h1>
-    <h1 class="text-center">talalla</h1>
-    <h5 class="text-center">- connect beyond the mat - </h5>
 
-    <div class="buttons d-flex">
-      <%= link_to 'Yogi space', personal_dashboard_path, class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
-      <%= link_to 'Shala space', studio_path(current_user.studio), class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
-      <%= link_to 'Community space', community_path(current_user.studio), class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
-      <% if current_user.is_admin? %>
-        <%= link_to 'Admin space', admin_dashboard_path, class: "btn btn-primary btn-sm m-2 flex-grow-1" %>
+<div class="background" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= asset_url('white-door.jpg') %>)">
+    <h1 class="logo-shala"><%= image_tag "logo_MysoreZurich", style: "height: 4rem" %></h1>
+    <hr>
+  <div class="container">
+  <div class="container entrance">
+
+    <div class="spaces">
+      <div class="spaces-each">
+      <%= link_to community_path(current_user.studio) do %>
+      <%= image_tag "Yoga-icon-community", style: "height: 14rem" %>
       <% end %>
+      <p>Connect with our <strong>community</strong> beyond the mat</p>
+      </div>
+
+       <div class="spaces-each">
+      <%= link_to personal_dashboard_path do %>
+        <%= image_tag "Yoga-icon-yogi", style: "height: 14rem" %>
+      <% end %>
+        <p>See your <strong>personal</strong> development</p>
+      </div>
+
+      <div class="spaces-each">
+      <%= link_to studio_path(current_user.studio) do %>
+        <%= image_tag "Yoga-icon-shala", style: "height: 14rem" %>
+        <% end %>
+      <p>Explore our yoga studio <strong>schedule</strong> and more</p>
+      </div>
+
+      <div class="spaces-each">
+        <% if current_user.is_admin? %>
+        <%= link_to admin_dashboard_path do %>
+          <%= image_tag "Yoga-icon-admin", style: "height: 14rem"%>
+        <% end %>
+        <p>Manage your yoga studio with ease</p>
+        <% end %>
+      </div>
     </div>
   </div>
+    </div>
+    <div class="something">
+      <ul class="list-unstyled-home">
+        <li>
+          <%= link_to root_path, class: "footer-brand" do %>
+          <%= image_tag "logo" %>
+          <% end %>
+        </li>
+        <li>
+          <p><%= link_to "Supported by Talalla",about_us_path %></p>
+        </li>
+        <li>
+          <p >©2019</p>
+        </li>
+      </ul>
 </div>

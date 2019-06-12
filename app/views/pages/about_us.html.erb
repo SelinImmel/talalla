@@ -1,1 +1,28 @@
-<h1>About us</h1>
+
+<div class="background-about">
+  <div class="container">
+   <div class="container-about">
+
+      <div class="left-side">
+          <div class="logo-about">
+          <%= image_tag "logo", style: "height: 8rem" %>
+          </div>
+          <h1 class="text-center">Talalla</h1>
+      </div>
+
+
+      <div class="right-side">
+        <p>A simple yoga studio management app with a strong focus on community building</p>
+        <div class="photos-about">
+          <%= image_tag "about-nico.jpeg", class: "avatar-large-about mx-2"%>
+          <%= image_tag "about-richard.jpeg", class: "avatar-large-about mx-2"%>
+          <%= image_tag "about-selin.jpeg", class: "avatar-large-about mx-2"%>
+          <%= image_tag "about-alina.jpeg", class: "avatar-large-about mx-2"%>
+        </div>
+      </div>
+      <div class="back-button-about">
+      <%= link_to "Back", root_path %>
+      </div>
+    </div>
+  </div>
+</div>
