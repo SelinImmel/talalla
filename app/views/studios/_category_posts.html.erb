@@ -1,64 +1,64 @@
-  <div class="community">
-    <div class="">
+<div class="community">
+  <div class="channel-info">
+    <div class="title-add-post d-flex justify-content-between">
+      <h1><b><%= category.title %></b></h1>
+      <!-- button to open modal (add post to category) -->
+      <a data-toggle="modal" data-target="#myModal" title="add a post to this channel"><i class="fas fa-plus add-button"></i></a>
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-      <div class="channel-info">
-        <div class="title-add-post d-flex justify-content-between">
-          <h1><b><%= category.title %></b></h1>
-          <!-- button to open modal (add post to category) -->
-          <a data-toggle="modal" data-target="#myModal" title="add a post to this channel"><i class="fas fa-plus add-button"></i></a>
-          <!-- Modal -->
-          <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h2 class="text-center">Add a post about <%= category.title %></h2>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                  <%= render 'posts/form_for_post', category: category %>
-                </div>
-              </div>
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="text-center">Add a post about <%= category.title %></h2>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <%= render 'posts/form_for_post', category: category %>
             </div>
           </div>
         </div>
-        <p><b>About:</b> <%= category.description %></p>
       </div>
-
-    <% category.posts.each do |post| %>
-        <div class="accordion" id="accordionExample<%= post.id %>">
-          <div class="post" id="heading<%= post.id %>">
-            <div data-toggle="collapse" data-target="#collapse<%= post.id %>">
-              <div class="post-info">
-                <div class="post-info-left">
-                  <p><%= post.created_at.to_formatted_s(:long_ordinal) %></p>
-                  <h2><%= post.title %></h2>
-                </div>
-                <div class="post-info-right">
-                  <%= cl_image_tag post.user.photo, class: "avatar" %>
-                  <p><%= post.user.first_name %> <%= post.user.last_name %></p>
-                </div>
-              </div>
-              <p><%= post.content %></p>
-              <% if post.comments.exists? %>
-                <p class="more">Show comments</p>
-              <% end %>
-            </div>
-          </div>
-          <div id="collapse<%= post.id %>" class="collapse" aria-labelledby="heading<%= post.id %>" data-parent="#accordionExample<%= post.id %>">
-            <% if post.comments.count > 2 %>
-              <%= link_to "see all comments...", show_all_comments_post_path(post), remote: true %>
-            <% end %>
-            <div id="allComment">
-              <%= render partial: 'comments', locals: { comments: post.comments.last(2)} %>
-            </div>
-            <div class="new-comment">
-              <%= render 'comments/form_for_comment', post: post %>
-            </div>
-          </div>
-        </div>
-        <hr>
-      <% end %>
     </div>
+    <p><b>About:</b> <%= category.description %></p>
   </div>
+
+<% category.posts.order("created_at desc").each do |post| %>
+    <div class="accordion" id="accordionExample<%= post.id %>">
+      <div class="post" id="heading<%= post.id %>">
+        <div data-toggle="collapse" data-target="#collapse<%= post.id %>">
+          <div class="post-info">
+            <div class="post-info-left">
+              <p><%= post.created_at.to_formatted_s(:long_ordinal) %></p>
+              <h2><%= post.title %></h2>
+            </div>
+            <div class="post-info-right">
+              <%= cl_image_tag post.user.photo, class: "avatar" %>
+              <p><%= post.user.first_name %> <%= post.user.last_name %></p>
+            </div>
+          </div>
+          <p><%= post.content %></p>
+          <% if post.comments.exists? %>
+            <p class="more">Show comments</p>
+          <% end %>
+        </div>
+      </div>
+      <div id="collapse<%= post.id %>" class="collapse" aria-labelledby="heading<%= post.id %>" data-parent="#accordionExample<%= post.id %>">
+        <div id="see-comment-options<%= post.id %>">
+        <% if post.comments.count > 2 %>
+          <%= link_to "see all comments...", show_all_comments_post_path(post), remote: true %>
+          <%#= link_to "see less comments...", show_less_comments_post_path(post), remote: true %>
+        <% end %>
+        </div>
+        <div id="allComment<%= post.id %>">
+          <%= render partial: 'comments', locals: { comments: post.comments.last(2)} %>
+        </div>
+        <div class="new-comment" id="new_comment<%= post.id %>">
+          <%= render 'comments/form_for_comment', post: post %>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>
