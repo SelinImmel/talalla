@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     @note = Note.new
     @orders = @user.orders
     buy_subscription?
+    @booking_dates = Booking.where(user_id: current_user).map(&:lesson).map(&:start_date).uniq
   end
 
   def admin_dashboard
