@@ -4,45 +4,58 @@
   background-color: white;
   box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
   padding: 16px;
+  height: 480px;
+  overflow: scroll;
 }
 
 .teacher-cards {
-  display: flex;
   justify-content: space-around;
-  text-align: center;
+  margin-top: 16px;
 }
 
 .teacher-card {
-  display: flex;
-  flex-direction: column;
-  .avatar-large img {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
+  display:flex;
+  justify-content: space-between;
+  height: 120px;
+}
 
+.avatar-large-studio {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
   }
+
+.teacher-bio {
+ height: 123px;
+ overflow: scroll;
+width: 400px;
 }
 
 .teacher-name {
-  margin-top: 8px;
+  margin: 8px;
+  p {
+    text-align: center;
+    padding-top: 8px;
+  }
 }
 
 .event-cards {
   display: flex;
   justify-content: center;
   justify-content: space-between;
-
+  overflow-y: scroll;
+  margin-top: 24px;
 }
 
 .event-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid rgb(235,235,235);
-
   margin: 0px 8px;
+  padding: 16px;
 }
 
 .event-title {

@@ -14,7 +14,7 @@
           <hr>
         <p><%= current_user.address %> <br>
         <%= current_user.email %></p>
-        <p>About you: </p>
+        <div class="description-talalla-bio"><strong>About you: </strong><%= current_user.biography %></div>
       </div>
     </div>
     <div class="second-card">
@@ -50,29 +50,30 @@
   </div>
 
   <div class="right-pannel">
-    <div class="third-card">
-      <h2> My current   subscription:</h2>
-      <hr>
-      <div class="my-subscription-container">
-          <% current_user.user_plans.each do |user_plan| %>
-            <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
-            <% if left_usage > 0 && user_plan.end_date > Date.today %>
-              <b><%= left_usage %></b> / <b><%= user_plan.order.subscription.name %></b> remaining
-              <br>Valid from <%= user_plan.start_date.to_formatted_s(:rfc822) %> to <%= user_plan.end_date.to_formatted_s(:rfc822) %>
+      <div class="div-sub">
+        <h1> My current   subscription:</h1>
+        <div class="my-subscription-container">
+            <% current_user.user_plans.each do |user_plan| %>
+              <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
+              <% if left_usage > 0 && user_plan.end_date > Date.today %>
+                <b><%= left_usage %></b> / <b><%= user_plan.order.subscription.name %></b> remaining
+                <br>Valid from <%= user_plan.start_date.to_formatted_s(:rfc822) %> to <%= user_plan.end_date.to_formatted_s(:rfc822) %>
+              <% end %>
             <% end %>
+
+        </div>
+
+
+      <div class="third-card-personal">
+        <div class="subscription-cards">
+          <% @subscriptions.each do |subscription| %>
+            <div class="subscription-card">
+             <%= subscription.name.upcase %> <br> <%= subscription.content %>
+              <div>
+              <%= link_to 'Buy', orders_path(subscription_id: subscription), method: :post, class: 'btn btn-primary btn-sm' %> </div>
+            </div>
           <% end %>
-
-      </div>
-
-
-      <div class="subscription-cards">
-        <% @subscriptions.each do |subscription| %>
-          <div class="subscription-card text-center">
-           <%= subscription.name.upcase %>:<br> <%= subscription.content %>
-            <div>
-            <%= link_to 'Buy  ', orders_path(subscription_id: subscription), method: :post, class: 'btn btn-primary btn-sm' %> </div>
-          </div>
-        <% end %>
+        </div>
       </div>
     </div>
 
