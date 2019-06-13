@@ -1,5 +1,7 @@
-<div class="container">
-  <h2>Edit your event</h2>
+<div class="forms-container">
+  <div class="form-header">
+    <h1>Edit your event</h1>
+    <%= link_to "Back", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm" %>
+  </div>
   <%= render "form_for_event"%>
-  <%= link_to "Back", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm" %>
 </div>
