@@ -1,36 +1,49 @@
 <div class="container">
+  <div class="lessons-header">
+    <h1>Our lessons</h1>
+    <% if policy(Lesson).create? %>
+      <%= link_to "Add new lesson", new_lesson_path(@lesson), class: "btn btn-primary rounded" %>
+    <% end %>
+  </div>
 
-  <h2>Show lessons index</h2>
-  <hr>
-  <p>All lessons</p>
-  <% if policy(Lesson).create? %>
-    <%= link_to "Add new lesson", new_lesson_path(@lesson), class: "btn btn-outline-primary btn-sm" %>
-  <% end %>
-  <hr>
   <% @lessons.each do |l| %>
-    <p><b>Name: </b>       <%= link_to l.name, lesson_path(l.id) %></p>
-    <p><b>Room: </b>       <%= l.location %></p>
-    <p><b>Description: </b><%= l.content %></p>
-    <p><b>Slots: </b>     <%= l.slots - l.bookings.size %></p>
-    <p><b>Time: </b> <%= l.start_time.to_formatted_s(:time) %> - <%= l.end_time.to_formatted_s(:time) %></p>
-    <p><b>Date: </b>        <%= l.start_date.to_formatted_s(:rfc822) %></p>
-    <p><b>Teacher: </b>       <%= l.user.first_name %></p>
+    <div class="lessons-card card">
+      <div class="lesson-card-header d-flex justify-content-between">
+        <h2><b><%= link_to l.name, lesson_path(l.id) %></b></h2>
+        <div class="lesson-buttons">
+          <% if policy(Lesson).destroy? %>
+            <%= link_to "Delete", lesson_path(l.id), class: "btn btn-outline-primary btn-sm", method: :delete %>
+          <% end %>
+          <% unless current_user.user_plans.empty? %>
+            <% if (l.slots - l.bookings.size) > 0 && (current_user.user_plans.last.left_usage - current_user.bookings.size) > 0 && current_user.user_plans.last.end_date > Date.today %>
+              <%= link_to "Book", lesson_bookings_path(l.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
+            <% end %>
 
-    <% if policy(Lesson).destroy? %>
-      <%= link_to "Delete", lesson_path(l.id), class: "btn btn-outline-primary btn-sm", method: :delete %>
-    <% end %>
-    <% unless current_user.user_plans.empty? %>
-      <% if (l.slots - l.bookings.size) > 0 && (current_user.user_plans.last.left_usage - current_user.bookings.size) > 0 && current_user.user_plans.last.end_date > Date.today %>
-        <%= link_to "Book", lesson_bookings_path(l.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
+          <% else %>
+            <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm"%>
+
+            <%= link_to "Pay cash at studio", lesson_bookings_path(l.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post %>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to lesson_path(l.id), class: "lesson-card-link" do %>
+        <div class="lesson-card-body d-flex">
+          <div class="basic-info-lesson">
+            <p><%= l.start_date.to_formatted_s(:rfc822) %>,</p>
+            <p><%= l.start_time.to_formatted_s(:time) %> - <%= l.end_time.to_formatted_s(:time) %></p>
+          </div>
+          <div class="more-info-lesson">
+              <p><b>What to expect:</b> <%= l.content %> A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!  A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!  A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! </p>
+          </div>
+        </div>
       <% end %>
-
-    <% else %>
-      <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm"%>
-
-      <%= link_to "Pay cash at studio", lesson_bookings_path(l.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post %>
-    <% end %>
-    <hr>
+    </div>
   <% end %>
-  <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-  <hr>
+  <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm mb-4" %>
 </div>
+
+
+
+<!-- <p>Teacher: <%#= l.user.first_name %></p>
+<p><b>Where:</b> <%#= l.location %></p>
+<p><b>Available slots:</b> <%#= l.slots - l.bookings.size %></p> -->
