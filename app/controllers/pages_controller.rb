@@ -18,7 +18,8 @@ class PagesController < ApplicationController
     @teachers = @users.where(is_teacher: true)
     @students = @users.where(is_teacher: false).where(is_admin: false)
     @lessons = Lesson.where(studio: current_user.studio)
-    # @subscriptions = Subscription.where(studio: current_user.studio)
+    @studio = current_user.studio
+    @subscriptions = current_user.studio.subscriptions
   end
 
   def students_index

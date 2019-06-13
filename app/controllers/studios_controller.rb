@@ -1,3 +1,4 @@
+
 class StudiosController < ApplicationController
   include Pundit
   after_action :verify_authorized, except: [:index, :show, :community], unless: :skip_pundit?
@@ -18,9 +19,11 @@ class StudiosController < ApplicationController
   end
 
   def edit
+    authorize @studio
   end
 
   def update
+    authorize @studio
     @studio.update(studio_params)
     if @studio.save
       redirect_to admin_dashboard_path
