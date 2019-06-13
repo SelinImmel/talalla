@@ -1,25 +1,29 @@
 <div class="container">
-  <h1>This is the event show page</h1>
-    <br>
-    ------------------------------------------
+  <div class="lesson-show-header d-flex justify-content-between">
+    <div class="lesson-show-header-left">
+      <h1><%= @event.title %></h1>
+      <p><%= @event.date.to_formatted_s(:rfc822) %></p>
+    </div>
+    <div class="lesson-show-header-right">
+      <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-100" %>
+    </div>
+  </div>
 
-      <br>
-      <br> <p><b>Title:</b>       <%= @event.title %></p>
-      <br> <p><b>Date:</b>        <%= @event.date %></p>
-      <br> <p><b>Description:</b> <%= @event.content %></p>
+  <div class="event-show-body d-flex">
+    <div class="event-show-body-left">
       <%= cl_image_tag @event.photo, height: 300, width: 400, crop: :fill %>
+    </div>
+    <div class="event-show-body-right">
+      <p><%= @event.content %> Meet our new visiting ashtanga yoga expert and profit from her extraordinary teaching techniques directly from India. Meet our new visiting ashtanga yoga expert and profit from her extraordinary teaching techniques directly from India. Meet our new visiting ashtanga yoga expert and profit from her extraordinary teaching techniques directly from India. Meet our new visiting ashtanga yoga expert and profit from her extraordinary teaching techniques directly from India. </p>
+    </div>
+  </div>
+  <div class="admin-buttons">
+    <% if policy(@event).edit? %>
+      <%= link_to "Edit event", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm m-2" %>
+    <% end %>
 
-  <br>------------------------------------------
-  <% if policy(@event).edit? %>
-    <%= link_to "Edit", edit_studio_event_path(@studio, @event),class: "btn btn-outline-primary btn-sm" %>
-  <% end %>
-
-  <% if policy(@event).destroy? %>
-    <%= link_to "Delete", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>
-  <% end %>
-  <br>
-
-  <%= link_to "Back to event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-
-  <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+    <% if policy(@event).destroy? %>
+      <%= link_to "Delete event", studio_event_path(@studio, @event), class: "btn btn-outline-primary btn-sm", method: :delete %>
+    <% end %>
+  </div>
 </div>
