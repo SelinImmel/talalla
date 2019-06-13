@@ -3,9 +3,9 @@
     <div class="title-add-post d-flex justify-content-between">
       <h1><%= category.title %></h1>
       <!-- button to open modal (add post to category) -->
-      <a data-toggle="modal" data-target="#myModal" title="add a post to this channel"><i class="fas fa-plus add-button"></i></a>
+      <a data-toggle="modal" data-target="#myModal-<%= category.id %>" title="add a post to this channel"><i class="fas fa-plus add-button"></i></a>
       <!-- Modal -->
-      <div id="myModal" class="modal fade" role="dialog">
+      <div id="myModal-<%= category.id %>" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
           <!-- Modal content-->
@@ -39,17 +39,13 @@
             </div>
           </div>
           <p><%= post.content %></p>
-          <% if post.comments.exists? %>
-            <p class="more">Show comments</p>
-          <% end %>
         </div>
       </div>
       <div id="collapse<%= post.id %>" class="collapse" aria-labelledby="heading<%= post.id %>" data-parent="#accordionExample<%= post.id %>">
-        <div id="see-comment-options<%= post.id %>">
-        <% if post.comments.count > 2 %>
-          <%= link_to "see all comments...", show_all_comments_post_path(post), remote: true %>
-          <%#= link_to "see less comments...", show_less_comments_post_path(post), remote: true %>
-        <% end %>
+        <div id="see-comment-options<%= post.id %>" style="text-align: right; padding-right: 40px;">
+          <% if post.comments.count > 2 %>
+            <%= link_to "see all comments...", show_all_comments_post_path(post), remote: true, class: "all-comments-link" %>
+          <% end %>
         </div>
         <div id="allComment<%= post.id %>">
           <%= render partial: 'comments', locals: { comments: post.comments.last(2)} %>
