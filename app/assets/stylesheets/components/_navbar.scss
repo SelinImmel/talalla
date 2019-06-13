@@ -1,12 +1,28 @@
+.navbar {
+  color: $green;
+}
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: $t-blue;
+  background: $t-white;
+  border-bottom: solid 2px $green;
+  padding-bottom: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
+
 .navbar-brand img {
-  width: 40px;
+  width: 140px;
 }
 
+.navbar-icon-text {
+  text-align: center;
+  &:hover {
+    text-decoration: none;
+  }
+  .navbar-icon {
+    height: 40px;
+  }
+}
