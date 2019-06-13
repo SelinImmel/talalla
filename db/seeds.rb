@@ -205,12 +205,39 @@ Lesson.create!(
   )
 
 Lesson.create!(
+  name: 'Power',
+  location: 'Room 1',
+  content: 'Power yoga is used to describe a vigorous, vinyasa-style yoga. It originally closely resembled ashtanga and was an attempt to make ashtanga more accessible to Western students. It differs, however, in that it is not a set series of poses, but rather allows the instructor freedom to teach what they want.',
+  slots: 10,
+  start_time: "15:00",
+  end_time: "16:00",
+  start_date: "14.06.2019",
+  occurrence: 12,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
   name: 'Hatha beginner',
   location: 'Room 2',
   content: 'A softer approach to explore your inner landscape through yoga poses (Asanas), breathing exercises (Pranayama) and meditation.',
   slots: 10,
   start_time: "16:00",
   end_time: "17:00",
+  start_date: "14.06.2019",
+  occurrence: 12,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+
+Lesson.create!(
+  name: 'Iyengar',
+  location: 'Room 2',
+  content: 'In a typical iyengar class, poses are held much longer than in other schools of yoga, in an effort to pay closer attention to the precise musculoskeletal alignment within each asana. Another trademark of iyengar is the use of props, such as blocks, belts, bolsters, chairs and blankets, which are used to accommodate injuries, tightness or structural imbalances, as well as teach the student how to move into a posture properly.',
+  slots: 10,
+  start_time: "18:00",
+  end_time: "19:00",
   start_date: "14.06.2019",
   occurrence: 12,
   user_id: t.id,
@@ -237,32 +264,6 @@ Lesson.create!(
   slots: 10,
   start_time: "20:00",
   end_time: "21:00",
-  start_date: "14.06.2019",
-  occurrence: 12,
-  user_id: t.id,
-  studio_id: s.id
-  )
-
-Lesson.create!(
-  name: 'Power',
-  location: 'Room 1',
-  content: 'Power yoga is used to describe a vigorous, vinyasa-style yoga. It originally closely resembled ashtanga and was an attempt to make ashtanga more accessible to Western students. It differs, however, in that it is not a set series of poses, but rather allows the instructor freedom to teach what they want.',
-  slots: 10,
-  start_time: "15:00",
-  end_time: "16:00",
-  start_date: "14.06.2019",
-  occurrence: 12,
-  user_id: t.id,
-  studio_id: s.id
-  )
-
-Lesson.create!(
-  name: 'Iyengar',
-  location: 'Room 2',
-  content: 'In a typical iyengar class, poses are held much longer than in other schools of yoga, in an effort to pay closer attention to the precise musculoskeletal alignment within each asana. Another trademark of iyengar is the use of props, such as blocks, belts, bolsters, chairs and blankets, which are used to accommodate injuries, tightness or structural imbalances, as well as teach the student how to move into a posture properly.',
-  slots: 10,
-  start_time: "18:00",
-  end_time: "19:00",
   start_date: "14.06.2019",
   occurrence: 12,
   user_id: t.id,
@@ -375,12 +376,38 @@ Lesson.create!(
   )
 
 Lesson.create!(
+  name: 'Power',
+  location: 'Room 1',
+  content: 'Power yoga is used to describe a vigorous, vinyasa-style yoga. It originally closely resembled ashtanga and was an attempt to make ashtanga more accessible to Western students. It differs, however, in that it is not a set series of poses, but rather allows the instructor freedom to teach what they want.',
+  slots: 10,
+  start_time: "15:00",
+  end_time: "16:00",
+  start_date: "16.06.2019",
+  occurrence: 12,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
   name: 'Hatha beginner',
   location: 'Room 2',
   content: 'A softer approach to explore your inner landscape through yoga poses (Asanas), breathing exercises (Pranayama) and meditation.',
   slots: 10,
   start_time: "16:00",
   end_time: "17:00",
+  start_date: "16.06.2019",
+  occurrence: 12,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Iyengar',
+  location: 'Room 2',
+  content: 'In a typical iyengar class, poses are held much longer than in other schools of yoga, in an effort to pay closer attention to the precise musculoskeletal alignment within each asana. Another trademark of iyengar is the use of props, such as blocks, belts, bolsters, chairs and blankets, which are used to accommodate injuries, tightness or structural imbalances, as well as teach the student how to move into a posture properly.',
+  slots: 10,
+  start_time: "18:00",
+  end_time: "19:00",
   start_date: "16.06.2019",
   occurrence: 12,
   user_id: t.id,
@@ -411,44 +438,6 @@ Lesson.create!(
   occurrence: 12,
   user_id: t.id,
   studio_id: s.id
-  )
-
-Lesson.create!(
-  name: 'Power',
-  location: 'Room 1',
-  content: 'Power yoga is used to describe a vigorous, vinyasa-style yoga. It originally closely resembled ashtanga and was an attempt to make ashtanga more accessible to Western students. It differs, however, in that it is not a set series of poses, but rather allows the instructor freedom to teach what they want.',
-  slots: 10,
-  start_time: "15:00",
-  end_time: "16:00",
-  start_date: "16.06.2019",
-  occurrence: 12,
-  user_id: t.id,
-  studio_id: s.id
-  )
-
-Lesson.create!(
-  name: 'Iyengar',
-  location: 'Room 2',
-  content: 'In a typical iyengar class, poses are held much longer than in other schools of yoga, in an effort to pay closer attention to the precise musculoskeletal alignment within each asana. Another trademark of iyengar is the use of props, such as blocks, belts, bolsters, chairs and blankets, which are used to accommodate injuries, tightness or structural imbalances, as well as teach the student how to move into a posture properly.',
-  slots: 10,
-  start_time: "18:00",
-  end_time: "19:00",
-  start_date: "16.06.2019",
-  occurrence: 12,
-  user_id: t.id,
-  studio_id: s.id
-  )
-
-puts 'Creating a subscription..'
-subs = Subscription.create!(
-  name: '12 class pack',
-  content: 'Yoga package for twelve yoga classes',
-  package_size: 12,
-  durability: 60,
-  subscription_sku: '12-class-pack',
-  studio_id: s.id,
-  amount_cents: 200_000_00,
-  payment_option: "card"
   )
 
 sub_cash = Subscription.create!(
