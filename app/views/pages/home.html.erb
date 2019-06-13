@@ -8,21 +8,21 @@
     <div class="spaces">
       <div class="spaces-each">
       <%= link_to community_path(current_user.studio) do %>
-      <%= image_tag "Yoga-icon-community", style: "height: 14rem" %>
+      <%= image_tag "Yoga-icon-community.png", style: "height: 14rem" %>
       <% end %>
       <p>Connect with our <strong>community</strong> beyond the mat</p>
       </div>
 
        <div class="spaces-each">
       <%= link_to personal_dashboard_path do %>
-        <%= image_tag "Yoga-icon-yogi", style: "height: 14rem" %>
+        <%= image_tag "Yoga-icon-yogi.png", style: "height: 14rem" %>
       <% end %>
         <p>See your <strong>personal</strong> development</p>
       </div>
 
       <div class="spaces-each">
       <%= link_to studio_path(current_user.studio) do %>
-        <%= image_tag "Yoga-icon-shala", style: "height: 14rem" %>
+        <%= image_tag "Yoga-icon-shala.png", style: "height: 14rem" %>
         <% end %>
       <p>Explore our yoga studio <strong>schedule</strong> and more</p>
       </div>
@@ -30,7 +30,7 @@
       <div class="spaces-each">
         <% if current_user.is_admin? %>
         <%= link_to admin_dashboard_path do %>
-          <%= image_tag "Yoga-icon-admin", style: "height: 14rem"%>
+          <%= image_tag "Yoga-icon-admin.png", style: "height: 14rem"%>
         <% end %>
         <p>Manage your yoga studio with ease</p>
         <% end %>
