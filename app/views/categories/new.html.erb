@@ -1,8 +1,13 @@
-<div class="container">
-  <h2>Add a new dedicated channel</h2>
+<div class="forms-container">
+  <div class="form-header">
+    <h1>Add a new dedicated channel</h1>
+    <%= link_to "Back", community_path(current_user.studio), class: "btn btn-outline-primary btn-sm rounded" %>
+  </div>
   <%= simple_form_for @category do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <div class="submit-form-button">
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>

@@ -1,5 +1,7 @@
-<div class="container">
-  <h2>Add a new event</h2>
+<div class="container forms-container">
+  <div class="form-header">
+    <h1>Add a new event</h1>
+    <%= link_to "Back", studio_path(@studio), class: "btn btn-outline-primary btn-sm"%>
+  </div>
   <%= render "form_for_event" %>
-  <%= link_to "Back", studio_path(@studio), class: "btn btn-outline-primary btn-sm"%>
 </div>
