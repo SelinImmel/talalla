@@ -1,12 +1,14 @@
 <%= simple_form_for [@lesson] do |f| %>
-<%= f.input :name, placeholder: "Yin Yiga" %>
-<%= f.association :user, label: "Teacher", collection: User.where(is_teacher: true).map {|u| [u.id, [u.first_name, u.last_name].join(' ')]}, value_method: :first, label_method: :second %>
-<%= f.input :location, placeholder: "Studio 1" %>
-<%= f.input :content, placeholder: "Please add a detailed description of the class" %>
-<%= f.input :slots, placeholder: "18" %>
-<%= f.input :start_time, as: :time %>
-<%= f.input :end_time, as: :time %>
-<%= f.input :start_date, as: :date %>
-<%= f.input :occurrence, placeholder: "5 times" %>
-<%= f.submit 'Save',  class: "btn btn-primary"%>
+  <%= f.input :name, placeholder: "Yin Yiga" %>
+  <%= f.association :user, label: "Teacher", collection: User.where(is_teacher: true).map {|u| [u.id, [u.first_name, u.last_name].join(' ')]}, value_method: :first, label_method: :second %>
+  <%= f.input :location, placeholder: "Studio 1" %>
+  <%= f.input :content, placeholder: "Please add a detailed description of the class" %>
+  <%= f.input :slots, placeholder: "18" %>
+  <%= f.input :start_time, as: :time %>
+  <%= f.input :end_time, as: :time %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :occurrence, placeholder: "5 times" %>
+  <div class="submit-form">
+    <%= f.submit 'Save',  class: "btn btn-primary btn-100 rounded"%>
+  </div>
 <% end %>

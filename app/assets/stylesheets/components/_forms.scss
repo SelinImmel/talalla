@@ -2,4 +2,20 @@
   margin: 0 auto;
   max-width: 720px;
   padding: 24px 0;
+  h1 {
+    margin-bottom: 24px;
+  }
+  .submit-form {
+    display: flex;
+    justify-content: space-around;
+  }
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    a {
+      height: 2rem;
+      margin: 15px 0;
+    }
+  }
 }
+
