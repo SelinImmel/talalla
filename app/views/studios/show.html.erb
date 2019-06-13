@@ -2,7 +2,7 @@
 <div class="container main-container">
   <div class="left-pannel">
     <div class="first-card">
-      <h1>Upcomming lessons</h1>
+      <h1>Upcoming lessons</h1>
         <% if @lessons.exists? %>
           <% @lessons = Lesson.where(start_date: Date.today) %>
             <div><%= Date.today.to_formatted_s(:short) %></div>
