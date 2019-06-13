@@ -1,9 +1,10 @@
-<div class="container">
-  <%= simple_form_for @note do |f| %>
-    <%= f.input :date, as: :date%>
-    <%= f.input :title %>
-    <%= f.input :content %>
+<%= simple_form_for @note do |f| %>
+  <%= f.input :date, as: :date%>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <div class="submit-form-button">
     <%= f.submit 'Add a note', class: 'btn btn-primary' %>
-  <% end %><hr>
-</div>
+  </div>
+<% end %>
+
 
