@@ -1,6 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%#= cl_image_tag current_user.studio.photo %>
     <%= image_tag "logo_MysoreZurich.png" %>
   <% end %>
 
@@ -10,14 +9,14 @@
 
     <% if user_signed_in? %>
       <div class="d-flex flex-grow-1 justify-content-between">
-        <%= link_to studio_path(current_user.studio), class: "navbar-icon-text mt-3 flex-grow-1" do %>
-          <p><%= image_tag 'Yoga-icon-shala.png', class: "navbar-icon" %>     Shala space</p>
+        <%= link_to community_path(current_user.studio), class: "navbar-icon-text mt-3 flex-grow-1" do %>
+          <p><%= image_tag 'Yoga-icon-community.png', class: "navbar-icon" %>     Community space</p>
         <% end %>
         <%= link_to personal_dashboard_path, class: "navbar-icon-text mt-3 flex-grow-1" do %>
           <p><%= image_tag 'Yoga-icon-yogi.png', class: "navbar-icon" %>     Yogi space</p>
         <% end %>
-        <%= link_to community_path(current_user.studio), class: "navbar-icon-text mt-3 flex-grow-1" do %>
-          <p><%= image_tag 'Yoga-icon-community.png', class: "navbar-icon" %>     Community space</p>
+        <%= link_to studio_path(current_user.studio), class: "navbar-icon-text mt-3 flex-grow-1" do %>
+          <p><%= image_tag 'Yoga-icon-shala.png', class: "navbar-icon" %>     Shala space</p>
         <% end %>
         <% if current_user.is_admin? %>
           <%= link_to admin_dashboard_path, class: "navbar-icon-text mt-3 flex-grow-1" do %>

@@ -19,9 +19,10 @@
 
 .navbar-icon-text {
   text-align: center;
+  transition: transform .5s ease;
   &:hover {
+    transform: scale(1.2);
     text-decoration: none;
-    color: $t-white;
   }
   .navbar-icon {
     height: 40px;
