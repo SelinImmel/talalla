@@ -1,13 +1,9 @@
+
 <div class="container main-container">
   <div class="left-pannel">
     <div class="first-card">
       <h2>Upcomming lessons</h2>
       <hr>
-      <%#= link_to "See all lessons", studio_lessons_path(@studio), class: "btn btn-outline-primary btn-sm" %>
-        <!-- can the two days be displayed in the simple calender with the option of scrolling to future dates? -->
-        <%#= calendar number_of_days: 1 do |date| %>
-        <%# end %>
-
         <% if @lessons.exists? %>
           <% @lessons = Lesson.where(start_date: Date.today) %>
             <div><%= Date.today.to_formatted_s(:short) %></div>
@@ -27,11 +23,9 @@
             <%= l.location %>
             <%= l.content %>
             <%= l.slots %>
-            <hr>
           <% end %>
     </div>
   </div>
-
   <div class="right-pannel">
     <div class="second-card-studio">
       <h2>Our teachers</h2>
@@ -41,10 +35,12 @@
         <% users.each_with_index do |u, index| %>
           <!-- if index === 1 then add id="highlight" -->
           <div class="teacher-card">
-            <div class="avatar-large"><%= cl_image_tag u.photo, width: 64, height: 64, gravity: "face", radius: "max", crop: "thumb" %></div>
-            <div class="teacher-name"><%= u.first_name %></div>
-        <% end %>
+            <div class="avatar-large"><%= cl_image_tag u.photo%>
+            </div>
+            <div class="teacher-name"><%= u.first_name %>
+            </div>
           </div>
+        <% end %>
       </div>
     </div>
 
@@ -52,20 +48,17 @@
   <div class="third-card">
     <h2>Upcomming events</h2>
     <hr>
-    <div class="events">
+    <div class="event-cards">
       <% @events.each do |e| %>
         <div class="event-card">
-          <div class="event-photo"><%= cl_image_tag e.photo, height: 104, width: 128, crop: :fill%>
+          <div class="event-photo"><%= cl_image_tag e.photo, height: 144, width: 160, crop: :fill%>
           </div>
-            <div class="event-title"><%= link_to e.title, studio_event_path(@studio, e)%>
-              <div class="event-date"><%= e.date.to_formatted_s(:rfc822) %>
-              </div>
-            </div>
-            <div class="event-content"><%= e.content %>
-          </div>
+          <div class="event-title"><%= link_to e.title, studio_event_path(@studio, e)%></div>
+          <div class="event-date"><%= e.date.to_formatted_s(:rfc822) %></div>
         </div>
       <% end %>
     </div>
     </div>
   </div>
 </div>
+
