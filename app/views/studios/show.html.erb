@@ -32,36 +32,60 @@
   </div>
   <div class="right-pannel">
     <div class="second-card-studio">
-      <h2>Our teachers</h2>
-      <hr>
+      <h1>Our teachers</h1>
       <div class="teacher-cards">
         <% users = User.where(is_teacher: true) %>
         <% users.each_with_index do |u, index| %>
           <!-- if index === 1 then add id="highlight" -->
           <div class="teacher-card">
-            <div class="avatar-large"><%= cl_image_tag u.photo%>
+            <div class="teacher-name">
+              <%= cl_image_tag u.photo, class: "avatar-large-studio"%>
+              <p><%= u.first_name%></p>
             </div>
-            <div class="teacher-name"><%= u.first_name %>
+            <div class="teacher-bio"><%= u.biography %></div>
+          </div>
+        <hr>
+        <% end %>
+      </div>
+    </div>
+        <%#= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
+    <div class="third-card">
+      <h1>Upcoming events</h1>
+      <div class="event-cards">
+        <% @events.each_with_index do |e, i| %>
+          <div class="event-card">
+            <div class="event-photo"><%= cl_image_tag e.photo, height: 144, width: 160, crop: :fill%>
             </div>
+            <div class="event-title"><%= link_to e.title, studio_event_path(@studio, e)%></div>
+            <div class="event-date"><%= e.date.to_formatted_s(:rfc822) %></div>
           </div>
         <% end %>
       </div>
     </div>
-
-  <div class="third-card">
-    <h2>Upcomming events</h2>
-    <hr>
-    <div class="event-cards">
-      <% @events.each do |e| %>
-        <div class="event-card">
-          <div class="event-photo"><%= cl_image_tag e.photo, height: 144, width: 160, crop: :fill%>
-          </div>
-          <div class="event-title"><%= link_to e.title, studio_event_path(@studio, e)%></div>
-          <div class="event-date"><%= e.date.to_formatted_s(:rfc822) %></div>
-        </div>
-      <% end %>
-    </div>
     </div>
   </div>
 </div>
+
+<!-- <div class="carousel slide" data-ride="carousel">
+   <div class="carousel-inner">
+       <div class="carousel-item active">
+           <div class="row">
+               <div class="col"><img src=".." alt="1 slide"></div>
+               <div class="col"><img src=".." alt="2 slide"></div>
+               <div class="col"><img src=".." alt="3 slide"></div>
+           </div>
+           <div class="row">
+               <div class="col"><img src=".." alt="4 slide"></div>
+               <div class="col"><img src=".." alt="5 slide"></div>
+               <div class="col"><img src=".." alt="6 slide"></div>
+           </div>
+       </div>
+   </div>
+</div>
+ -->
+
+
+
+
+
 

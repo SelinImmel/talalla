@@ -36,39 +36,68 @@ a = User.create!(
   last_name: 'Immel',
   email: 'selin.immel@gmail.com',
   address: 'Schlossstrasse 99, 65719 Hofheim am Taunus',
-  biography: 'Welcome to my studio.',
+  biography: 'Selin began her yoga journey in 2003 through the help of a back injury. Her desired outcome is to support first-time yogis kick-off their yoga journeys through cultivating clarity, fascination, and confidence.
+Estee’s classes, privates, and workshops are dedicated to yoga beginners, encompassing Hatha and Yin practices as a means to converse with the Chakra System and awaken to the Inner Teacher.',
   is_teacher: true,
   is_admin: true,
   password: '123456',
   studio_id: s.id,
-  remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
+  remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/murni-made.jpg"
 )
 
 
 puts 'Creating a teacher...'
 t = User.create!(
-  first_name: 'Alina',
-  last_name: 'Heimgartner',
-  email: 'alina.heimgartner@gmail.com',
+  first_name: 'Anik',
+  last_name: 'Hauser',
+  email: 'anik.hauser@gmail.com',
   address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
-  biography: 'Dedicated teacher, looooove yoga. See you guys on the mat!',
+  biography: 'With a background in Development studies, journalism and social work, Aniks approach to yoga is one that honors the need for individual self study with the aim of improving interpersonal relations and common-unity. Bex has studied yoga since 2001, inspired by teachers such as Seane Corne, Simon Park, Govinda Jai, John Scott and Dharma Mittra',
   is_teacher: true,
   is_admin: false,
   password: '123456',
   studio_id: s.id,
-  remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
+  remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/bex-tyrer.jpg"
   )
 
 User.create!(
-  first_name: 'Hugo',
-  last_name: 'Smith',
-  email: 'hugo@gmail.com',
-  address: 'Gang Jalak 17, Bali',
-  biography: 'Dedicated teacher, mixes yoga with fitness!',
+  first_name: 'Carlos',
+  last_name: 'Devine',
+  email: 'carlos.devine@gmail.com',
+  address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
+  biography: 'Carlos is a Surfyogis devoted Yoga teacher, who has been immersed in the journey of self-exploration through Yoga for over the last 15 years.
+
+After finishing his first Yoga Teacher Training in Sivananda Divine Life Society School (2002) he has continued to deepen his Yoga practice and expand the scope of his studies in Ashtanga, Vinyasa, Jivamukti, Dharma Mittra Yoga, Anusara, Yin and Embodied Flow. In 2005, he became a Thai Yoga Massage therapist and continued his exploration and studies into other forms of movement & healing. He discovered AcroYoga in 2010, and has since dedicated to share this practice to explore connection and confidence for all those who feel the beauty of combining yoga, acrobatics & healing arts.',
   is_teacher: true,
   is_admin: false,
   password: '123456',
-  studio_id: s.id
+  studio_id: s.id,
+  remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/carlos-romero-1.jpg"
+  )
+
+User.create!(
+  first_name: 'Daniela',
+  last_name: 'Beno',
+  email: 'Daniela.beno@gmail.com',
+  address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
+  biography: 'We pulse as one. We gravitate to unify the global family, celebrate interconnectedness, and offer full devotion to divine Self."Originally based in Mexico, World Traveler, Daniela has been immersed in bodywork and spiritual practice for more than 17 years.  She is the founder of the School of Healing Arts, and SOHA Yoga Teacher Trainings, and Co-Founder and Spiritual Director of Sutra Yoga Studio, based in Monterrey, Mexico.',
+  is_teacher: true,
+  is_admin: false,
+  password: '123456',
+  studio_id: s.id,
+  remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/daniela-garza-rios.jpg"
+  )
+
+User.create!(
+  first_name: 'Malika',
+  last_name: 'Jusi',
+  email: 'malika.jusi@gmail.com',
+  address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
+  biography: 'Malika Studied Hatha Yoga with the guru of OKI yoga for 4 years in Japan. Her Yin Yoga practice is based on studies with Hiroshi Motoyama. A deeper connection with the body led her to study Buddhist Medicine in Kyushu, Japan where she was trained in Moxa treatment. Nature is already complete and inner balance is the key to unlocking the natural healing powers that reside in the body. Bali has influenced Malikas healing techniques as well as her holistic approach to treatments which meet individual needs.',
+  is_admin: false,
+  password: '123456',
+  studio_id: s.id,
+  remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/malika.jpg"
   )
 
 puts 'Creating students...'
@@ -165,11 +194,33 @@ sub_cash = Subscription.create!(
   name: '1 class pack',
   content: 'Yoga package for a yoga classes',
   package_size: 1,
-  durability: 1,
+  durability: 30,
 subscription_sku: '1-class-pack',
   studio_id: s.id,
-  amount_cents: 200_000_00,
+  amount_cents: 70_000_00,
   payment_option: "cash"
+  )
+
+sub_cash = Subscription.create!(
+  name: '6 class pack',
+  content: 'Yoga package for six yoga classes',
+  package_size: 6,
+  durability: 60,
+subscription_sku: '6-class-pack',
+  studio_id: s.id,
+  amount_cents: 100_000_00,
+  payment_option: "card"
+  )
+
+sub_cash = Subscription.create!(
+  name: '6 class pack',
+  content: 'Yoga package for six yoga classes',
+  package_size: 6,
+  durability: 60,
+subscription_sku: '6-class-pack',
+  studio_id: s.id,
+  amount_cents: 100_000_00,
+  payment_option: "card"
   )
 
 puts 'Creating a order...'
@@ -220,11 +271,62 @@ boo.save
 
 puts 'Creating an event...'
 Event.create!(
-  title: 'Ashtanga Yoga Workshop',
-  content: 'Meet our new visiting ashtanga yoga expert and profit from her extraordinary teaching techniques directly from India.',
+  title: 'ECSTATIC DANCE & SOUND CIRCLE',
+  content: 'Warm your body up with gentle free movement. Awaken your primal energy and release the old with Kundalini shaking. Let go and dance into ecstasy, experiencing yourself as pure energy. This ecstatic experience is supported by your breath, gentle guidance and rocking music.No previous dance experience required. This is a non judgmental space of free expression. Jacqueline Jai has been facilitating Ecstatic Awakening Dance since 2012 and did her Ecstatic Awakening Dance teacher training with the School of Ecstatic Movement. She has danced extensively with many brilliant movement facilitators and communities.',
   date: Date.today,
-  studio_id: s.id
+  studio_id: s.id,
+  remote_photo_url: "https://i2.wp.com/www.samadibali.com/wp-content/uploads/2019/04/EcstaticDance_IG_0419-01.jpg?w=800&ssl=1"
   )
+
+Event.create!(
+  title: 'SUNDAY MARKET',
+  content: 'Come and meet our local Organic Farmers and Artisans. A happening vibrant local market, with music, laughter, good food and fresh produce. Samadi Sunday Market is about community, local organic farmers and artisans getting together who consciously choose to support each other. Our local farmers supply chemical free, healthy, and fresh produce every week. A community that says no to GMO and pesticides a commitment to one another.',
+  date: "09/7/2019",
+  studio_id: s.id,
+  remote_photo_url: "https://i1.wp.com/www.samadibali.com/wp-content/uploads/2018/06/20170507-3samadi-A6500-slog2-pro-01-2-1.jpg?w=1200&ssl=1"
+  )
+
+Event.create!(
+  title: 'WOMEN’S CIRCLE',
+  content: 'A self healing and self loving place for women to come together with Yoga, Breathwork, Yoni Love, Dance and much more to explore the body, mind and energy system. This is a place of play and sensuality as well as being a sacred vessel for healing and transformation.
+Within each of us is the innate and natural ability to heal ourselves. As we access and surrender to our own inner power we learn to understand how energy moves in the body and how we can use it to unlock stored trauma and release what no longer serves us. In this space low vibrational energy can be transformed into a higher frequency where we experience pleasure, bliss and ecstasy.',
+  date: "12/7/2019",
+  studio_id: s.id,
+  remote_photo_url: "https://i1.wp.com/www.samadibali.com/wp-content/uploads/2019/04/IG-Womens-Circle.jpg?w=800&ssl=1"
+  )
+
+Event.create!(
+  title: 'FREE MOVIE NIGHT',
+  content: 'Ubud filmmaker Jason Moon introduces and screens two of his award-winning documentaries. Jason will lead a Q&A following the screening.
+
+Troppoc (30 minutes) – Documentary Kim Webby tells her personal story of volunteering, as she heads to remote Sumatran islands and signs up to help Kiwi doctor Derek Allen,  60,000 islanders’ only medical lifeline.
+Coming Home (30 minutes) – An autobiographical documentary about Jason Moon’s journey back to his ancestral village in China.
+',
+  date: "15/7/2019",
+  studio_id: s.id,
+  remote_photo_url: "https://i1.wp.com/www.samadibali.com/wp-content/uploads/2019/05/jasonmoon-ig-1.jpg?w=2040&ssl=1"
+  )
+
+Event.create!(
+  title: 'GONG BATH',
+  content: 'Gong and Sound Healing has been proof as one of method can bring our mind into deep relaxation, yet grounding, energizing and harmonizing energy in our body, mind and spirit.
+
+Abdi who is known as Energy Healer in Bali will entertain you with one part of his talent to play Gong,  pow wow drum, Semantic  Drum , Tibetan bowl   drive  your brain wave in to  theta frequency which bring your mind in to deep relaxation  create balance in your chakra the energy center in our body . As Energy healer he will reconnect you to pure Energy of Universe to clear, to ground, energize , harmonize,  create a peacefulness and blissfulness  of  our body energy , subtle energy
+',
+  date: "19/7/2019",
+  studio_id: s.id,
+  remote_photo_url: "https://i2.wp.com/www.samadibali.com/wp-content/uploads/2019/05/soundbath.jpg?w=800&ssl=1"
+  )
+
+Event.create!(
+  title: 'FULL MOON KIRTAN & BHAJANS',
+  content: 'Join us for a heart opening evening of devotion honoring the sacred transformations of reawakening.
+Kirtan is a form of devotional chanting whose roots go back to India over 500 years. It is a form of Bhakti Yoga (yoga of devotion) and has the power to open the heart. The singing is accompanied by musical instruments and rhythmic drumming while the audience is encouraged to participate by chanting, clapping and dancing. Explore kirtan and bhajans, connecting with the qualities of Indian deities.',
+  date: "21/7/2019",
+  studio_id: s.id,
+  remote_photo_url: "https://i2.wp.com/www.samadibali.com/wp-content/uploads/2019/05/IG-Full-Moon.jpg?w=851&ssl=1"
+  )
+
 
 puts 'Creating a note...'
 Note.create!(
