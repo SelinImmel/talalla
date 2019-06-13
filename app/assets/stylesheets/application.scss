@@ -13,3 +13,8 @@
 @import "components/index";
 @import "pages/index";
 @import "dashboards/index";
+
+
+#height-definition {
+  min-height: calc(100vh - 118px);
+}

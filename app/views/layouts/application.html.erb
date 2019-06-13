@@ -10,11 +10,14 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <div id="height-definition">
     <% unless current_page?(root_url) || current_page?(about_us_url) %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+
+      <%= yield %>
+    </div>
 
     <% if user_signed_in? && !current_page?(root_url) %>
       <%= render partial: 'shared/footer', locals: { studio: current_user.studio }  %>

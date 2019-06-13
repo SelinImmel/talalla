@@ -1,12 +1,12 @@
 .community-container {
-  margin: 40px 80px;
-  min-height: calc(100vh - 166px)
+  margin: 40px 80px 0 80px;
 }
 
 
 // left side with overview over all channels
 .channels {
   margin-top: 16px;
+  margin-bottom: 40px;
   padding: 0;
   .new-channel {
     margin: 4px auto;
@@ -52,6 +52,7 @@
   padding-right: 0;
   width: 100%;
   padding-bottom: 8px;
+  margin-bottom: 56px;
   position: relative;
   text-align: justify;
   .channel-info {
