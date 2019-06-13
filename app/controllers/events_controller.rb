@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  include Pundit
+  include Punditlor
   after_action :verify_authorized, except: [:index, :show], unless: :skip_pundit?
 
   before_action :set_studio
