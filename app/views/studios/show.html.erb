@@ -20,7 +20,7 @@
                   <%= cl_image_tag lesson.user.photo, class: "avatar" %>
                 </div>
                 <div class="name-teacher text-center" style="width: 30%">
-                  <p><%= lesson.user.first_name %></p>
+                  <%= link_to "Book", lesson_bookings_path(lesson), method: :post, class: "btn btn-primary btn-sm" %>
                 </div>
               </div>
             </div>
@@ -48,7 +48,6 @@
       </div>
     </div>
 
-        <%#= link_to "See all upcoming events - event index", studio_events_path(@studio), class: "btn btn-outline-primary btn-sm" %>
   <div class="third-card">
     <h2>Upcomming events</h2>
     <hr>
