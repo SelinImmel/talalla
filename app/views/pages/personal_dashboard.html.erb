@@ -10,8 +10,7 @@
         <!-- </div> -->
       </div>
       <div class="description-talalla">
-        <h2><%= current_user.first_name %> <%= current_user.last_name %> <br> </h2>
-          <hr>
+        <h1><%= current_user.first_name %> <%= current_user.last_name %> <br> </h1>
         <p><%= current_user.address %> <br>
         <%= current_user.email %></p>
         <p>About you: </p>
@@ -51,9 +50,8 @@
   </div>
 
   <div class="right-pannel">
-    <div class="third-card">
-      <h2> My current   subscription:</h2>
-      <hr>
+    <div class="third-card" style="height: 306px;">
+      <h1>My current subscription:</h1>
       <div class="my-subscription-container">
           <% current_user.user_plans.each do |user_plan| %>
             <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
@@ -79,8 +77,7 @@
 
     <div class="calendar-notes-container">
       <div class="title-calendar d-flex justify-content-between">
-        <h2>My calendar / diary </h2>
-        <hr>
+        <h1>My calendar / diary </h1>
         <div><%= link_to "Add note", new_note_path, class: 'btn btn-primary btn-sm'%></div>
       </div>
       <div class="calendar">
