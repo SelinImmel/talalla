@@ -41,7 +41,7 @@ a = User.create!(
   is_admin: true,
   password: '123456',
   studio_id: s.id,
-  remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
+  remote_photo_url: "https://avatars3.githubusercontent.com/u/48353082?s=400&v=4"
 )
 
 
@@ -56,7 +56,6 @@ t = User.create!(
   is_admin: false,
   password: '123456',
   studio_id: s.id,
-  remote_photo_url: "https://image.flaticon.com/icons/png/512/129/129728.png"
   )
 
 User.create!(
@@ -64,7 +63,19 @@ User.create!(
   last_name: 'Smith',
   email: 'hugo@gmail.com',
   address: 'Gang Jalak 17, Bali',
-  biography: 'Dedicated teacher, mixes yoga with fitness!',
+  biography: 'Hugo has been practicing yoga and meditation for 9 years. He fell in love at first stretch when he was introduced to the the pranayama practice in 2010 as it combined his passions for sports, meditation and self-inquiry. As an certified Ashtanga teacher, his intention is to share the gifts of this system as they have been transmitted to him by his teachers. As a guide, his role is to inspire people to the practice and embark on the transformational journey toward themselves. When not teaching at his school in Bali, Hugo travels around the world and shares his passion for yoga with insight, humour and compassion. He also holds certifications in biology and bodywork and uses his understanding of the body-mind connections to support healing on many levels.',
+  is_teacher: true,
+  is_admin: false,
+  password: '123456',
+  studio_id: s.id
+  )
+
+User.create!(
+  first_name: 'Johnny',
+  last_name: 'Chan',
+  email: 'jc@hotmail.com',
+  address: 'Gang Jalak 17, Bali',
+  biography: 'Hugo has been practicing yoga and meditation for 9 years. He fell in love at first stretch when he was introduced to the the pranayama practice in 2010 as it combined his passions for sports, meditation and self-inquiry. As an certified Ashtanga teacher, his intention is to share the gifts of this system as they have been transmitted to him by his teachers. As a guide, his role is to inspire people to the practice and embark on the transformational journey toward themselves. When not teaching at his school in Bali, Hugo travels around the world and shares his passion for yoga with insight, humour and compassion. He also holds certifications in biology and bodywork and uses his understanding of the body-mind connections to support healing on many levels.',
   is_teacher: true,
   is_admin: false,
   password: '123456',
@@ -99,7 +110,7 @@ puts 'Creating a lesson...'
 l = Lesson.create!(
   name: 'Hatha',
   location: 'Room 1',
-  content: 'A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!',
+  content: 'Hatha is a general category that includes most yoga styles. It is an old system that includes the practice of asanas (yoga postures) and pranayama (breathing exercises), which help bring peace to the mind and body, preparing the body for deeper spiritual practices such as meditation.',
   slots: 20,
   start_time: "18:00",
   end_time: "19:00",
@@ -110,9 +121,75 @@ l = Lesson.create!(
   )
 
 Lesson.create!(
-  name: 'Hatha',
+  name: 'Hatha beginner',
+  location: 'Room 2',
+  content: 'A softer approach to explore your inner landscape through yoga poses (Asanas), breathing exercises (Pranayama) and meditation.',
+  slots: 10,
+  start_time: "16:00",
+  end_time: "17:00",
+  start_date: "14.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Hatha advanced',
+  location: 'Room 3',
+  content: 'These classes are designed for students looking to take their practice and understanding of Yoga to the next level. Hatha Yoga utilizes the ancient technologies of Asana, Pranayama, Bandha, Mudra and Meditation to deepen the connection to Mind (MOON) and Power or Prana (SUN) and ultimately towards the experience of ‘yoking’ these subtle forces within the navel and enlivening the dormant potential at the base of the spine know as Kundalini (FIRE).',
+  slots: 10,
+  start_time: "08:00",
+  end_time: "09:00",
+  start_date: "15.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Vinyasa',
   location: 'Room 1',
-  content: 'A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!',
+  content: 'Vinyasa yoga style is a dynamic yoga practice flowing from pose to pose by synchronising body movements with breath movements. Explore new yoga poses into a gradual progression from easier to more advanced asanas. Get ready to move, breathe, sweat and challenge yourself!',
+  slots: 10,
+  start_time: "10:00",
+  end_time: "11:00",
+  start_date: "14.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Pranayama',
+  location: 'Room 2',
+  content: 'Practices of Pranayama include Teaching basic breath awareness, Natural breathing Abdomino-diaphragmatic breathing Thoracic-diaphragmatic breathing Clavicular- diaphragmatic breathing Yogic Breathing Kapalbhati Pranayama (frontal brain cleansing breath or cultivating light) Bhastrika Pranayama (bellows breath) Ujjayi Pranayama (the psychic breath) Sheetali Pranayama (cooling breath) Sheetkari Pranayama (hissing breath) Suryabheda: Stimulating Vitality Chandrabheda: Calming Energy Nadi Shodhana: Alternate Nostril Breathing Bhramari Pranayama (humming bee breath).',
+  slots: 10,
+  start_time: "08:00",
+  end_time: "09:00",
+  start_date: "14.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Meditation',
+  location: 'Room 3',
+  content: 'This class has something to offer all levels of practitioners, wether you‘re new to meditation and wondering where to start or you have an established practice and would like to discover some new techniques and benefit from the collective energy of the sangha.
+  Use your mind to shape your brain for greater happiness, love, and wisdom and connect with the infinite and luminous landscape of your true nature',
+  slots: 10,
+  start_time: "06:00",
+  end_time: "07:00",
+  start_date: "16.06.2019",
+  occurrence: 5,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Kundalini',
+  location: 'Room 1',
+  content: 'Kundalini incorporates repeated movements or exercises, dynamic breathing techniques, chanting, meditation and mantras. Each specific kundalini exercise, referred to as a kriya, is a movement that is often repeated and is synchronized with the breath. The practice is designed to awaken the energy at the base of the spine in order to draw it upward through each of the seven chakras.Brought to the west by Yogi Bhajan, this form of yoga looks and feels quite different than any other, due to its focus on repetitive, enhanced breathing and the movement of energy through the body.',
   slots: 20,
   start_time: "08:00",
   end_time: "09:00",
@@ -123,31 +200,82 @@ Lesson.create!(
   )
 
 Lesson.create!(
-  name: 'Hatha beginner',
-  location: 'Room 2',
-  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
-  slots: 10,
-  start_time: "16:00",
-  end_time: "17:00",
-  start_date: "15.06.2019",
-  occurrence: 5,
+  name: 'Bikram',
+  location: 'Room 1',
+  content: 'Bikram Yoga is a series of 26 postures to work every inch of your body, every internal organ, muscle, tendon, ligament and joint.You’ll develop strength and flexibility.',
+  slots: 20,
+  start_time: "18:00",
+  end_time: "19:00",
+  start_date: "14.06.2019",
+  occurrence: 10,
   user_id: t.id,
   studio_id: s.id
   )
 
 Lesson.create!(
-  name: 'Hatha beginner',
-  location: 'Room 2',
-  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
-  slots: 10,
-  start_time: "08:00",
-  end_time: "09:00",
-  start_date: "15.06.2019",
-  occurrence: 5,
+  name: 'Power',
+  location: 'Room 1',
+  content: 'Power yoga is used to describe a vigorous, vinyasa-style yoga. It originally closely resembled ashtanga and was an attempt to make ashtanga more accessible to Western students. It differs, however, in that it is not a set series of poses, but rather allows the instructor freedom to teach what they want.',
+  slots: 20,
+  start_time: "15:00",
+  end_time: "16:00",
+  start_date: "14.06.2019",
+  occurrence: 10,
   user_id: t.id,
   studio_id: s.id
   )
 
+Lesson.create!(
+  name: 'Iyengar',
+  location: 'Room 2',
+  content: 'In a typical iyengar class, poses are held much longer than in other schools of yoga, in an effort to pay closer attention to the precise musculoskeletal alignment within each asana. Another trademark of iyengar is the use of props, such as blocks, belts, bolsters, chairs and blankets, which are used to accommodate injuries, tightness or structural imbalances, as well as teach the student how to move into a posture properly.',
+  slots: 20,
+  start_time: "18:00",
+  end_time: "19:00",
+  start_date: "14.06.2019",
+  occurrence: 10,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Anusara',
+  location: 'Room 2',
+  content: 'The anusara style is a new system of hatha that teaches a set of Universal Principles of Alignment that underlie all yoga postures, while encouraging flowing with grace and following your heart.',
+  slots: 20,
+  start_time: "08:00",
+  end_time: "09:00",
+  start_date: "14.06.2019",
+  occurrence: 10,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Sivananda',
+  location: 'Room 2',
+  content: 'A class typically begins with Savasana (relaxation pose), kapalabhati and anuloma viloma, followed by a few rounds of surya namaskara. Chanting and meditation can also be a part of a full-length class.',
+  slots: 20,
+  start_time: "11:00",
+  end_time: "12:00",
+  start_date: "15.06.2019",
+  occurrence: 10,
+  user_id: t.id,
+  studio_id: s.id
+  )
+
+Lesson.create!(
+  name: 'Restorative',
+  location: 'Room 2',
+  content: 'Restorative is a gentle, relaxing, passive style that allows students to relax and release the body into a gentle stretch that is held for as long as 10 minutes. This style makes use of a wide range of props, including bolsters, blocks, straps and blankets. The intention is to provide support within each pose, making it easier to completely leg go.',
+  slots: 20,
+  start_time: "15:00",
+  end_time: "16:00",
+  start_date: "15.06.2019",
+  occurrence: 10,
+  user_id: t.id,
+  studio_id: s.id
+  )
 
 puts 'Creating a subscription..'
 subs = Subscription.create!(
