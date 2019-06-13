@@ -1,4 +1,42 @@
 <div class="container">
+  <div class="lesson-show-header d-flex justify-content-between">
+    <div class="lesson-show-header-left">
+      <h1><%= @event.title %></h1>
+      <p><%= @event.date %></p>
+      <p><%#= @lesson.location %></p>
+      <p>Slots remaining: <%#= @lesson.slots - @lesson.bookings.size %> / <%#x= @lesson.slots %></p>
+    </div>
+    <div class="lesson-show-header-right">
+      <%# if policy(Lesson).update? %>
+        <%#= link_to "Edit", edit_lesson_path(@lesson),class: "btn #btn-outline-primary btn-100" %>
+      <%# end %>
+      <%# if policy(Lesson).destroy? %>
+        <%#= link_to "Delete", lesson_path(@lesson), class: "btn btn-outline-primary btn-100", method: :delete %>
+      <%# end %>
+      <%# if @available_spots && @available_usage && @date_validity %>
+        <%#= link_to "Book lesson", lesson_bookings_path(@lesson.id), class: "btn btn-primary btn-100", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
+      <%# else %>
+         <%#= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-100" %>
+         <%#= link_to "Pay cash at studio", lesson_bookings_path(@lesson.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post %>
+      <%# end %>
+      <br>
+      <%#= link_to "See all lessons", studio_lessons_path(@lesson.studio_id), class: "btn btn-outline-primary btn-100 m-1" %>
+    </div>
+  </div>
+
+  <div class="lesson-show-body">
+    <p><%#= @lesson.content %> A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax! A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!</p>
+  </div>
+  <div class="lesson-show-body d-flex">
+    <%#= cl_image_tag @lesson.user.photo, class: "avatar-mega" %>
+    <div class="teacher-intro">
+      <h2><%#= @lesson.user.first_name %> <%#= @lesson.user.last_name %></h2>
+      <p><%#= @lesson.user.biography %> Dedicated teacher, looooove yoga. See you guys on the mat! Dedicated teacher, looooove yoga. See you guys on the mat! Dedicated teacher, looooove yoga. See you guys on the mat! Dedicated teacher, looooove yoga. See you guys on the mat!</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
   <h1>This is the event show page</h1>
     <br>
     ------------------------------------------
@@ -23,3 +61,4 @@
 
   <%= link_to "Back to StudioWorld", studio_path(@studio), class: "btn btn-outline-primary btn-sm" %>
 </div>
+
