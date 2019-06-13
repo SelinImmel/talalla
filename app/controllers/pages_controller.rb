@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     @lessons = Lesson.where(studio: current_user.studio)
     @studio = current_user.studio
     @subscriptions = current_user.studio.subscriptions
+    @lesson_dates = Lesson.where(studio: current_user.studio).map(&:start_date).uniq
   end
 
   def students_index

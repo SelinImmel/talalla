@@ -1,17 +1,40 @@
 <div class="container">
   <div class="main-container">
     <div class="left-pannel">
-      <p>I am the left pannel</p>
-      <h1>Upcoming classes at <%= @studio.name %></h1>
-      <div class="first-card">
-        <p>I am the first card.<br>I will be displaying the upcoming classes at the <%= @studio.name %>.<br>We will see whether display: flex; is the best choice for me.</p>
+      <div class="second-card schedule" style="margin-top: 0;">
+        <h1>Upcoming classes at <%= @studio.name %></h1>
+        <!-- schedule of all events -->
+        <div>
+          <div class="lessons-cards">
+            <% @lesson_dates.each do |date| %>
+              <h2 class="date-title"><%= date.to_formatted_s(:long_ordinal) %></h2>
+                <% Lesson.where( studio: current_user.studio ).each do |lesson| %>
+                <div class="lesson-card">
+                  <div class="lesson-card-content">
+                    <div class="lesson text-center" style="width: 25%">
+                      <p><%= lesson.name %></p>
+                    </div>
+                    <div class="time text-center" style="width: 30%">
+                        <p><%= lesson.start_time.strftime('%H:%M') %> - <%= lesson.end_time.strftime('%H:%M') %></p>
+                    </div>
+                    <div class="name-teacher text-center" style="width: 20%">
+                        <p><%= lesson.user.first_name %></p>
+                    </div>
+                    <div class=" text-center" style="width: 25%">
+                      <p><%= lesson.bookings.count %> bookings</p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="right-pannel">
-      <p>I am the right pannel</p>
-      <h1><%= @studio.name %>: an overview</h1>
       <div class="third-card">
+        <h1><%= @studio.name %>: an overview</h1>
         <div class="d-flex justify-content-around">
           <div class="stats">
             <%= link_to students_path, class: "link-icon" do %>
@@ -47,7 +70,6 @@
       </div>
 
       <!-- bottom right -- many editing actions -->
-      <h1>Any header we'd like</h1>
       <div class="third-card">
         <div class="top-of-third d-flex justify-content-between">
           <div class="edit-details">
