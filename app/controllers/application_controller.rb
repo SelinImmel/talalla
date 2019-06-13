@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :correct_domain!
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -15,6 +16,12 @@ class ApplicationController < ActionController::Base
   # end
 
   private
+
+  def correct_domain!
+    unless request.host == 'http://www.talalla.herukoapp.com/'
+      redirect_to root_url, status: 301
+    end
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
