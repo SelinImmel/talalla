@@ -6,14 +6,61 @@
   padding: 16px;
 }
 
-.teacher-cards{
-
+.teacher-cards {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
 }
 
 .teacher-card {
- display: flex;
- img {
+  display: flex;
+  flex-direction: column;
+  .avatar-large img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
 
- }
+  }
+}
+
+.teacher-name {
+  margin-top: 8px;
+}
+
+.event-cards {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
 
 }
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(235,235,235);
+
+  margin: 0px 8px;
+}
+
+.event-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  }
+
+.event-date {
+  padding: 4px;
+  }
+
+.event-content {
+  color: $t-gray;
+  overflow: hidden;
+  padding: 4px;
+  text-align: center;
+}
+
+
+
