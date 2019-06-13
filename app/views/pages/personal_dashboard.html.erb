@@ -5,47 +5,46 @@
         <div class="avatar-talalla">
           <%= cl_image_tag current_user.photo, crop: :fill %>
         </div>
-        <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-primary btn-sm'%>
+        <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-outline-primary btn-sm'%>
         <!-- <div class="global-button mt-3"> -->
         <!-- </div> -->
       </div>
       <div class="description-talalla">
-        <h2><%= current_user.first_name %> <%= current_user.last_name %> <br> </h2>
-          <hr>
+        <h1><%= current_user.first_name %> <%= current_user.last_name %> <br> </h1>
         <p><%= current_user.address %> <br>
         <%= current_user.email %></p>
         <div class="description-talalla-bio"><strong>About you: </strong><%= current_user.biography %></div>
       </div>
     </div>
-    <div class="second-card">
-          <h2>My upcoming classes</h2>
 
+    <!-- lessons schedule -->
+    <div class="second-card schedule">
+      <h1>My upcoming classes</h1>
       <div class="lessons-cards">
-        <div><%= link_to "Book a lesson", studio_lessons_path(current_user.studio), class: 'btn btn-primary btn-sm'%></div>
-        <% if !Booking.where(user_id: current_user).empty? %>
-            <% current_user.bookings.each do |booking| %>
+        <% @booking_dates.each do |date| %>
+          <h2 class="date-title"><%= date.to_formatted_s(:long_ordinal) %></h2>
+          <% Lesson.joins(:bookings).where(bookings: { user_id: current_user.id }).where(start_date: date).each do |lesson| %>
               <div class="lesson-card">
                 <div class="lesson-card-content">
-                  <div class="lesson">
-                    <%= booking.lesson.name %>
+                  <div class="lesson text-center" style="width: 30%">
+                    <p><%= lesson.name %></p>
                   </div>
-                  <div class="time">
-                      <%= booking.lesson.start_time.strftime('%H:%M') %> -
-                      <%= booking.lesson.end_time.strftime('%H:%M') %>
+                  <div class="time text-center" style="width: 30%">
+                      <p><%= lesson.start_time.strftime('%H:%M') %> -
+                      <%= lesson.end_time.strftime('%H:%M') %></p>
                   </div>
-                  <div class="avatar-large">
-                    <%= cl_image_tag booking.lesson.user.photo %>
+                  <div class="text-center ml-4">
+                    <%= cl_image_tag lesson.user.photo, class: "avatar" %>
                   </div>
-                  <div class="name-teacher">
-                      <%= booking.lesson.user.first_name %>
+                  <div class="name-teacher text-center" style="width: 30%">
+                    <p><%= lesson.user.first_name %></p>
                   </div>
                 </div>
               </div>
-
-            <% end %>
+          <% end %>
         <% end %>
       </div>
-        <%# if !@available_usage || !@date_validity %>
+      <%= link_to "Book a class", studio_lessons_path(current_user.studio), class: 'btn btn-primary btn-sm'%>
     </div>
   </div>
 
@@ -61,8 +60,7 @@
               <% end %>
             <% end %>
 
-        </div>
-
+    </div>
 
       <div class="third-card-personal">
         <div class="subscription-cards">
@@ -79,8 +77,7 @@
 
     <div class="calendar-notes-container">
       <div class="title-calendar d-flex justify-content-between">
-        <h2>My calendar / diary </h2>
-        <hr>
+        <h1>My calendar / diary </h1>
         <div><%= link_to "Add note", new_note_path, class: 'btn btn-primary btn-sm'%></div>
       </div>
       <div class="calendar">
@@ -105,16 +102,3 @@
     </div>
   </div>
 </div>
-
-<%# notes.each do |note| %>
-  <!-- <p><%#= link_to note.title, personal_dashboard_path %></p> -->
-<%# end %>
-
-<!--
-      <%# current_user.notes.each do |note| %>
-      <p> <strong> <%#= note.title %> </strong> <br>
-        <%#= note.content %> </p>
-      <p> <%#= link_to "Edit",  edit_note_path(note)%> <%#= link_to "Delete", note_path(note), method: :delete %></p>
-      <hr>
-      <%# end %> -->
-

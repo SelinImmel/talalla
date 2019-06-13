@@ -13,6 +13,7 @@ class StudiosController < ApplicationController
 
   def show
     @lessons = Lesson.where(studio: @studio)
+    @lesson_dates = Lesson.where(studio: current_user.studio).map(&:start_date).uniq
     @event = Event.new
     # authorize @event
     @events = Event.where(studio: @studio)

@@ -1,21 +1,28 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://image.flaticon.com/icons/png/512/129/129728.png" %>
-    <% end %>
+    <%#= cl_image_tag current_user.studio.photo %>
+    <%= image_tag "logo_MysoreZurich.png" %>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%# unless: root_path %>
     <% if user_signed_in? %>
-
-      <div class="d-flex flex-grow-1">
-        <%= link_to 'Yogi space', personal_dashboard_path, class: "btn btn-outline-light btn-sm m-2 flex-grow-1" %>
-        <%= link_to 'Shala space', studio_path(current_user.studio), class: "btn btn-outline-light btn-sm m-2 flex-grow-1" %>
-        <%= link_to 'Community space', community_path(current_user.studio), class: "btn btn-outline-light btn-sm m-2 flex-grow-1" %>
+      <div class="d-flex flex-grow-1 justify-content-between">
+        <%= link_to studio_path(current_user.studio), class: "navbar-icon-text mt-3 flex-grow-1" do %>
+          <p><%= image_tag 'Yoga-icon-shala.png', class: "navbar-icon" %>     Shala space</p>
+        <% end %>
+        <%= link_to personal_dashboard_path, class: "navbar-icon-text mt-3 flex-grow-1" do %>
+          <p><%= image_tag 'Yoga-icon-yogi.png', class: "navbar-icon" %>     Yogi space</p>
+        <% end %>
+        <%= link_to community_path(current_user.studio), class: "navbar-icon-text mt-3 flex-grow-1" do %>
+          <p><%= image_tag 'Yoga-icon-community.png', class: "navbar-icon" %>     Community space</p>
+        <% end %>
         <% if current_user.is_admin? %>
-          <%= link_to 'Admin space', admin_dashboard_path, class: "btn btn-outline-light btn-sm m-2 flex-grow-1" %>
+          <%= link_to admin_dashboard_path, class: "navbar-icon-text mt-3 flex-grow-1" do %>
+            <p><%= image_tag 'Yoga-icon-admin.png', class: "navbar-icon" %>     Admin space</p>
+          <% end %>
         <% end %>
       </div>
 
@@ -34,6 +41,5 @@
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </div>
       <% end %>
-    <%# end %>
   </div>
 </div>
