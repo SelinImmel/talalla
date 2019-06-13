@@ -4,7 +4,7 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: $t-white;
+  background: #7892635c;
   border-bottom: solid 2px $green;
   padding-bottom: 0;
 }
@@ -21,6 +21,7 @@
   text-align: center;
   &:hover {
     text-decoration: none;
+    color: $t-white;
   }
   .navbar-icon {
     height: 40px;
