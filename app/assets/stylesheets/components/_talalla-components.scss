@@ -36,17 +36,17 @@
     align-items: center;
   }
 
-    .avatar-talalla img {
-      width: 88px;
-      height: 88px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 16px;
-    }
-    .description-talalla {
-      padding-left: 8px;
-    }
+  .avatar-talalla img {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 16px;
+  }
+  .description-talalla {
+    padding-left: 8px;
+  }
 }
 
 .second-card {
@@ -90,4 +90,43 @@
   background-color: white;
   box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
   padding: 16px;
+  margin-bottom: 48px;
+  .stats {
+    text-align: center;
+    min-width: 100px;
+    .link-icon {
+      // transition: all 0.4s ease-in-out; zoom for some reason not working?
+      &:hover{
+        text-decoration: none;
+        // transform: scale(1.1);
+        font-weight: bolder;
+      }
+    }
+    h2 {
+      margin: 16px 0 0 0;
+    }
+  }
+  .more-button{
+    margin: 0 190px;
+    // margin: 0 auto;
+  }
+
+  .edit-details {
+    min-width: 33%;
+    text-align: center;
+    margin: 4px;
+    .fa-users {
+      color: $green;
+      &:hover {
+        color: darker;
+      }
+    }
+    .fa-users-one {
+      color: $t-gray;
+    }
+
+    .link:hover{
+      text-decoration: none;
+    }
+  }
 }
