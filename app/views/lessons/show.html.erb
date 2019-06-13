@@ -4,22 +4,23 @@
       <h1><%= @lesson.name %></h1>
       <p><%= @lesson.start_date.to_formatted_s(:rfc822) %>, <%= @lesson.start_time.to_formatted_s(:time) %> - <%= @lesson.end_time.to_formatted_s(:time) %></p>
       <p><%= @lesson.location %></p>
-      <p>Class size: <%= @lesson.slots - @lesson.bookings.size  %></p>
+      <p>Slots remaining: <%= @lesson.slots - @lesson.bookings.size %> / <%= @lesson.slots %></p>
     </div>
     <div class="lesson-show-header-right">
+      <% if policy(Lesson).update? %>
+        <%= link_to "Edit", edit_lesson_path(@lesson),class: "btn btn-outline-primary btn-100" %>
+      <% end %>
+      <% if policy(Lesson).destroy? %>
+        <%= link_to "Delete", lesson_path(@lesson), class: "btn btn-outline-primary btn-100", method: :delete %>
+      <% end %>
       <% if @available_spots && @available_usage && @date_validity %>
-        <%= link_to "Book", lesson_bookings_path(@lesson.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
+        <%= link_to "Book lesson", lesson_bookings_path(@lesson.id), class: "btn btn-primary btn-100", data: {confirm: 'Do you want to book this lesson?'}, method: :post%>
       <% else %>
-         <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-sm" %>
+         <%= link_to "Buy subscription", personal_dashboard_path, class: "btn btn-outline-primary btn-100" %>
          <%= link_to "Pay cash at studio", lesson_bookings_path(@lesson.id), class: "btn btn-outline-primary btn-sm", data: {confirm: 'Do you want to book this lesson?'}, method: :post %>
       <% end %>
       <br>
-      <% if policy(Lesson).update? %>
-        <%= link_to "Edit", edit_lesson_path(@lesson),class: "btn btn-outline-primary btn-sm" %>
-      <% end %>
-      <% if policy(Lesson).destroy? %>
-        <%= link_to "Delete", lesson_path(@lesson), class: "btn btn-outline-primary btn-sm", method: :delete %>
-      <% end %>
+      <%= link_to "See all lessons", studio_lessons_path(@lesson.studio_id), class: "btn btn-outline-primary btn-100 m-1" %>
     </div>
   </div>
 
@@ -32,13 +33,7 @@
       <h2><%= @lesson.user.first_name %> <%= @lesson.user.last_name %></h2>
       <p><%= @lesson.user.biography %> Dedicated teacher, looooove yoga. See you guys on the mat! Dedicated teacher, looooove yoga. See you guys on the mat! Dedicated teacher, looooove yoga. See you guys on the mat! Dedicated teacher, looooove yoga. See you guys on the mat!</p>
     </div>
-
   </div>
-
-
-  <br>
-
-  <%= link_to "Back to lesson index", studio_lessons_path(@lesson.studio_id), class: "btn btn-outline-primary btn-sm" %>
 </div>
 
 

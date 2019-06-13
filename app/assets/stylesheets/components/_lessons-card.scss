@@ -1,5 +1,9 @@
 .lesson-show-header {
-  margin: 40px 32px;
+  margin: 40px 32px 0 32px;
+}
+
+.lesson-show-header-right {
+  text-align: right;
 }
 
 
@@ -7,8 +11,13 @@
   border: 1px solid #ebebeb;
   padding: 24px 32px;
   border-radius: 4px;
-  margin: 16px 0;
+  margin: 16px 0 40px 0;
   .teacher-intro {
     margin-left: 48px;
   }
+}
+
+.btn-100 {
+  min-width: 140px;
+  margin: 0;
 }
