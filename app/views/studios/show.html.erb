@@ -4,7 +4,7 @@
     <div class="second-card-show" style="margin-top: 0;">
       <div class="title-lessons-show">
       <h1>Upcomming classes at <%= @studio.name %></h1></div>
-      <div class="lessons-cards-show">
+      <div class="lessons-cards schedule-shala">
         <% @lesson_dates.each do |date| %>
           <h2 class="date-title"><%= date.to_formatted_s(:long_ordinal) %></h2>
           <% Lesson.where( studio: current_user.studio ).each do |lesson| %>
