@@ -182,7 +182,7 @@ joerg = User.create!(
 )
 
 puts 'Creating a lesson...'
-l = Lesson.create!(
+l1 = Lesson.create!(
   name: 'Ashtanga',
   location: 'Room 1',
   content: 'YOGA IS REALLY A BREATHING EXERCISE IN WHICH WE USE THE BODY TO EXPAND THE MIND…
@@ -192,11 +192,11 @@ Ashtanga yoga is a spiritual practice and an inner journey to the self. The asht
   end_time: "19:00",
   start_date: "14.06.2019",
   occurrence: 10,
-  user_id: carlostudio.id,
+  user_id: carlos.id,
   studio_id: studio.id
   )
 
-Lesson.create!(
+l2 = Lesson.create!(
   name: 'Mysore',
   location: 'Room 1',
   content: 'Named after the birthplace of the ashtanga system in Mysore, south India; This is the traditional method for learning, deepening and perfecting your Ashtanga practice. A private class in a group setting, the teacher doesn’t lead the whole group but holds the space for the practitioners, beginners and advanced together, to learn and refine each student’s personal  practice. As a beginner you will be taught one pose at a time in order to integrate the information gradually learning the sequence to develop your personalised yoga practice. You are invited to repeat over and over until a sense of flow and poise is attained. Eventually the teaching becomes more subtle allowing the practice itself to be your guide. You don’t need to be flexible or know the sequence in order to begin. The practice will teach you gradually.',
@@ -205,11 +205,11 @@ Lesson.create!(
   end_time: "09:00",
   start_date: "14.06.2019",
   occurrence: 10,
-  user_id: carlostudio.id,
+  user_id: carlos.id,
   studio_id: studio.id
   )
 
-Lesson.create!(
+l3 = Lesson.create!(
   name: 'Mysore beginner',
   location: 'Room 2',
   content: 'This a class where we introduce you to the Mysore practice and its tools. Beginners are required to commit to enough classes before they can participate in the Mysore classes, in order to get a better understanding of the practice and its sequence.  The idea is that you learn the standing sequence and can join the Mysore morning class, and become autonomous in practice.',
@@ -222,7 +222,7 @@ Lesson.create!(
   studio_id: studio.id
   )
 
-Lesson.create!(
+l4 = Lesson.create!(
   name: 'Hatha Tantra',
   location: 'Room 2',
   content: 'Hatha Tantra embraces all the manifestations of life energy, the Shakti. A tool to reach higher states of consciousness. Hatha Tantra embraces life in all its manifestations; body, emotions, energy, sexuality, astrology, sounds (mantras), patterns (yantras). Hatha yoga is a body orientated practice originating from the tantric tradition.
@@ -273,11 +273,11 @@ subscription_sku: '6-class-pack',
   )
 
 sub_cash = Subscription.create!(
-  name: '6 class pack',
-  content: 'Yoga package for six yoga classes',
+  name: '20 class pack',
+  content: 'Yoga package for 20 yoga classes',
   package_size: 6,
   durability: 60,
-subscription_sku: '6-class-pack',
+subscription_sku: '20-class-pack',
   studio_id: studio.id,
   amount_cents: 100_000_00,
   payment_option: "card"
@@ -285,8 +285,8 @@ subscription_sku: '6-class-pack',
 
 puts 'Creating a order...'
 p = Order.create!(
-  subscription_id: substudio.id,
-  user_id: u.id,
+  subscription_id: subs.id,
+  user_id: alina.id,
   date: Date.today,
   total_amount_cents: subs.amount_cents,
   status: 'outstanding',
@@ -299,34 +299,34 @@ up = UserPlan.create!(
   left_usage: 11,
   start_date: Date.today,
   end_date: DateTime.parse("01/07/2019"),
-  user_id: u.id
+  user_id: alina.id
   )
 
 puts 'Creating a booking...'
 Booking.create!(
   user_plan_id: up.id,
-  user_id: u.id,
-  lesson_id: l.id,
+  user_id: alina.id,
+  lesson_id: l1.id,
   date: Date.today
   )
 
-puts 'Creating a secondbooking...'
-boo =Booking.new(
+puts 'Creating a second booking...'
+boo1 =Booking.new(
   user_plan_id: up.id,
-  user_id: u.id,
-  lesson_id: l.id,
+  user_id: alina.id,
+  lesson_id: l2.id,
   date: Date.today-5
   )
-boo.save
+boo1.save
 
 puts 'Creating a third booking...'
-boo =Booking.new(
+boo2 =Booking.new(
   user_plan_id: up.id,
-  user_id: u.id,
-  lesson_id: l.id,
+  user_id: alina.id,
+  lesson_id: l3.id,
   date: Date.today-3
   )
-boo.save
+boo2.save
 
 
 puts 'Creating an event...'
@@ -390,57 +390,85 @@ Kirtan is a form of devotional chanting whose roots go back to India over 500 ye
 
 puts 'Creating a note...'
 Note.create!(
-  user_id: u.id,
+  user_id: alina.id,
   title: 'Its been a good day.',
   content: 'Practiced for 2 hours and had a great meditation session. Note to self: meditate every second day.',
   date: Date.today
   )
 
+Note.create!(
+  user_id: alina.id,
+  title: 'Its been a hard day, I was sick for 3 days and feel a bit weak.',
+  content: 'Practiced for 1 hour and had the final presentation in my mind.',
+  date: Date.today - 2
+  )
+
+Note.create!(
+  user_id: alina.id,
+  title: 'What an amazing day, started with Navasana and almost got it',
+  content: 'new pose so very excited and should remember to breath more deeply',
+  date: Date.today - 5
+  )
+
 puts 'Creating the default studio-announcements-channel'
-ya = Category.create!(
-  user_id: u.id,
+cat1 = Category.create!(
+  user_id: anik.id,
   title: 'Studio News',
   description: 'All general studio announcements will be made via this channel so make sure to log in regularly 🧘🏻‍♀️🧘🏽‍♂️',
   studio_id: studio.id
   )
 
-puts 'Creating a second channel-category...'
-c = Category.create!(
-  user_id: a.id,
-  title: 'Mysore',
+cat2 = Category.create!(
+  user_id: anik.id,
+  title: 'Mysore exchange',
   description: 'Exchange about mysore-techniques and a safe-space for questions',
+  studio_id: studio.id
+  )
+
+cat2 = Category.create!(
+  user_id: anik.id,
+  title: 'Hatha Style',
+  description: 'A softer approach to explore your inner landscape through yoga poses (Asanas), breathing exercises (Pranayama) and meditation.',
+  studio_id: studio.id
+  )
+
+cat3 = Category.create!(
+  user_id: anik.id,
+  title: 'FLY HIGH YOGA',
+  description: 'A form of aerial yoga which focuses on the lengthening the spine and creating space between the vertebrae. Relax the body into its natural form and curves allowing gravity do the work for you. In Fly High Yoga a student uses a belt securely attached to the ceiling to perform numerous sets of poses hanging from the belt, increasing flexibility and improving inversions.',
+  studio_id: studio.id
+  )
+
+cat4 = Category.create!(
+  user_id: anik.id,
+  title: 'Book recommendations',
+  description: '..',
+  studio_id: studio.id
+  )
+
+cat5 = Category.create!(
+  user_id: anik.id,
+  title: 'Places to go',
+  description: '..',
   studio_id: studio.id
   )
 
 puts 'Creating a post...'
 p = Post.create!(
-  user_id: u.id,
-  category_id: c.id,
+  user_id: alina.id,
+  category_id: cat2.id,
   title: 'My Mysore tips and tricks',
   content: 'MYSORE STYLE is a particular way of teaching yoga within the tradition of Ashtanga Yoga as taught by Sri K. Pattabhi Jois in Mysore, India. In this class everyone practices at their own pace, with assistance and adjustment from the teacher. The support is given to each student individually but within a group of people practicing together. Each student memorizes the sequence of asana (postures) to follow and new poses are progressively added to it when a student is ready. In Mysore style one begins learning slowly, respecting the limitations of the body and focusing on the breathing. The time of the class is the time it takes you to practice. Your first practice may only be about 30-45 min, while for someone more experienced it can take up to 1 h and 45 minutes. The entry to Mysore class is flexible, people start and finish at different times.'
   )
 
 puts 'Creating a studio announcement'
 Post.create!(
-  user_id: a.id,
-  category_id: ya.id,
+  user_id: anik.id,
+  category_id: cat1.id,
   title: 'Hatha class 30mins later on Monday, 17.06.',
   content: 'Please remember that next weeks Hatha class will start 30 minutes later due to the extended meditation session. If you are able to come by the studio at 4pm already you are more than welcome to join the meditation lesson plus the regular Hatha class.
   In case of any questions, please comment 😊'
 )
 
-puts 'Creating a comment...'
-Comment.create!(
-  user_id: u.id,
-  post_id: p.id,
-  content: 'Thank you so much, this really improved my flow!'
-  )
-
-puts 'Creating a second comment...'
-Comment.create!(
-  user_id: o.id,
-  post_id: p.id,
-  content: 'Wow already my second comment!'
-  )
 
 puts 'All done, YAY 🐣'
