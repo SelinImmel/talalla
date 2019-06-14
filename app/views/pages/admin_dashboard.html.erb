@@ -1,9 +1,9 @@
 <div class="container main-container">
   <div class="left-pannel">
-    <div class="second-card schedule-admin" style="margin-top: 0;">
+    <div class="second-card" style="margin-top: 0;">
       <h1>Upcoming classes at <%= @studio.name %></h1>
       <!-- schedule of all events -->
-      <div class="lessons-cards">
+      <div class="lessons-cards schedule-admin">
         <% @lesson_dates.each do |date| %>
           <h2 class="date-title"><%= date.to_formatted_s(:long_ordinal) %></h2>
             <% Lesson.where( studio: current_user.studio ).each do |lesson| %>
@@ -63,8 +63,6 @@
           <% end %>
         </div>
       </div>
-      <!-- where is this link supposed to lead to? -->
-      <%= link_to "more information", orders_path, class: "btn btn-primary btn-sm more-button" %>
     </div>
 
     <!-- bottom right -- many editing actions -->
