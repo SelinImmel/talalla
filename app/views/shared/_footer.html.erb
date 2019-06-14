@@ -1,42 +1,42 @@
 
 <footer class="page-footer font-small footer-container">
     <div>
-      <h5 class="font-weight-light text-uppercase mt-2 mb-2 header-footer"> <%= studio.name %></h5>
+      <h5 class="font-weight-light text-uppercase header-footer" style="margin: 16px 0 8px 0;"> <%= studio.name %></h5>
       <ul class="list-unstyled">
-        <li>
-         <p> <%= studio.address%></p>
+        <li style="margin: 8px 0;">
+          <p> <%= studio.address%></p>
         </li>
-        <li>
+        <li style="margin: 8px 0;">
           <p> <%= studio.email%></p>
         </li>
-        <li>
+        <li style="margin: 8px 0 24px 0;">
           <p> <%= studio.phone_number%></p>
         </li>
       </ul>
     </div>
 
     <div>
-      <h5 class="font-weight-light text-uppercase mt-2 mb-2 header-footer">Follow us!</h5>
-      <ul class="list-unstyled footer-links">
-        <li>
+      <h5 class="font-weight-light text-uppercase header-footer" style="margin-top: 24px;">Follow us!</h5>
+      <ul class="list-unstyled footer-links m-0">
+        <li style="margin: 8px 0 16px 0;">
           <a href="#"><i class="fab fa-instagram"></i></a>
         </li>
-        <li>
+        <li style="margin: 8px 0 16px 0;">
           <a href="#"><i class="fab fa-facebook"></i></a>
         </li>
       </ul>
     </div>
-    <div>
+    <div style="text-align: right;">
       <ul class="list-unstyled">
-        <li>
+        <li style="margin: 16px 0 8px 0;">
           <%= link_to root_path, class: "footer-brand" do %>
           <%= image_tag "https://image.flaticon.com/icons/png/512/129/129728.png" %>
           <% end %>
         </li>
-        <li>
+        <li style="margin: 8px 0;">
           <p><%= link_to "Supported by Talalla",about_us_path %></p>
         </li>
-        <li>
+        <li style="margin: 8px 0 24px 0;">
           <p>©2019</p>
         </li>
       </ul>
