@@ -22,16 +22,16 @@ Studio.destroy_all
 puts 'Puh, that was a lot of cleaning!'
 
 puts 'Creating a studio..'
-s = Studio.create!(
-  name: 'talalla',
-  address: 'Wonderland',
+studio = Studio.create!(
+  name: 'Mysore Zurich',
+  address: 'Gartenhofstrasse 24, 8004 Zurich',
   phone_number: '0163 62739023',
-  email: 'studio@talalla.com',
-  homepage: 'www.talalla.com'
+  email: 'mysore@gmail.com',
+  homepage: 'www.mysore.com'
   )
 
 puts 'Creating an admin...'
-a = User.create!(
+selin = User.create!(
   first_name: 'Selin',
   last_name: 'Immel',
   email: 'selin.immel@gmail.com',
@@ -41,26 +41,27 @@ Estee’s classes, privates, and workshops are dedicated to yoga beginners, enco
   is_teacher: true,
   is_admin: true,
   password: '123456',
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/murni-made.jpg"
 )
 
 
-puts 'Creating a teacher...'
-t = User.create!(
+puts 'Creating a second admin...'
+anik = User.create!(
   first_name: 'Anik',
   last_name: 'Hauser',
   email: 'anik.hauser@gmail.com',
   address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
   biography: 'With a background in Development studies, journalism and social work, Aniks approach to yoga is one that honors the need for individual self study with the aim of improving interpersonal relations and common-unity. Bex has studied yoga since 2001, inspired by teachers such as Seane Corne, Simon Park, Govinda Jai, John Scott and Dharma Mittra',
   is_teacher: true,
-  is_admin: false,
+  is_admin: true,
   password: '123456',
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/bex-tyrer.jpg"
   )
 
-User.create!(
+puts 'Creating teachers...'
+carlos = User.create!(
   first_name: 'Carlos',
   last_name: 'Devine',
   email: 'carlos.devine@gmail.com',
@@ -71,11 +72,11 @@ After finishing his first Yoga Teacher Training in Sivananda Divine Life Society
   is_teacher: true,
   is_admin: false,
   password: '123456',
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/carlos-romero-1.jpg"
   )
 
-User.create!(
+daniela = User.create!(
   first_name: 'Daniela',
   last_name: 'Beno',
   email: 'Daniela.beno@gmail.com',
@@ -84,7 +85,7 @@ User.create!(
   is_teacher: true,
   is_admin: false,
   password: '123456',
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/daniela-garza-rios.jpg"
   )
 
@@ -95,86 +96,145 @@ User.create!(
   address: 'Im Breitloo 5, 8802 Kirchberg, Zurich',
   biography: 'Malika Studied Hatha Yoga with the guru of OKI yoga for 4 years in Japan. Her Yin Yoga practice is based on studies with Hiroshi Motoyama. A deeper connection with the body led her to study Buddhist Medicine in Kyushu, Japan where she was trained in Moxa treatment. Nature is already complete and inner balance is the key to unlocking the natural healing powers that reside in the body. Bali has influenced Malikas healing techniques as well as her holistic approach to treatments which meet individual needs.',
   is_admin: false,
+  is_teacher: true,
   password: '123456',
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://www.theyogabarn.com/images/bali-yoga-trachers/malika.jpg"
   )
 
 puts 'Creating students...'
-u = User.create!(
-  first_name: 'Nico',
-  last_name: 'Klug',
-  email: 'nico.klug@gmail.com',
-  address: 'Hauptstrasse 10, 65182 Stuttgard',
-  biography: 'Just starting out with yoga, very excited to meet everyone!',
+alina = User.create!(
+  first_name: 'Alina',
+  last_name: 'Heimgartner',
+  email: 'alina.heimgartner@gmail.com',
+  address: 'Hauptstrasse 10, 65182 Zurich',
+  biography: 'I studied Hatha Yoga with the guru of OKI yoga for 4 years in Japan. My Yin Yoga practice is based on studies with Hiroshi Motoyama. A deeper connection with the body led her to study Buddhist Medicine in Kyushu, Japan where she was trained in Moxa treatment. Nature is already complete and inner balance is the key to unlocking the natural healing powers that reside in the body. Bali has influenced Malikas healing techniques as well as her holistic approach to treatments which meet individual needs.',
   is_teacher: false,
   is_admin: false,
   password: '123456',
-  studio_id: s.id
+  studio_id: studio.id,
+  remote_photo_url: "https://scontent.fjog1-1.fna.fbcdn.net/v/t1.0-9/1966776_10152438908341295_2419754696049711065_n.jpg?_nc_cat=101&_nc_ht=scontent.fjog1-1.fna&oh=c7ec4cf7432adf4066631c6f8af41597&oe=5D79E199"
   )
-o = User.create!(
-  first_name: 'Richard',
-  last_name: 'Angapin',
-  email: 'richard.angapin@gmail.com',
-  address: 'Rue de Fromage, 71530 Lyon',
-  biography: 'Have been dedicated to yoga for 10 years and counting. Excited to join this studio.',
+
+clara = User.create!(
+  first_name: 'Clara',
+  last_name: 'Edward',
+  email: 'clara@edward.co.nz',
+  address: '34 Hapua Street, Remuera, Auckland 1050',
+  biography: 'Clara has been practicing yoga and meditation for 3 years. Her girlfriend introduced her to yoga and she has now both in her life as a continous companion.',
   is_teacher: false,
   is_admin: false,
   password: '123456',
-  studio_id: s.id
-  )
+  studio_id: studio.id,
+  remote_photo_url:'https://images.unsplash.com/photo-1549459685-701565fe9ff1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=950&q=80'
+)
+
+jessica = User.create!(
+  first_name: 'Jessica',
+  last_name: 'Gonzales',
+  email: 'Jessy@claro.com.ar',
+  address: 'Av. 401, Buenos Aires 1427',
+  biography: 'Jessica loves yoga as she started as a littl girl with her mother who is a teacher in Buenos Aires.',
+  is_teacher: false,
+  is_admin: false,
+  password: '123456',
+  studio_id: studio.id,
+  remote_photo_url:'https://images.unsplash.com/photo-1521146764736-56c929d59c83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
+)
+
+paco = User.create!(
+  first_name: 'Paco',
+  last_name: 'Cavaletti',
+  email: 'paco@liberomail.it',
+  address: 'Piazzale Dino Viola, 1 - 00128 Roma',
+  biography: 'Paco founded his own company and after many years of only work he found yoga as his spot of calmness. He took some time of and has been traveling different yoga spots in the world',
+  is_teacher: false,
+  is_admin: false,
+  password: '123456',
+  studio_id: studio.id,
+  remote_photo_url:'https://images.unsplash.com/photo-1548898821-d756a2e30bdf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80'
+)
+
+maia = User.create!(
+  first_name: 'Maia',
+  last_name: 'Cavaletti',
+  email: 'Maia@liberomail.it',
+  address: 'Piazzale Dino Viola 1, 00128 Roma',
+  biography: 'Maia was the one that introduced her husband Paco to yoga as he was working to much. Next to yoga she loves to cook at home with friends.',
+  is_teacher: false,
+  is_admin: false,
+  password: '123456',
+  studio_id: studio.id,
+  remote_photo_url:'https://images.unsplash.com/photo-1548536515-67545ff2ecc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
+)
+
+joerg = User.create!(
+  first_name: 'Joerg',
+  last_name: 'Hanson',
+  email: 'Jörg@nordialaw.se',
+  address: 'Regeringsgatan 59, 111 56 Stockholm',
+  biography: 'During a long winter Jörg saw a tv documentary about India and was intrigued about learning more about yoga thus he decided to look into it. That was 4 years ago.',
+  is_teacher: false,
+  is_admin: false,
+  password: '123456',
+  studio_id: studio.id,
+  remote_photo_url:'https://images.unsplash.com/photo-1548536515-67545ff2ecc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
+)
 
 puts 'Creating a lesson...'
 l = Lesson.create!(
-  name: 'Hatha',
+  name: 'Ashtanga',
   location: 'Room 1',
-  content: 'A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!',
+  content: 'YOGA IS REALLY A BREATHING EXERCISE IN WHICH WE USE THE BODY TO EXPAND THE MIND…
+Ashtanga yoga is a spiritual practice and an inner journey to the self. The ashtanga method is based on the weaving of body and breath movements into a deepening flow of yoga poses. A dynamic practice, Ashtanga yoga will stretch every corner of your body and mind, inviting you to strengthen areas of challenge and inspire you to live with grace. Akin to a cooking process, the heat generated, the struggle endured and the peace cultivated bring together and reveal the flavour of your being.',
   slots: 20,
   start_time: "18:00",
   end_time: "19:00",
   start_date: "14.06.2019",
   occurrence: 10,
-  user_id: t.id,
-  studio_id: s.id
+  user_id: carlostudio.id,
+  studio_id: studio.id
   )
 
 Lesson.create!(
-  name: 'Hatha',
+  name: 'Mysore',
   location: 'Room 1',
-  content: 'A yoga lesson for our more advanced yogis. 60mins in total, get ready to sweat and relax!',
+  content: 'Named after the birthplace of the ashtanga system in Mysore, south India; This is the traditional method for learning, deepening and perfecting your Ashtanga practice. A private class in a group setting, the teacher doesn’t lead the whole group but holds the space for the practitioners, beginners and advanced together, to learn and refine each student’s personal  practice. As a beginner you will be taught one pose at a time in order to integrate the information gradually learning the sequence to develop your personalised yoga practice. You are invited to repeat over and over until a sense of flow and poise is attained. Eventually the teaching becomes more subtle allowing the practice itself to be your guide. You don’t need to be flexible or know the sequence in order to begin. The practice will teach you gradually.',
   slots: 20,
   start_time: "08:00",
   end_time: "09:00",
   start_date: "14.06.2019",
   occurrence: 10,
-  user_id: t.id,
-  studio_id: s.id
+  user_id: carlostudio.id,
+  studio_id: studio.id
   )
 
 Lesson.create!(
-  name: 'Hatha beginner',
+  name: 'Mysore beginner',
   location: 'Room 2',
-  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
+  content: 'This a class where we introduce you to the Mysore practice and its tools. Beginners are required to commit to enough classes before they can participate in the Mysore classes, in order to get a better understanding of the practice and its sequence.  The idea is that you learn the standing sequence and can join the Mysore morning class, and become autonomous in practice.',
   slots: 10,
   start_time: "16:00",
   end_time: "17:00",
   start_date: "15.06.2019",
   occurrence: 5,
-  user_id: t.id,
-  studio_id: s.id
+  user_id: anik.id,
+  studio_id: studio.id
   )
 
 Lesson.create!(
-  name: 'Hatha beginner',
+  name: 'Hatha Tantra',
   location: 'Room 2',
-  content: 'A yoga lesson for our beginner yogis. 60mins in total, get ready to sweat and relax!',
+  content: 'Hatha Tantra embraces all the manifestations of life energy, the Shakti. A tool to reach higher states of consciousness. Hatha Tantra embraces life in all its manifestations; body, emotions, energy, sexuality, astrology, sounds (mantras), patterns (yantras). Hatha yoga is a body orientated practice originating from the tantric tradition.
+
+The awareness you develop first on a body level is then extended to your heart, mind and spirit, allowing you to get rid of the unnecessary veils cloaking your true self. Hatha Tantra is a powerful framework for transformation and spiritual development if you are ready to acknowledge, study and experience your light and darkness.',
   slots: 10,
   start_time: "08:00",
   end_time: "09:00",
   start_date: "15.06.2019",
   occurrence: 5,
-  user_id: t.id,
-  studio_id: s.id
+  user_id: daniela.id,
+  studio_id: studio.id
   )
 
 
@@ -185,7 +245,7 @@ subs = Subscription.create!(
   package_size: 12,
   durability: 60,
   subscription_sku: '12-class-pack',
-  studio_id: s.id,
+  studio_id: studio.id,
   amount_cents: 200_000_00,
   payment_option: "card"
   )
@@ -196,7 +256,7 @@ sub_cash = Subscription.create!(
   package_size: 1,
   durability: 30,
 subscription_sku: '1-class-pack',
-  studio_id: s.id,
+  studio_id: studio.id,
   amount_cents: 70_000_00,
   payment_option: "cash"
   )
@@ -207,7 +267,7 @@ sub_cash = Subscription.create!(
   package_size: 6,
   durability: 60,
 subscription_sku: '6-class-pack',
-  studio_id: s.id,
+  studio_id: studio.id,
   amount_cents: 100_000_00,
   payment_option: "card"
   )
@@ -218,14 +278,14 @@ sub_cash = Subscription.create!(
   package_size: 6,
   durability: 60,
 subscription_sku: '6-class-pack',
-  studio_id: s.id,
+  studio_id: studio.id,
   amount_cents: 100_000_00,
   payment_option: "card"
   )
 
 puts 'Creating a order...'
 p = Order.create!(
-  subscription_id: subs.id,
+  subscription_id: substudio.id,
   user_id: u.id,
   date: Date.today,
   total_amount_cents: subs.amount_cents,
@@ -274,7 +334,7 @@ Event.create!(
   title: 'ECSTATIC DANCE & SOUND CIRCLE',
   content: 'Warm your body up with gentle free movement. Awaken your primal energy and release the old with Kundalini shaking. Let go and dance into ecstasy, experiencing yourself as pure energy. This ecstatic experience is supported by your breath, gentle guidance and rocking music.No previous dance experience required. This is a non judgmental space of free expression. Jacqueline Jai has been facilitating Ecstatic Awakening Dance since 2012 and did her Ecstatic Awakening Dance teacher training with the School of Ecstatic Movement. She has danced extensively with many brilliant movement facilitators and communities.',
   date: Date.today,
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://i2.wp.com/www.samadibali.com/wp-content/uploads/2019/04/EcstaticDance_IG_0419-01.jpg?w=800&ssl=1"
   )
 
@@ -282,7 +342,7 @@ Event.create!(
   title: 'SUNDAY MARKET',
   content: 'Come and meet our local Organic Farmers and Artisans. A happening vibrant local market, with music, laughter, good food and fresh produce. Samadi Sunday Market is about community, local organic farmers and artisans getting together who consciously choose to support each other. Our local farmers supply chemical free, healthy, and fresh produce every week. A community that says no to GMO and pesticides a commitment to one another.',
   date: "09/7/2019",
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://i1.wp.com/www.samadibali.com/wp-content/uploads/2018/06/20170507-3samadi-A6500-slog2-pro-01-2-1.jpg?w=1200&ssl=1"
   )
 
@@ -291,7 +351,7 @@ Event.create!(
   content: 'A self healing and self loving place for women to come together with Yoga, Breathwork, Yoni Love, Dance and much more to explore the body, mind and energy system. This is a place of play and sensuality as well as being a sacred vessel for healing and transformation.
 Within each of us is the innate and natural ability to heal ourselves. As we access and surrender to our own inner power we learn to understand how energy moves in the body and how we can use it to unlock stored trauma and release what no longer serves us. In this space low vibrational energy can be transformed into a higher frequency where we experience pleasure, bliss and ecstasy.',
   date: "12/7/2019",
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://i1.wp.com/www.samadibali.com/wp-content/uploads/2019/04/IG-Womens-Circle.jpg?w=800&ssl=1"
   )
 
@@ -303,7 +363,7 @@ Troppoc (30 minutes) – Documentary Kim Webby tells her personal story of volun
 Coming Home (30 minutes) – An autobiographical documentary about Jason Moon’s journey back to his ancestral village in China.
 ',
   date: "15/7/2019",
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://i1.wp.com/www.samadibali.com/wp-content/uploads/2019/05/jasonmoon-ig-1.jpg?w=2040&ssl=1"
   )
 
@@ -314,7 +374,7 @@ Event.create!(
 Abdi who is known as Energy Healer in Bali will entertain you with one part of his talent to play Gong,  pow wow drum, Semantic  Drum , Tibetan bowl   drive  your brain wave in to  theta frequency which bring your mind in to deep relaxation  create balance in your chakra the energy center in our body . As Energy healer he will reconnect you to pure Energy of Universe to clear, to ground, energize , harmonize,  create a peacefulness and blissfulness  of  our body energy , subtle energy
 ',
   date: "19/7/2019",
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://i2.wp.com/www.samadibali.com/wp-content/uploads/2019/05/soundbath.jpg?w=800&ssl=1"
   )
 
@@ -323,7 +383,7 @@ Event.create!(
   content: 'Join us for a heart opening evening of devotion honoring the sacred transformations of reawakening.
 Kirtan is a form of devotional chanting whose roots go back to India over 500 years. It is a form of Bhakti Yoga (yoga of devotion) and has the power to open the heart. The singing is accompanied by musical instruments and rhythmic drumming while the audience is encouraged to participate by chanting, clapping and dancing. Explore kirtan and bhajans, connecting with the qualities of Indian deities.',
   date: "21/7/2019",
-  studio_id: s.id,
+  studio_id: studio.id,
   remote_photo_url: "https://i2.wp.com/www.samadibali.com/wp-content/uploads/2019/05/IG-Full-Moon.jpg?w=851&ssl=1"
   )
 
@@ -341,7 +401,7 @@ ya = Category.create!(
   user_id: u.id,
   title: 'Studio News',
   description: 'All general studio announcements will be made via this channel so make sure to log in regularly 🧘🏻‍♀️🧘🏽‍♂️',
-  studio_id: s.id
+  studio_id: studio.id
   )
 
 puts 'Creating a second channel-category...'
@@ -349,7 +409,7 @@ c = Category.create!(
   user_id: a.id,
   title: 'Mysore',
   description: 'Exchange about mysore-techniques and a safe-space for questions',
-  studio_id: s.id
+  studio_id: studio.id
   )
 
 puts 'Creating a post...'
