@@ -50,7 +50,8 @@
 
   <div class="right-pannel">
       <div class="div-sub">
-        <h1> My current   subscription:</h1>
+        <% if current_user.user_plans.any? %>
+        <h1> My current subscription:</h1>
         <div class="my-subscription-container">
             <% current_user.user_plans.each do |user_plan| %>
               <% left_usage = user_plan.left_usage - user_plan.bookings.size %>
@@ -59,8 +60,11 @@
                 <br>Valid from <%= user_plan.start_date.to_formatted_s(:rfc822) %> to <%= user_plan.end_date.to_formatted_s(:rfc822) %>
               <% end %>
             <% end %>
+        </div>
+        <% else %>
+          <h2>You currently have no subscriptions</h2>
+        <% end %>
 
-    </div>
 
       <div class="third-card-personal">
         <div class="subscription-cards">
