@@ -1,8 +1,10 @@
 <%= simple_form_for [@studio, @event] do |f| %>
-  <%= f.input :title, placeholder: "Add a title for the event..." %>
+  <%= f.input :title %>
   <%= f.input :date, as: :date, placeholder: Date.tomorrow %>
-  <%= f.input :content, placeholder: "Add a detailed description of the event..." %>
+  <%= f.input :content, placeholder: "Please add a detailed description of the event..." %>
   <%= f.input :photo %>
   <%= f.input :photo_cache , as: :hidden %>
-  <%= f.submit 'Save',  class: "btn btn-primary"%>
+  <div class="submit-form-button">
+    <%= f.submit 'Save',  class: "btn btn-primary btn-100"%>
+  </div>
 <% end %>

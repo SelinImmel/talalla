@@ -1,1 +1,7 @@
-<%= render 'form' %>
+<div class="container forms-container">
+  <div class="form-header">
+    <h1>Change details of your Shala</h1>
+    <%= link_to "Back", studio_path(current_user.studio_id), class: "btn btn-outline-primary btn-sm rounded" %>
+  </div>
+  <%= render 'form' %>
+</div>

@@ -1,5 +1,9 @@
-<%= simple_form_for [category, Post.new] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+<div class="forms-container">
+  <%= simple_form_for [category, Post.new] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <div class="submit-form-button">
+      <%= f.button :submit, class: "btn btn-primary btn-100 rounded" %>
+    </div>
+  <% end %>
+</div>
