@@ -1,9 +1,10 @@
 <div class="container main-container">
   <div class="left-pannel">
     <!-- lessons schedule -->
-    <div class="second-card schedule-admin" style="margin-top: 0;">
-      <h1>Upcomming classes at <%= @studio.name %></h1>
-      <div class="lessons-cards">
+    <div class="second-card-show" style="margin-top: 0;">
+      <div class="title-lessons-show">
+      <h1>Upcomming classes at <%= @studio.name %></h1></div>
+      <div class="lessons-cards-show">
         <% @lesson_dates.each do |date| %>
           <h2 class="date-title"><%= date.to_formatted_s(:long_ordinal) %></h2>
           <% Lesson.where( studio: current_user.studio ).each do |lesson| %>
@@ -27,12 +28,12 @@
           <% end %>
         <% end %>
       </div>
-        <%= link_to "Book a class", studio_lessons_path(current_user.studio), class: 'btn btn-primary btn-sm'%>
+
     </div>
   </div>
   <div class="right-pannel">
     <div class="second-card-studio">
-      <h1>Our teachers</h1>
+      <div class="teacher-title-show"><h1>Our teachers</h1></div>
       <div class="teacher-cards">
         <% users = User.where(is_teacher: true) %>
         <% users.each_with_index do |u, index| %>

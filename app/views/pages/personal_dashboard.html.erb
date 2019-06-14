@@ -1,19 +1,22 @@
 <div class="container main-container">
   <div class="left-pannel">
     <div class="first-card-personal">
-      <div class="avatar-and-buttons">
+      <div class="upper-part-personal">
         <div class="avatar-talalla">
           <%= cl_image_tag current_user.photo, crop: :fill %>
         </div>
+        <div class="description-talalla-personal">
+          <h1><%= current_user.first_name %> <%= current_user.last_name %> <br> </h1>
+          <p><%= current_user.address %> <br>
+          <%= current_user.email %></p>
+        </div>
+           <div class="button-personal">
         <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-outline-primary btn-sm'%>
-        <!-- <div class="global-button mt-3"> -->
-        <!-- </div> -->
+        </div>
       </div>
-      <div class="description-talalla">
-        <h1><%= current_user.first_name %> <%= current_user.last_name %> <br> </h1>
-        <p><%= current_user.address %> <br>
-        <%= current_user.email %></p>
-        <div class="description-talalla-bio"><strong>About you: </strong><%= current_user.biography %></div>
+      <div class="lower-part-personal">
+        <div class="description-talalla-bio"><strong>About you: </strong><%= current_user.biography %>
+        </div>
       </div>
     </div>
 

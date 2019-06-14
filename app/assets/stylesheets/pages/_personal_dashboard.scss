@@ -1,9 +1,22 @@
 .first-card-personal {
   background-color: white;
-  display: flex;
   padding: 16px;
   box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.05), 0px 12px 12px rgba(0, 0, 0, 0.05);
   height: 306px;
+
+.upper-part-personal{
+  display: flex;
+  padding: 8px;
+}
+
+.description-talalla-personal {
+  padding: 0px 16px;
+}
+
+.lower-part-personal{
+  height: 118px;
+  overflow: scroll;
+}
   .avatar-and-buttons {
     width: 30%;
     display: flex;
@@ -23,7 +36,6 @@
     .description-talalla {
       padding-left: 8px;
       height: 275px;
-      overflow: scroll;
     }
 }
 
