@@ -1,4 +1,4 @@
-.col2 {
+.col-rich2 {
   padding: 3% 7% 3% 7%;
   width: 50vw;
   display: flex;
@@ -6,10 +6,11 @@
   justify-content: center;
 }
 
-.col1 {
+.col-rich1 {
   background-size: cover;
   background-position: center;
   width: 50vw;
+  height: 100vh;
   background-image: url(https://images.unsplash.com/photo-1495001258031-d1b407bc1776?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60);
 }
 
